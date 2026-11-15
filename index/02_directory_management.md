@@ -83,6 +83,11 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
   3. The compilation lock is released, and `tool/compile.bat` compiles the definitive PDF.
   4. The catalog status in `03_topic_index.md` is updated from `Provisional Source (Auto-extracted)` to `Compiled from Source`.
 
+### Rule 7: Reusable Skill Vault (`md_skill/`) & Setup Drivers
+- **Role & Purpose**: `md_skill/` serves as the portable, version-controlled vault storing the authoritative source definitions of all agent skills (`SKILL.md` for Karpathy guidelines, `management_skill.md` for repository management) and the automated installer driver (`install.bat`).
+- **Isolation Guarantee**: Files in `md_skill/` are reserved exclusively for agent behavior and workflow governance. They are never ingested, renamed, or cataloged as academic subject notes.
+- **First-Time Deployment**: When deploying in a new environment, run `cmd /c "D:\STUDY\md_skill\install.bat"` to copy blueprints into `.agent/skills/`.
+
 ---
 
 ## Direct PDF Ingestion Protocol (`pdf/` Only)

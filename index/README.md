@@ -26,6 +26,12 @@ D:\STUDY\
 │   ├── 04_interconnection_mindmap.md <-- Semantic YAML knowledge graph & relational triples
 │   └── 05_contributing_and_versioning.md <-- Working rules, lifecycle specs, ledger & version policy
 │
+├── md_skill/                  <-- REUSABLE SKILLS VAULT (Skill blueprints & 1-click install.bat)
+│   ├── README.md              <-- First-time installation guide across CLI, PowerShell & global
+│   ├── install.bat            <-- 1-click automatic skill deployment driver
+│   ├── SKILL.md               <-- Karpathy Guidelines skill blueprint
+│   └── management_skill.md    <-- Repository Management skill blueprint
+│
 ├── tool/                      <-- STRICTLY IMMUTABLE COMPILER ENGINE
 │   ├── compile.bat            <-- Windows compilation driver
 │   ├── setup.bat              <-- Environment verification script

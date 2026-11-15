@@ -8,14 +8,14 @@ Welcome to your study repository! This directory is an automated knowledge base 
 
 ```text
 D:\STUDY\
-├── txt_md/     <-- INPUT: Paste your raw .txt or .md notes here
+├── txt_md/     <-- INPUT & SURROGATES: Authoritative notes & provisional search surrogates
 ├── pdf/        <-- OUTPUT & STORAGE: All compiled and imported PDFs live here
-├── index/      <-- CONTROL PLANE: Master topic catalog and AI knowledge mindmap
-├── tool/       <-- COMPILER: Pandoc + XeLaTeX publishing engine (DO NOT EDIT)
-├── manage.bat  <-- One-click automation script (ingest, compile, index)
+├── index/      <-- CONTROL PLANE: Master topic catalog, mindmap, governance & version ledger
+├── md_skill/   <-- REUSABLE SKILLS VAULT: Skill blueprints & 1-click installer (install.bat)
+├── tool/       <-- COMPILER: Pandoc + XeLaTeX publishing engine (STRICTLY IMMUTABLE)
+├── manage.bat  <-- One-click automation runner (scan, process, audit-duplicates, remove-doc)
 ├── manage.py   <-- Master automation engine
-├── README.md   <-- User manual (this file)
-└── SKILL.md    <-- Active AI behavioral guidelines (Karpathy Guidelines)
+└── README.md   <-- User manual (this file)
 ```
 
 ---
@@ -93,6 +93,32 @@ Here are quick prompts you can give the AI at any time:
 | Explore connections | `"How do my notes on <Topic A> connect to <Topic B>?"` |
 | Find prerequisites | `"What do I need to know before reading DOC-023?"` |
 | Inspect a specific PDF | `"Read DOC-015 and summarize its key equations"` |
+| Audit duplicate notes | `"Check if there are any duplicate notes"` |
+
+---
+
+## 🛠️ First-Time Agent Skills Installation (`md_skill/`)
+
+The [`md_skill/`](file:///D:/STUDY/md_skill/) folder contains reusable blueprints for the two core agent skills:
+1. **`karpathy-guidelines`** ([`md_skill/SKILL.md`](file:///D:/STUDY/md_skill/SKILL.md)): Behavioral safeguards against overcomplication, unrequested abstractions, and unsurgical edits.
+2. **`repository-management`** ([`md_skill/management_skill.md`](file:///D:/STUDY/md_skill/management_skill.md)): Master rules for three-tier ingestion lifecycles, non-destructive note safety, and compilation interlocks.
+
+### Quick 1-Click Installation
+Whenever setting up this repository in a fresh environment or cloning to another machine, deploy both skills with one command:
+```cmd
+cmd /c "D:\STUDY\md_skill\install.bat"
+```
+*(Or simply double-click `md_skill\install.bat` in Windows File Explorer).*
+
+### Manual PowerShell One-Liner
+```powershell
+New-Item -ItemType Directory -Force -Path ".agent\skills\karpathy-guidelines", ".agent\skills\repository-management"; `
+Copy-Item "md_skill\SKILL.md" ".agent\skills\karpathy-guidelines\SKILL.md" -Force; `
+Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SKILL.md" -Force; `
+Copy-Item "md_skill\management_skill.md" ".agent\management_skill.md" -Force
+```
+
+---
 
 ### 3. Architecture, Contributing & Version Ledger ([index/05_contributing_and_versioning.md](file:///D:/STUDY/index/05_contributing_and_versioning.md))
 - **What it is**: Complete developer and system documentation tracking repository working rules, lifecycle specifications, cumulative line-budget versioning, and change ledgers.

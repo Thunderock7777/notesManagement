@@ -255,7 +255,9 @@ Cycle Date: 2026-11-15
 * `2026-11-15` | Engine | Implemented native `audit-duplicates` subcommand in `manage.py` / `manage.bat` for whole-repository MD5 and normalized-text duplicate detection | `system +75 / -2` | `75 / 500`
 * `2026-11-15` | Engine | Implemented atomic `remove-doc` subcommand with `--consolidate-into` support in `manage.py` for safe deletion and log consolidation | `system +85 / -2` | `158 / 500`
 * `2026-11-15` | Maintenance | Consolidated duplicate `DOC-107` (Zotero `RPX7CTRU`) into `DOC-089` (Zotero `N7JTQ5YA`) via `manage.bat remove-doc`; removed redundant PDF and surrogate | `system +8 / -0` | `166 / 500`
-* `2026-11-15` | Release | **Versioned native duplicate auditing and consolidation engine as 1.2.1 (PATCH)**
+* `2026-11-15` | Skills | Created `md_skill/` reusable vault, `install.bat` 1-click deployment driver, and installation guide (`md_skill/README.md`) | `system +82 / -0` | `248 / 500`
+* `2026-11-15` | Governance | Codified Rule 7 in `02_directory_management.md` and updated workspace trees in `README.md` and `index/README.md` | `system +26 / -2` | `272 / 500`
+* `2026-11-15` | Release | **Versioned native duplicate auditing, consolidation engine, and md_skill vault as 1.2.1 (PATCH)**
 
 ---
 
