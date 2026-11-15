@@ -42,14 +42,18 @@ You don't need to manually rename files or run complex command-line scripts. The
 
 ---
 
-### 2. Direct PDF Imports (No Source Text Needed)
+### 2. Direct PDF Imports & Provisional Surrogate Markdown
 
 If you already have well-compiled LaTeX PDFs or digital documents with clear text layers (e.g. from Zotero, research papers, or prior exports):
 
 1. **Paste them directly into [pdf/](file:///D:/STUDY/pdf/)**.
 2. Tell the AI:
    > *"Scan pdf folder and index the new PDFs."*
-3. The AI verifies the text layer, derives the core domain and concepts, renames messy filenames to clean `kebab-case`, and updates the catalog and relational mindmap.
+3. **What happens automatically**:
+   - The AI verifies the text layer, derives the core domain and concepts, and renames messy filenames to clean `kebab-case`.
+   - **Provisional Surrogate Extraction (`pymupdf4llm`)**: The system automatically extracts a clean Markdown companion file into [txt_md/](file:///D:/STUDY/txt_md/) bearing a strict `DO NOT RECOMPILE` safety banner.
+   - **Full-Text Search & Git Backup**: The surrogate Markdown allows instantaneous full-text search across your entire library without re-scanning binary PDFs, while backing up note text on GitHub (where binary PDFs are excluded).
+   - **Seamless Replacement**: When you later paste an authentic `.txt` or `.md` source note, it automatically replaces the provisional surrogate, lifts the compilation lock, and compiles the definitive PDF.
 
 ---
 
@@ -89,6 +93,9 @@ Here are quick prompts you can give the AI at any time:
 | Explore connections | `"How do my notes on <Topic A> connect to <Topic B>?"` |
 | Find prerequisites | `"What do I need to know before reading DOC-023?"` |
 | Inspect a specific PDF | `"Read DOC-015 and summarize its key equations"` |
+
+### 3. Architecture, Contributing & Version Ledger ([index/05_contributing_and_versioning.md](file:///D:/STUDY/index/05_contributing_and_versioning.md))
+- **What it is**: Complete developer and system documentation tracking repository working rules, lifecycle specifications, cumulative line-budget versioning, and change ledgers.
 
 ---
 

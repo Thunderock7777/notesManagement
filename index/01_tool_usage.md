@@ -47,7 +47,8 @@ cmd /c "D:\STUDY\manage.bat process"
 #### Alternative CLI Flags:
 - Ingest source note: `cmd /c "D:\STUDY\manage.bat ingest-note --file ... --name ... --domain ... --concepts ... --summary ..."`
 - Ingest direct PDF: `cmd /c "D:\STUDY\manage.bat ingest-pdf --file ... --name ... --domain ... --concepts ... --summary ..."`
-- Proactive scan: `cmd /c "D:\STUDY\manage.bat scan"`
+- Proactive scan: `cmd /c "D:\STUDY\manage.bat scan"` (audits repository and counts authentic source notes vs provisional surrogates)
+- Surrogate extraction: batch extracts companion Markdown approximations for all sourceless PDFs via `pymupdf4llm`.
 
 ---
 
@@ -61,8 +62,10 @@ cmd /c "D:\STUDY\manage.bat process"
    - Renaming incoming raw notes inside `D:\STUDY\txt_md/` to semantic `kebab-case`.
    - Renaming incoming pre-compiled PDFs inside `D:\STUDY\pdf/` to semantic `kebab-case`.
    - Moving compiled PDFs from `txt_md/` to `pdf/`.
-2. **Headless Compilation Driver**:
+2. **Headless Compilation Driver & Interlock**:
    - Running `tool\compile.bat` non-interactively using piped stdin to handle pauses and uncached code execution prompts without freezing.
+   - **Strict Compilation Lock**: Refusing to compile any provisional surrogate file bearing `DO NOT RECOMPILE` / `AUTO-GENERATED SURROGATE`, protecting XeLaTeX PDFs from being overwritten.
+   - **Automatic Replacement**: Removing prior provisional surrogates when an authentic source note of the same base name is ingested.
 3. **Atomic Catalog & Mindmap Updates**:
    - Safely appending or updating table rows and detailed history blocks in `index/03_topic_index.md`.
    - Safely inserting nodes and relational edges in `index/04_interconnection_mindmap.md`.

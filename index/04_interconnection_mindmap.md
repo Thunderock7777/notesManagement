@@ -15,9 +15,9 @@
 ## Semantic Relational Knowledge Graph
 
 ```yaml
-version: '1.1'
-total_nodes: 131
-total_edges: 187
+version: '1.2'
+total_nodes: 132
+total_edges: 150
 nodes:
 - id: DOC-001
   file: qm-two-state-time-evolved-wavefunction.pdf

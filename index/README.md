@@ -23,7 +23,8 @@ D:\STUDY\
 │   ├── 01_tool_usage.md       <-- Compiler usage, execution flags & bypass commands
 │   ├── 02_directory_management.md <-- Governance, strict txt_md isolation & renaming SOP
 │   ├── 03_topic_index.md      <-- Machine-readable document inventory & metadata
-│   └── 04_interconnection_mindmap.md <-- Semantic YAML knowledge graph & relational triples
+│   ├── 04_interconnection_mindmap.md <-- Semantic YAML knowledge graph & relational triples
+│   └── 05_contributing_and_versioning.md <-- Working rules, lifecycle specs, ledger & version policy
 │
 ├── tool/                      <-- STRICTLY IMMUTABLE COMPILER ENGINE
 │   ├── compile.bat            <-- Windows compilation driver
@@ -41,9 +42,10 @@ D:\STUDY\
 
 ## Core Operational Rules
 
-1. **Strict Ingestion Source Isolation**:
-   - **Source Notes**: ONLY files placed directly inside `D:\STUDY\txt_md\` are eligible to be compiled from source.
-   - **Direct PDF Imports**: Pre-compiled PDFs placed directly into `D:\STUDY\pdf\` without source notes are eligible for indexing and mindmap inclusion ONLY if they are well-made LaTeX documents or have clear, extractable digital text layers (scanned/bitmap PDFs are rejected).
+1. **Strict Ingestion Source Isolation & Three-Tier Ingestion**:
+   - **Authentic Source Notes**: ONLY authentic source files placed directly inside `D:\STUDY\txt_md\` are eligible to be compiled from source into `pdf/`.
+   - **Direct PDF Imports & Provisional Surrogates**: Pre-compiled PDFs placed directly into `D:\STUDY\pdf\` without source notes are indexed and companion surrogate Markdown files are extracted via `pymupdf4llm` into `txt_md/<basename>.md` carrying the `DO NOT RECOMPILE` safeguard banner. This enables instant full-text search, token-efficient context retrieval, and Git backup without compiling.
+   - **Authoritative Replacement**: When the user provides an authentic `.txt` or `.md` note, it automatically supersedes and deletes the provisional surrogate, unlocks compilation, and compiles the definitive XeLaTeX PDF into `pdf/`.
    - If a `.txt` or `.md` file exists anywhere else (e.g. mistakenly placed in `index/`, `tool/`, or workspace root), **DO NOT index it**.
 2. **`tool/` is Strictly Immutable**:
    - No AI model may edit, modify, overwrite, or delete files inside `tool/`.
@@ -58,5 +60,6 @@ D:\STUDY\
 6. **Strict Scope for Automation Script (`manage.py` / `manage.bat`)**:
    - **Permitted**: Mechanical file renaming in `txt_md/` and `pdf/`, headless XeLaTeX compilation, routing PDFs, deduplication checks, and updating `03_topic_index.md` & `04_interconnection_mindmap.md`.
    - **Strictly Prohibited**: Never touch or modify `tool/`, never alter substantive note content in `txt_md/`, never replace AI semantic reasoning with script heuristics, never touch files outside `txt_md/` and `pdf/`, and **never use the script for searching** (the AI must always search and answer queries by itself).
+   - **Compilation Interlock**: `manage.py` strictly refuses to compile any file marked with the provisional surrogate header (`DO NOT RECOMPILE`).
 7. **Execution Permissions**:
    - Run compilation and ingestion via `cmd /c "D:\STUDY\manage.bat process"` with `BypassSandbox: true` (auto-approvable static command shape).

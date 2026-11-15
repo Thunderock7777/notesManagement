@@ -178,11 +178,52 @@ Transform the generic filename into a semantic, consistent identifier:
         4. Rename to kebab-case (if needed)
                         │
                         ▼
-   5. Register in 03_topic_index.md [Direct PDF Import]
+    5. Extract Provisional Surrogate Markdown via pymupdf4llm
+       into txt_md/<basename>.md (DO NOT RECOMPILE banner)
                         │
                         ▼
- 6. Insert Node & Edges in 04_interconnection_mindmap.md
+   6. Register in 03_topic_index.md [Provisional Source (Auto-extracted)]
                         │
                         ▼
- 7. Confirm completion to user with PDF link
+ 7. Insert Node & Edges in 04_interconnection_mindmap.md (source_type: surrogate_md)
+                        │
+                        ▼
+ 8. Confirm completion to user with PDF link & surrogate link
+```
+
+### Workflow C: Replacing Provisional Surrogate with Authoritative Source Note
+
+```text
+[User drops authentic .txt or .md note in txt_md/ matching existing topic]
+                        │
+                        ▼
+        1. Verify Content & Check Deduplication
+                        │
+                        ▼
+    2. Detect Existing Provisional Surrogate (<name>.md)
+                        │
+                        ▼
+    3. Remove Provisional Surrogate from txt_md/
+                        │
+                        ▼
+   4. Rename Incoming Note to Semantic Identifier (<name>.txt/.md)
+                        │
+                        ▼
+   5. Release Compilation Lock & Invoke tool/compile.bat
+                        │
+                        ▼
+   6. Route Newly Compiled XeLaTeX PDF to pdf/<name>.pdf (overwrite)
+                        │
+                        ▼
+ 7. Upgrade 03_topic_index.md:
+    Status -> 'Compiled from Source'
+    Source File -> '[<name>.txt](...)' (Authoritative Source Note)
+                        │
+                        ▼
+ 8. Upgrade 04_interconnection_mindmap.md:
+    source_type -> 'txt_md'
+    source_note -> '<name>.txt'
+                        │
+                        ▼
+ 9. Stage & Commit in Git; Confirm Completion to User
 ```
