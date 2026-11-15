@@ -61,6 +61,7 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
   - Checking content hashes for deduplication.
   - Appending/updating records in `index/03_topic_index.md` and `index/04_interconnection_mindmap.md`.
   - Running repository status audits (`manage.bat scan`).
+  - Extracting provisional surrogate Markdown from sourceless PDFs.
 - **Strictly Prohibited Use Cases**:
   - **NEVER** use the script to touch, modify, or delete any file inside `tool/`.
   - **NEVER** use the script to alter the substantive text of notes in `txt_md/`.
@@ -68,6 +69,19 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
   - **NEVER** use the script to process or touch files outside `txt_md/` and `pdf/`.
   - **NEVER** use the script to overwrite governance files (`index/README.md`, `01_tool_usage.md`, `02_directory_management.md`, or root `README.md`).
   - **NEVER** use the script for searching or answering user queries. The AI agent must search by itself (reading `03_topic_index.md`, querying `04_interconnection_mindmap.md`, and reading note/PDF content directly).
+
+### Rule 6: Provisional Surrogate Markdown Files & Compilation Lock
+- **Role & Purpose**: To bridge the gap created by sourceless, pre-compiled PDFs in `pdf/`, companion Markdown files are extracted using `pymupdf4llm` into `txt_md/<basename>.md`. This provides instantaneous full-text search, token-efficient AI context retrieval, and Git backup of note text.
+- **Strict Compilation Lock**: All surrogate Markdown files must contain the banner:
+  ```markdown
+  <!-- Status: PROVISIONAL SURROGATE (DO NOT RECOMPILE) -->
+  ```
+  Neither the AI nor `manage.py` / `compile.bat` may **ever** compile a surrogate file to PDF. This protects the pristine XeLaTeX PDF from being overwritten by an approximation.
+- **Authoritative Replacement**: When the user provides an authentic `.txt` or `.md` source note:
+  1. The provisional surrogate `.md` file is cleanly removed.
+  2. The authentic note takes its place in `txt_md/`.
+  3. The compilation lock is released, and `tool/compile.bat` compiles the definitive PDF.
+  4. The catalog status in `03_topic_index.md` is updated from `Provisional Source (Auto-extracted)` to `Compiled from Source`.
 
 ---
 

@@ -1,0 +1,64 @@
+<!-- ===================================================================== -->
+<!-- AUTO-GENERATED SURROGATE SOURCE (FOR SEARCH & CATALOGING ONLY)       -->
+<!-- Source PDF: qm-syllabus.pdf
+<!-- Status: PROVISIONAL SURROGATE (DO NOT RECOMPILE)                      -->
+<!-- Purpose: Instant full-text search, AI context retrieval & knowledge graph mapping. -->
+<!-- Note: Will be automatically replaced when an authentic manual source note is provided. -->
+<!-- ===================================================================== -->
+
+**GATE 2027** 
+
+**IIT Madras  | Organizing Institute** 
+
+**PH Physics** 
+
+# **Section 1: Measurements and Error Analysis** 
+
+Units and dimensions, dimensional analysis; least count, significant figures; Methods of measurement and error analysis for physical quantities associated with various measurements; 2-probe and 4-probe methods for resistance measurement; Grounding for electrical circuits, Ground loops; Design of DC power supply, Signal processing through lock-in amplifiers. 
+
+# **Section 2: Mathematical Physics** 
+
+Linear vector spaces: basis, orthogonality and completeness; matrices: similarity transformations, diagonalization, eigenvalues and eigen vectors; linear differential equations: simple applications of first and second order linear differential equations and solutions; complex analysis: Cauchy-Riemann conditions, Cauchy's theorem, singularities, residue theorem and applications; Fourier analysis; tensors: tensor transformations, covariant and contravariant tensors. 
+
+# **Section 3: Classical Mechanics** 
+
+D'Alembert's principle, Euler-Lagrange equation, Hamilton's principle, calculus of variations; symmetry and conservation laws; central force motion: Kepler problem; small oscillations: coupled oscillations and normal modes; rigid body dynamics: inertia tensor, orthogonal transformations, Euler angles, torque free motion of a symmetric top; Hamiltonian and Hamilton's equations of motion; canonical transformations: Poisson bracket. Special theory of relativity: Lorentz transformations, relativistic kinematics, mass-energy equivalence. 
+
+# **Section 4: Thermodynamics and Statistical Mechanics** 
+
+Laws of thermodynamics; macrostates and microstates; phase space; ensembles; partition function, free energy, calculation of thermodynamic quantities; classical and quantum statistics; degenerate Fermi gas; black body radiation and Planck's distribution law; Bose-Einstein condensation; first and second order phase transitions, phase equilibria, critical phenomena. 
+
+# **Section 5: Electromagnetic theory** 
+
+Solutions of electrostatic and magnetostatic problems including boundary value problems; method of images; separation of variables; dielectrics and conductors; magnetic materials; multipole expansion; Maxwell's equations; scalar and vector potentials; Coulomb and Lorentz gauges; electromagnetic waves in free space, non-conducting and conducting media; reflection and transmission at normal and oblique incidences; polarization of electromagnetic waves; Poynting vector, Poynting theorem, energy and momentum of electromagnetic waves. 
+
+# **Section 6: Optical Physics** 
+
+Wave equation: plane and spherical waves, superposition of waves, standing waves, phase and group velocities; Interference: spatial and temporal coherence, dielectric films, Newton’s ring, multiple-beam interference, Michelson interferometer, Fabry-Perot interferometer and etalon; diffraction: Fresnel and Fraunhofer diffraction, rectangular and circular aperture, Rayleigh criterion of resolution, diffraction from double slit and many slits. dispersion by a grating; polarization: Jones vectors and matrices for linear, circular and elliptical polarization, birefringence, ray-transfer matrix for mirrors and lenses; lasers: Einstein coefficients, population inversion, two and three level laser systems. 
+
+# **Section 7: Quantum Mechanics** 
+
+Basic ideas of quantum mechanics; uncertainty principle; linear vectors and operators in Hilbert space; time independent Schrodinger equation; one dimensional potentials: step potential, finite rectangular well, tunnelling from a potential barrier, particle in 1,2,3-dimensional box, particle in single and double delta <u>function potentials, 1,2,3 dimensional harmonic oscillator: concept of degeneracy; central potentials;</u> 
+
+**GATE 2027** 
+
+**IIT Madras  | Organizing Institute** 
+
+hydrogen-like atoms; orbital and spin angular momenta; addition of angular momenta; variational method, time independent perturbation theory; elementary scattering theory, Born approximation. 
+
+# **Section 8: Atomic and Molecular Physics** 
+
+Spectra of one-and many-electron atoms; spin-orbit interaction: L-S and j-j coupling schemes; fine and hyperfine structures; Zeeman, Paschen-Back and Stark effects; electric dipole transitions and selection rules; rotational and vibrational spectra of diatomic molecules; electronic transitions in diatomic molecules, FranckCondon principle; Raman effect and basics of Raman spectroscopy; NMR, ESR, X-ray and Mossbauer spectroscopies. 
+
+# **Section 9: Solid State Physics** 
+
+Elements of crystallography; diffraction methods for structure determination; bonding in solids; lattice vibrations and thermal properties of solids; free electron theory; band theory of solids: nearly free electron model; metals, semiconductors and insulators; conductivity, electron and hole statistics in intrinsic and extrinsic semiconductors, mobility and effective mass; metal-semiconductor junctions; ohmic and rectifying contacts; dielectric properties of solids; polarizability, ferroelectricity; magnetic properties of solids; dia, para, ferro, antiferro and ferri magnetism, ferromagnetic domains; superconductivity: type-I and type II superconductors, Meissner effect, London equation, BCS theory, flux quantization. 
+
+# **Section 10: Nuclear and Particle Physics** 
+
+Nuclear binding energy, electric and magnetic moments; semi-empirical mass formula; nuclear models; liquid drop model, nuclear shell model; nuclear force and two nucleon problem; alpha decay, beta-decay, electromagnetic transitions in nuclei; Rutherford scattering, nuclear reactions, conservation laws; fission and fusion; particle accelerators and detectors; elementary particles; photons, baryons, mesons and leptons; quark model; conservation laws, isospin symmetry, charge conjugation, parity and time-reversal invariance. 
+
+# **Section 11: Electronics** 
+
+p-n diodes, bipolar junction transistors, field effect transistors; negative and positive feedback circuits; oscillators, operational amplifiers and their applications, active filters; wave form generators: sine wave, square wave and triangular wave; basics of digital logic circuits, combinational and sequential circuits, flipflops, timers, counters, registers, A/D and D/A conversion. 
+

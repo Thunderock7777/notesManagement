@@ -189,10 +189,23 @@ def update_mindmap_file(doc_id, pdf_name, source_type, domain, concepts, summary
 def cmd_scan():
     """Scans txt_md and pdf for unindexed or duplicate files."""
     print("=== STUDY REPOSITORY STATUS SCAN ===")
-    txt_files = [f for f in os.listdir(TXT_MD_DIR) if os.path.isfile(os.path.join(TXT_MD_DIR, f))]
-    pdf_files = [f for f in os.listdir(PDF_DIR) if os.path.isfile(os.path.join(PDF_DIR, f))]
+    txt_files = [f for f in os.listdir(TXT_MD_DIR) if os.path.isfile(os.path.join(TXT_MD_DIR, f)) and f.endswith(('.txt', '.md'))]
+    pdf_files = [f for f in os.listdir(PDF_DIR) if os.path.isfile(os.path.join(PDF_DIR, f)) and f.endswith('.pdf')]
     
-    print(f"Notes in txt_md/: {len(txt_files)}")
+    surrogate_count = 0
+    authentic_count = 0
+    for f in txt_files:
+        fpath = os.path.join(TXT_MD_DIR, f)
+        try:
+            with open(fpath, "r", encoding="utf-8", errors="ignore") as sf:
+                if "AUTO-GENERATED SURROGATE" in sf.read(500):
+                    surrogate_count += 1
+                else:
+                    authentic_count += 1
+        except Exception:
+            authentic_count += 1
+
+    print(f"Notes in txt_md/: {len(txt_files)} ({authentic_count} authentic source notes, {surrogate_count} provisional surrogates)")
     print(f"PDFs in pdf/:     {len(pdf_files)}")
     
     with open(TOPIC_INDEX_FILE, "r", encoding="utf-8") as f:
@@ -224,12 +237,33 @@ def cmd_ingest_note(args):
     semantic_txt_name = f"{target_base}{target_ext}"
     semantic_pdf_name = f"{target_base}.pdf"
     
+    # 0. Provisional Surrogate Check (Strict Compilation Block)
+    with open(src_file, "r", encoding="utf-8", errors="ignore") as sf:
+        head = sf.read(500)
+        if "DO NOT RECOMPILE" in head or "AUTO-GENERATED SURROGATE" in head:
+            print(f"[COMPILATION BLOCKED] {orig_name} is an auto-generated provisional surrogate Markdown file. It cannot be compiled to PDF.")
+            sys.exit(1)
+
     # 1. Deduplication Check
     dup_txt = check_duplicate_content(src_file, TXT_MD_DIR)
     if dup_txt and dup_txt != orig_name:
-        print(f"[DEDUPLICATION STOP] Exact duplicate note content already exists as: {dup_txt}. Aborting ingestion to prevent duplicate catalog entries.")
-        sys.exit(0)
+        dup_path = os.path.join(TXT_MD_DIR, dup_txt)
+        with open(dup_path, "r", encoding="utf-8", errors="ignore") as df:
+            if "AUTO-GENERATED SURROGATE" not in df.read(500):
+                print(f"[DEDUPLICATION STOP] Exact duplicate note content already exists as: {dup_txt}. Aborting ingestion to prevent duplicate catalog entries.")
+                sys.exit(0)
         
+    # Clean up prior provisional surrogate if it exists
+    prior_surrogate = os.path.join(TXT_MD_DIR, f"{target_base}.md")
+    if os.path.exists(prior_surrogate) and prior_surrogate != src_file:
+        try:
+            with open(prior_surrogate, "r", encoding="utf-8", errors="ignore") as ps:
+                if "AUTO-GENERATED SURROGATE" in ps.read(500):
+                    os.remove(prior_surrogate)
+                    print(f"[REPLACE] Removed provisional surrogate {target_base}.md to make way for authentic note.")
+        except Exception:
+            pass
+
     # 2. Rename/Move to semantic name in txt_md/
     final_txt_path = os.path.join(TXT_MD_DIR, semantic_txt_name)
     if src_file != final_txt_path:
