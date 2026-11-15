@@ -1,0 +1,19 @@
+# Ignore all compiled PDF outputs
+/pdf/*
+!/pdf/.gitkeep
+
+# Temporary staging and cache files
+.pending.json
+/tool/md2pdf_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# LaTeX build artifacts (if generated locally)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
