@@ -112,7 +112,6 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 | DOC-104 | `qm-zeeman-effect-energy-level-splitting.pdf` | `QM.pdf` (QVMSY2ER) | **Quantum Mechanics**: Eigenvalues, Zeeman Effect | [qm-zeeman-effect-energy-level-splitting.pdf](file:///D:/STUDY/pdf/qm-zeeman-effect-energy-level-splitting.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-105 | `ssp-reciprocal-lattice-vectors-properties-2.pdf` | `ssp2.pdf` (RCGC4DH8) | **Solid State Physics**: Crystal Lattice, Brillouin Zone | [ssp-reciprocal-lattice-vectors-properties-2.pdf](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-106 | `qm-multiple-eigenvalues-eigenstates-comp.pdf` | `multiple_eigenvalues_eigenstates_comp.pdf` (RNAA3VPZ) | **Quantum Mechanics**: Wavefunction, Eigenvalues | [qm-multiple-eigenvalues-eigenstates-comp.pdf](file:///D:/STUDY/pdf/qm-multiple-eigenvalues-eigenstates-comp.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
-| DOC-107 | `ssp-wigner-seitz-primitive-cell-3.pdf` | `compile.pdf` (RPX7CTRU) | **Solid State Physics**: Potential Well, Brillouin Zone | [ssp-wigner-seitz-primitive-cell-3.pdf](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell-3.pdf) | Indexed (Direct PDF Import) | 2026-11-15 |
 | DOC-108 | `qm-pauli-exclusion-principle-fermions-5.pdf` | `compile.pdf` (SUAWFBNU) | **Quantum Mechanics**: Harmonic Oscillator, Eigenvalues | [qm-pauli-exclusion-principle-fermions-5.pdf](file:///D:/STUDY/pdf/qm-pauli-exclusion-principle-fermions-5.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-109 | `stat-thermodynamics-and-statistical-mechanics.pdf` | `Thermodynamics and Statistical Mechanics.pdf` (TG866YLD) | **Thermodynamics & Statistical Mechanics**: Thermodynamics & Statistical Mechanics | [stat-thermodynamics-and-statistical-mechanics.pdf](file:///D:/STUDY/pdf/stat-thermodynamics-and-statistical-mechanics.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-110 | `ssp-python-visualization-code-impor.pdf` | `ssp4n.pdf` (TT6H9GEM) | **Solid State Physics**: Solid State Physics | [ssp-python-visualization-code-impor.pdf](file:///D:/STUDY/pdf/ssp-python-visualization-code-impor.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
@@ -1377,6 +1376,7 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 - **Processing Log**:
   - `2026-11-15`: Ingested from `Zotero/storage/N7JTQ5YA/compile.pdf`, verified text layer, renamed semantically, indexed in catalog and mindmap.
   - `2026-11-15`: Generated provisional surrogate Markdown via pymupdf4llm for text search and cataloging.
+  - `2026-11-15`: Consolidated duplicate entry DOC-107 (ssp-wigner-seitz-primitive-cell-3.pdf) into DOC-089.
 
 ### [DOC-090] ssp-potential-wells-comparison-master-chart-2.pdf
 - **Source File**: [ssp-potential-wells-comparison-master-chart-2.md](file:///D:/STUDY/txt_md/ssp-potential-wells-comparison-master-chart-2.md) (Provisional Surrogate)
@@ -1618,22 +1618,6 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 - **Summary**: No, having multiple eigenstates and having multiple eigenvalues are NOT the.
 - **Processing Log**:
   - `2026-11-15`: Ingested from `Zotero/storage/RNAA3VPZ/multiple_eigenvalues_eigenstates_comp.pdf`, verified text layer, renamed semantically, indexed in catalog and mindmap.
-  - `2026-11-15`: Generated provisional surrogate Markdown via pymupdf4llm for text search and cataloging.
-
-### [DOC-107] ssp-wigner-seitz-primitive-cell-3.pdf
-- **Source File**: [ssp-wigner-seitz-primitive-cell-3.md](file:///D:/STUDY/txt_md/ssp-wigner-seitz-primitive-cell-3.md) (Provisional Surrogate)
-- **Compiled PDF**: [ssp-wigner-seitz-primitive-cell-3.pdf](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell-3.pdf)
-- **Original Filename**: `compile.pdf`
-- **Domain**: `Solid State Physics`
-- **Core Concepts**:
-  - Potential Well
-  - Brillouin Zone
-  - Miller Indices
-  - Ewald Sphere
-- **Text Layer Quality**: Verified (LaTeX Typeset, 8 pages)
-- **Summary**: Phase 1: Real-Space Crystal Geometry & Interatomic Binding.
-- **Processing Log**:
-  - `2026-11-15`: Ingested from `Zotero/storage/RPX7CTRU/compile.pdf`, verified text layer, renamed semantically, indexed in catalog and mindmap.
   - `2026-11-15`: Generated provisional surrogate Markdown via pymupdf4llm for text search and cataloging.
 
 ### [DOC-108] qm-pauli-exclusion-principle-fermions-5.pdf

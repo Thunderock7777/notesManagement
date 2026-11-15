@@ -242,6 +242,23 @@ Commit: f305b05
 
 ---
 
+```text
+===============================================================================
+VERSION 1.2.1 CYCLE
+===============================================================================
+Cycle: Native Duplicate Auditing & Document Consolidation Engine
+Starting Count: 0 / 500
+Cycle Date: 2026-11-15
+```
+
+### Version 1.2.1 Cycle Ledger
+* `2026-11-15` | Engine | Implemented native `audit-duplicates` subcommand in `manage.py` / `manage.bat` for whole-repository MD5 and normalized-text duplicate detection | `system +75 / -2` | `75 / 500`
+* `2026-11-15` | Engine | Implemented atomic `remove-doc` subcommand with `--consolidate-into` support in `manage.py` for safe deletion and log consolidation | `system +85 / -2` | `158 / 500`
+* `2026-11-15` | Maintenance | Consolidated duplicate `DOC-107` (Zotero `RPX7CTRU`) into `DOC-089` (Zotero `N7JTQ5YA`) via `manage.bat remove-doc`; removed redundant PDF and surrogate | `system +8 / -0` | `166 / 500`
+* `2026-11-15` | Release | **Versioned native duplicate auditing and consolidation engine as 1.2.1 (PATCH)**
+
+---
+
 ## 7. Release Readiness Checklist
 
 Before tagging, committing, or pushing an architectural release:

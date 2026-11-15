@@ -16,7 +16,7 @@
 
 ```yaml
 version: '1.2'
-total_nodes: 132
+total_nodes: 131
 total_edges: 150
 nodes:
 - id: DOC-001
@@ -967,17 +967,6 @@ nodes:
   - Zeeman Effect
   summary: No, having multiple eigenstates and having multiple eigenvalues are NOT the.
   source_note: qm-multiple-eigenvalues-eigenstates-comp.md
-- id: DOC-107
-  file: ssp-wigner-seitz-primitive-cell-3.pdf
-  source_type: surrogate_md
-  domain: Solid State Physics
-  core_concepts:
-  - Potential Well
-  - Brillouin Zone
-  - Miller Indices
-  - Ewald Sphere
-  summary: 'Phase 1: Real-Space Crystal Geometry & Interatomic Binding.'
-  source_note: ssp-wigner-seitz-primitive-cell-3.md
 - id: DOC-108
   file: qm-pauli-exclusion-principle-fermions-5.pdf
   source_type: surrogate_md

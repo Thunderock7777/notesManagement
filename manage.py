@@ -378,6 +378,151 @@ def cmd_ingest_pdf(args):
     print(f"[MINDMAP] Updated 04_interconnection_mindmap.md for [{doc_id}]")
     print(f"\n[DONE] PDF ingestion complete: {final_pdf_path}")
 
+def cmd_audit_duplicates():
+    """Runs repository-wide exact and normalized-text duplicate detection."""
+    from collections import defaultdict
+    print("=== REPOSITORY DUPLICATE AUDIT ===")
+    
+    # Check PDFs
+    pdf_files = [f for f in os.listdir(PDF_DIR) if f.endswith(".pdf")]
+    pdf_hashes = defaultdict(list)
+    for f in pdf_files:
+        pdf_hashes[get_file_hash(os.path.join(PDF_DIR, f))].append(f)
+        
+    pdf_dups = {h: files for h, files in pdf_hashes.items() if len(files) > 1}
+    if pdf_dups:
+        print(f" [!] Exact duplicate PDFs detected by MD5 hash:")
+        for h, files in pdf_dups.items():
+            print(f"     - Hash {h}: {files}")
+    else:
+        print(f" [OK] Zero exact duplicate PDFs across {len(pdf_files)} files.")
+        
+    # Check Notes
+    txt_files = [f for f in os.listdir(TXT_MD_DIR) if f.endswith((".txt", ".md"))]
+    txt_hashes = defaultdict(list)
+    for f in txt_files:
+        txt_hashes[get_file_hash(os.path.join(TXT_MD_DIR, f))].append(f)
+        
+    txt_dups = {h: files for h, files in txt_hashes.items() if len(files) > 1}
+    if txt_dups:
+        print(f" [!] Exact duplicate notes detected by MD5 hash:")
+        for h, files in txt_dups.items():
+            print(f"     - Hash {h}: {files}")
+    else:
+        print(f" [OK] Zero exact duplicate notes across {len(txt_files)} files.")
+        
+    # Normalized body text
+    body_hashes = defaultdict(list)
+    for f in txt_files:
+        with open(os.path.join(TXT_MD_DIR, f), "r", encoding="utf-8", errors="ignore") as fp:
+            text = fp.read()
+        text = re.sub(r'<!--[\s\S]*?-->', '', text)
+        norm = re.sub(r'\s+', ' ', text).strip()
+        if len(norm) > 50:
+            h = hashlib.md5(norm.encode('utf-8')).hexdigest()
+            body_hashes[h].append(f)
+            
+    body_dups = {h: files for h, files in body_hashes.items() if len(files) > 1}
+    if body_dups:
+        print(f" [!] Identical normalized body text detected across notes:")
+        for h, files in body_dups.items():
+            print(f"     - {files}")
+    else:
+        print(f" [OK] Zero duplicate notes by normalized body text.")
+
+def cmd_remove_doc(args):
+    """Safely removes or consolidates a document from the catalog, mindmap, and filesystem."""
+    doc_id = args.doc_id
+    consolidate_into = getattr(args, "consolidate_into", "")
+    print(f"=== REMOVING DOCUMENT [{doc_id}] ===")
+    
+    # 1. Parse 03_topic_index.md to find filenames
+    with open(TOPIC_INDEX_FILE, "r", encoding="utf-8") as f:
+        catalog_text = f.read()
+        
+    pdf_match = re.search(rf'\| {doc_id} \| `([^`]+)`', catalog_text)
+    pdf_name = pdf_match.group(1) if pdf_match else None
+    base_name = pdf_name.replace(".pdf", "") if pdf_name else None
+    
+    # 2. Remove files from filesystem
+    if pdf_name:
+        pdf_path = os.path.join(PDF_DIR, pdf_name)
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+            print(f" [FS] Removed {pdf_path}")
+            
+    if base_name:
+        for ext in [".txt", ".md"]:
+            txt_path = os.path.join(TXT_MD_DIR, f"{base_name}{ext}")
+            if os.path.exists(txt_path):
+                os.remove(txt_path)
+                print(f" [FS] Removed {txt_path}")
+                
+    # 3. Update 03_topic_index.md
+    lines = catalog_text.splitlines(keepends=True)
+    new_lines = []
+    skip_detail = False
+    
+    for line in lines:
+        if line.strip().startswith(f"| {doc_id} |"):
+            continue
+        if line.strip().startswith(f"### [{doc_id}]"):
+            skip_detail = True
+            continue
+        if skip_detail:
+            if line.strip().startswith("### [") or line.strip() == "---":
+                skip_detail = False
+            else:
+                continue
+        new_lines.append(line)
+        
+    catalog_updated = "".join(new_lines)
+    
+    if consolidate_into:
+        log_pattern = rf"(### \[{consolidate_into}\][\s\S]*?- \*\*Processing Log\*\*:\n)([\s\S]*?)(?=\n### \[|\n---|\Z)"
+        m = re.search(log_pattern, catalog_updated)
+        if m:
+            logs = m.group(2)
+            new_log = f"  - `2026-11-15`: Consolidated duplicate entry {doc_id} ({pdf_name}) into {consolidate_into}.\n"
+            catalog_updated = catalog_updated[:m.start(2)] + logs + new_log + catalog_updated[m.end(2):]
+            print(f" [CATALOG] Added consolidation log to [{consolidate_into}]")
+            
+    with open(TOPIC_INDEX_FILE, "w", encoding="utf-8") as f:
+        f.write(catalog_updated)
+    print(f" [CATALOG] Removed [{doc_id}] from 03_topic_index.md")
+    
+    # 4. Update 04_interconnection_mindmap.md
+    with open(MINDMAP_FILE, "r", encoding="utf-8") as f:
+        mindmap_text = f.read()
+        
+    yaml_match = re.search(r"```yaml\n(.*?)\n```", mindmap_text, re.DOTALL)
+    if yaml_match:
+        data = yaml.safe_load(yaml_match.group(1))
+        data["nodes"] = [n for n in data.get("nodes", []) if n.get("id") != doc_id]
+        new_edges = []
+        for e in data.get("edges", []):
+            if e.get("from") == doc_id or e.get("to") == doc_id:
+                if consolidate_into:
+                    new_from = consolidate_into if e.get("from") == doc_id else e.get("from")
+                    new_to = consolidate_into if e.get("to") == doc_id else e.get("to")
+                    if new_from != new_to:
+                        e["from"] = new_from
+                        e["to"] = new_to
+                        new_edges.append(e)
+            else:
+                new_edges.append(e)
+        data["edges"] = new_edges
+        data["total_nodes"] = len(data["nodes"])
+        data["total_edges"] = len(data["edges"])
+        
+        new_yaml = yaml.dump(data, sort_keys=False, indent=2, width=1000)
+        mindmap_updated = mindmap_text[:yaml_match.start(1)] + new_yaml + mindmap_text[yaml_match.end(1):]
+        with open(MINDMAP_FILE, "w", encoding="utf-8") as f:
+            f.write(mindmap_updated)
+        print(f" [MINDMAP] Removed [{doc_id}] from 04_interconnection_mindmap.md (new total_nodes: {len(data['nodes'])})")
+    
+    print(f"[DONE] Successfully removed {doc_id} and consolidated into {consolidate_into or 'None'}.")
+
 def cmd_process():
     """Reads .pending.json and executes the requested ingestion action."""
     pending_file = os.path.join(WORKSPACE, ".pending.json")
@@ -400,12 +545,15 @@ def cmd_process():
     args.summary = data.get("summary", "")
     args.prerequisites = data.get("prerequisites", "")
     args.doc_id = data.get("doc_id", "")
+    args.consolidate_into = data.get("consolidate_into", "")
     
     try:
         if action == "ingest-note":
             cmd_ingest_note(args)
         elif action == "ingest-pdf":
             cmd_ingest_pdf(args)
+        elif action == "remove-doc":
+            cmd_remove_doc(args)
         else:
             print(f"Unknown action: {action}")
     finally:
@@ -421,6 +569,14 @@ def main():
 
     # scan
     subparsers.add_parser("scan", help="Scan repository for status and unindexed files")
+    
+    # audit-duplicates
+    subparsers.add_parser("audit-duplicates", help="Audit repository for exact and normalized duplicate notes/PDFs")
+    
+    # remove-doc
+    p_rem = subparsers.add_parser("remove-doc", help="Consolidate/remove a duplicate document entry")
+    p_rem.add_argument("--doc-id", required=True, help="DOC-XXX to remove")
+    p_rem.add_argument("--consolidate-into", default="", help="DOC-XXX to consolidate into (optional)")
     
     # ingest-note
     p_note = subparsers.add_parser("ingest-note", help="Ingest, rename, compile and catalog a text note")
@@ -446,6 +602,10 @@ def main():
         cmd_process()
     elif args.command == "scan":
         cmd_scan()
+    elif args.command == "audit-duplicates":
+        cmd_audit_duplicates()
+    elif args.command == "remove-doc":
+        cmd_remove_doc(args)
     elif args.command == "ingest-note":
         cmd_ingest_note(args)
     elif args.command == "ingest-pdf":
