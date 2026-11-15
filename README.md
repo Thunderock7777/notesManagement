@@ -114,8 +114,7 @@ cmd /c "D:\STUDY\md_skill\install.bat"
 ```powershell
 New-Item -ItemType Directory -Force -Path ".agent\skills\karpathy-guidelines", ".agent\skills\repository-management"; `
 Copy-Item "md_skill\SKILL.md" ".agent\skills\karpathy-guidelines\SKILL.md" -Force; `
-Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SKILL.md" -Force; `
-Copy-Item "md_skill\management_skill.md" ".agent\management_skill.md" -Force
+Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SKILL.md" -Force
 ```
 
 ---

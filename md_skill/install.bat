@@ -31,9 +31,7 @@ if exist "%SCRIPT_DIR%SKILL.md" (
 :: 3. Deploy Repository Management Skill
 if exist "%SCRIPT_DIR%management_skill.md" (
     copy /Y "%SCRIPT_DIR%management_skill.md" "%SKILLS_DIR%\repository-management\SKILL.md" >nul
-    copy /Y "%SCRIPT_DIR%management_skill.md" "%ROOT_DIR%\.agent\management_skill.md" >nul
     echo  [OK] Installed: .agent\skills\repository-management\SKILL.md
-    echo  [OK] Installed: .agent\management_skill.md
 ) else (
     echo  [ERROR] Source management_skill.md not found in md_skill\
 )

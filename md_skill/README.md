@@ -33,8 +33,7 @@ Run the following command in PowerShell from the repository root:
 ```powershell
 New-Item -ItemType Directory -Force -Path ".agent\skills\karpathy-guidelines", ".agent\skills\repository-management"; `
 Copy-Item -Path "md_skill\SKILL.md" -Destination ".agent\skills\karpathy-guidelines\SKILL.md" -Force; `
-Copy-Item -Path "md_skill\management_skill.md" -Destination ".agent\skills\repository-management\SKILL.md" -Force; `
-Copy-Item -Path "md_skill\management_skill.md" -Destination ".agent\management_skill.md" -Force
+Copy-Item -Path "md_skill\management_skill.md" -Destination ".agent\skills\repository-management\SKILL.md" -Force
 ```
 
 ---
@@ -46,7 +45,6 @@ mkdir ".agent\skills\karpathy-guidelines" 2>nul
 mkdir ".agent\skills\repository-management" 2>nul
 copy /Y "md_skill\SKILL.md" ".agent\skills\karpathy-guidelines\SKILL.md"
 copy /Y "md_skill\management_skill.md" ".agent\skills\repository-management\SKILL.md"
-copy /Y "md_skill\management_skill.md" ".agent\management_skill.md"
 ```
 
 ---
@@ -70,7 +68,6 @@ After running any of the above installation methods:
 1. Check the `.agent` folder structure:
    ```text
    .agent/
-   ├── management_skill.md
    └── skills/
        ├── karpathy-guidelines/
        │   └── SKILL.md
