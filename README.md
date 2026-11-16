@@ -169,7 +169,7 @@ Here is the exhaustive, categorized master list of chat prompts for every operat
 |---|---|---|
 | **Deploy Agent Skills** | `"Deploy skills from md_skill/"`<br>`"Install repository management skill"` | Runs `md_skill/install.bat` to deploy `karpathy-guidelines` and `repository-management` blueprints into `.agent/skills/`. |
 | **Verify Skill Integrity** | `"Verify SHA256 checksums of installed skills"` | Computes and compares SHA256 hashes of `md_skill/` blueprints against `.agent/skills/` to guarantee synchronization. |
-| **Inspect Release History & Ledger** | `"Show recent entries in the version ledger"`<br>`"What was added in Version 1.5.1?"` | Queries `index/05_contributing_and_versioning.md` and displays cycle dates, line budgets, and architectural change entries. |
+| **Inspect Release History & Ledger** | `"Show recent entries in the version ledger"`<br>`"What was added in Version 1.6.0?"` | Queries `index/05_contributing_and_versioning.md` and displays cycle dates, line budgets, and architectural change entries. |
 
 ---
 
