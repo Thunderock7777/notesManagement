@@ -415,47 +415,61 @@ When the user asks to search, find topics, explore conceptual connections, or re
 
 ## 9. Portable Bootstrapping Guide: Deploying in a Fresh Directory
 
-### 9.1 Matrix of Artifact Ownership & Mutation Lifecycle
+### 9.1 Conceptual Architecture: Artifact Ownership Matrix (Reference Only)
 
-To ensure zero ambiguity during initialization and subsequent operation, the repository establishes three distinct tiers of artifact ownership:
+> [!NOTE]
+> This matrix is an architectural taxonomy for reference. It is **NOT** an operational execution step. Operational bootstrapping executes strictly in chronological order under **Section 9.2** below.
 
 | Tier | File / Directory | Who Provides / Creates It? | Lifecycle & Mutation Rule |
 |---|---|---|---|
 | **Tier 1: External Inputs** | • `txt_md/*.txt`, `txt_md/*.md`<br>• `pdf/*.pdf` (digital text layer)<br>• `index/syllabus.txt` (or `.md`)<br>• Universal dropzone `scrap/` | **User ONLY** (external source) | Dropped by user (or pasted via chat). Untouched conceptually by AI. Non-destructive preservation. |
-| **Tier 2: AI Dynamic Artifacts** | • `index/00_syllabus_taxonomy.md`<br>• `index/03_topic_index.md`<br>• `index/04_interconnection_mindmap.md`<br>• `txt_md/<name>.md` (provisional surrogates) | **Created Freshly by AI** | Generated from scratch on initialization. Populated, extended, and re-indexed dynamically by AI on every note ingestion. |
+| **Tier 2: AI Dynamic Artifacts** | • `index/00_syllabus_taxonomy.md`<br>• `index/03_topic_index.md`<br>• `index/04_interconnection_mindmap.md`<br>• `txt_md/<name>.md` (provisional surrogates) | **Created Freshly by AI** | Generated from scratch during Step 4 below. Populated, extended, and re-indexed dynamically by AI on every note ingestion. |
 | **Tier 3: Continuous Governance** | • `README.md` (root user manual)<br>• `index/README.md` (master index instructions)<br>• `index/05_contributing_and_versioning.md`<br>• `index/01_tool_usage.md`<br>• `index/02_directory_management.md` | **Initialized from Blueprint, Edited by AI Over Time** | Living governance documents. Incrementally edited and updated by the AI across development cycles (recording version ledgers, sync checklists, and feature evolution). |
 
-### 9.2 First-Time Fresh Start Detection & Sanitation Protocol
+### 9.2 Strict Chronological Bootstrapping Order of Operations
 
-Before running initialization, the AI must check for the presence of the three foundational dynamic index files:
+When entering or initializing any repository, the AI must execute these steps in exact sequential order:
+
+```mermaid
+flowchart TD
+    Step1["Step 1: Pre-Flight Gate (Check 00, 03, 04)"] --> Check{"Do 00, 03, and 04 exist?"}
+    Check -->|All 3 Exist| Existing["Existing Repository: PRESERVE txt_md/ (Skip Sanitation)"]
+    Check -->|None Exist| Fresh["Fresh Start Trigger: SANITIZE"]
+    Fresh --> Action1["a) Delete & recreate txt_md/ as clean empty folder"]
+    Fresh --> Action2["b) Edit manage.bat Python path & verify manage.py dynamic root"]
+    Action1 & Action2 --> Step2["Step 2: Initialize Directory Skeleton (pdf/, scrap/, index/, md_skill/)"]
+    Existing --> Step2
+    Step2 --> Step3["Step 3: Acquire Compiler Tool (clone tool/) & Deploy Skills (install.bat)"]
+    Step3 --> Step4["Step 4: Initialize Control Plane (ONLY NOW generate 00, 03, and 04 freshly)"]
+    Step4 --> Step5["Step 5: Run Baseline Scan (manage.bat scan)"]
+```
+
+#### Step 1: Pre-Flight Detection & Fresh-Start Sanitation Gate
+*Before creating or modifying any control plane files*, the AI checks for the existence of:
 1. `index/00_syllabus_taxonomy.md`
 2. `index/03_topic_index.md`
 3. `index/04_interconnection_mindmap.md`
 
-#### Fresh Start Trigger & Sanitation Rules:
-If **none of these three files exist**, the environment is unambiguously recognized as a **First-Time Deployment / Fresh Start**:
-1. **Mandatory `txt_md/` Purge & Reset**:
-   - If the workspace was created by cloning a repository template or copying a previous directory, `txt_md/` may contain residual notes or surrogate Markdown from an old subject.
-   - The AI must **delete and recreate `txt_md/` as a clean, empty folder** (or remove all files inside it) so that zero residual notes bleed into the new repository.
-   - Ensure `pdf/` and `scrap/` are likewise clean.
-2. **Environment Path Editing for `manage.bat` and `manage.py`**:
-   - **`manage.bat` Python Path Configuration**: The AI must inspect `manage.bat` and edit its Python interpreter path to match the current machine's environment (e.g. replacing any foreign `C:\Users\<old-user>\...` path with the active local Python executable path or `%LOCALAPPDATA%\Programs\Python\...`).
-   - **`manage.py` Dynamic Root Verification**: Confirm that `manage.py` resolves its root via `WORKSPACE = os.path.abspath(os.path.dirname(__file__))` and contains zero hardcoded machine paths.
+- **Condition A (Existing Repository)**: If these files exist, the workspace is an active knowledge base. **NEVER delete or purge `txt_md/`**. Proceed to normal operations.
+- **Condition B (Fresh Start Detected)**: If **none** of these three files exist, this is a first-time fresh deployment:
+  1. **Purge & Reset `txt_md/`**: Delete and cleanly recreate `txt_md/` as an empty folder to guarantee no residual notes or stale surrogates from prior templates survive. Ensure `pdf/` and `scrap/` are likewise clean.
+  2. **Environment Path Editing for `manage.bat` and `manage.py`**:
+     - Inspect `manage.bat` and edit its Python interpreter path to match the current machine's environment (e.g. replacing any foreign `C:\Users\<old-user>\...` path with the active local Python executable path or `%LOCALAPPDATA%\Programs\Python\...`).
+     - Confirm that `manage.py` dynamically resolves its root relative to its location (`WORKSPACE = os.path.abspath(os.path.dirname(__file__))`) with zero hardcoded machine drives.
 
-### 9.3 Step-by-Step Initialization Sequence
+#### Step 2: Initialize Directory Skeleton
+Ensure all required directories exist: `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in `<WORKSPACE_ROOT>`.
 
-If this skill is introduced into a new, uninitialized folder:
-1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.
-2. **Install Skills**: Run `md_skill/install.bat` (or manually copy blueprints) to deploy into `.agent/skills/`.
-3. **Acquire Compiler Tool (Do Not Recreate)**:
-   - If `tool/` is not present, **NEVER attempt to remake or re-code it manually**. Automatically download/clone it from its official public repository:
-     ```cmd
-     git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool
-     ```
-     *(Or if in an existing repository with submodules: `git submodule update --init --recursive`).*
-4. **Initialize Control Plane**:
-   - **Syllabus Acquisition Protocol**: Check if `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` exists. If missing, ask the user to provide their syllabus. If not provided immediately, use autonomous AI academic reasoning to synthesize a complete curriculum breakdown (`SEC-01` to `SEC-XX`) and generate `index/00_syllabus_taxonomy.md`.
-   - Create `index/03_topic_index.md` with the 8-column Master Table header.
-   - Create `index/04_interconnection_mindmap.md` with baseline YAML header (`total_nodes: 0`, `total_edges: 0`).
-   - Scaffold governance files (`index/05_contributing_and_versioning.md`, `index/README.md`, `README.md`, `01_tool_usage.md`, `02_directory_management.md`) from blueprints, to be maintained and edited over time.
-5. **Run Baseline Scan**: Execute `manage.bat scan` (or `python manage.py scan`) to verify clean initialization.
+#### Step 3: Tool Acquisition & Skill Deployment
+1. **Acquire Compiler Tool**: If `tool/` is missing, **NEVER remake it manually**; clone from `https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool` (or `git submodule update --init --recursive`).
+2. **Deploy Skills**: Run `md_skill/install.bat` to deploy blueprints into `.agent/skills/`.
+
+#### Step 4: Control Plane Fresh Generation
+*Only after Step 1 has sanitized the workspace, the AI creates the dynamic index files for the first time*:
+1. **Syllabus Acquisition Protocol**: Check if `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` exists. If missing, ask the user to provide their syllabus. If not provided immediately, use autonomous AI academic reasoning to synthesize a complete curriculum breakdown (`SEC-01` to `SEC-XX`) and generate `index/00_syllabus_taxonomy.md`.
+2. **Initialize Master Catalog**: Create `index/03_topic_index.md` with the 8-column Master Table header.
+3. **Initialize Mindmap**: Create `index/04_interconnection_mindmap.md` with baseline YAML header (`total_nodes: 0`, `total_edges: 0`).
+4. **Scaffold Governance**: Initialize `index/05_contributing_and_versioning.md`, `index/README.md`, `README.md`, `01_tool_usage.md`, and `02_directory_management.md` from blueprints, to be maintained and edited over time.
+
+#### Step 5: Run Baseline Scan
+Execute `manage.bat scan` (or `python manage.py scan`) to verify clean 0/0 initialization.
