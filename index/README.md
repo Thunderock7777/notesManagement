@@ -86,3 +86,6 @@ D:\STUDY\
 11. **AI Cognitive Primacy & Surgical Token-Conservation**:
     - The AI agent is the sole brain of the repository workflow; mechanical tools (`manage.bat`, `manage.py`, `tool/compile.bat`) are executors, never cognitive engines. The AI retains exclusive ownership over semantic understanding, curriculum mapping, concept classification, and relational synthesis.
     - To prevent context bloat and token waste, the AI must strictly practice surgical inspection (macro-to-micro queries via `00_syllabus_taxonomy.md`, line-sliced reads with `StartLine`/`EndLine`, relational graph traversal, and CPU-local scratch filtering).
+12. **Missing Syllabus Protocol (Ask-First with Autonomous AI Fallback)**:
+    - If `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` is missing, the AI must first prompt the user to provide their syllabus or exam curriculum.
+    - If the user does not provide one or instructs the AI to proceed, the AI must immediately use its own internal academic reasoning to derive a comprehensive curriculum breakdown (`SEC-01` to `SEC-XX`) and generate `index/00_syllabus_taxonomy.md` without blocking.

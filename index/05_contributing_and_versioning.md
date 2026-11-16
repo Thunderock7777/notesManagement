@@ -388,6 +388,23 @@ Cycle Date: 2026-11-17
 
 ---
 
+```text
+===============================================================================
+VERSION 1.5.2 CYCLE
+===============================================================================
+Cycle: Missing Syllabus Protocol (Ask-First with Autonomous AI Fallback)
+Starting Count: 0 / 500
+Cycle Date: 2026-11-17
+```
+
+### Version 1.5.2 Cycle Ledger
+* `2026-11-17` | Skills | Codified Section 1.3 Rule 8, Section 3.4, and Section 9 Step 4 in `md_skill/management_skill.md`: Ask-first with autonomous AI reasoning fallback when syllabus is missing | `system +12 / -1` | `12 / 500`
+* `2026-11-17` | Deployment | Deployed updated skill blueprint to `.agent/skills/repository-management/SKILL.md` via `md_skill/install.bat` and verified SHA256 integrity | `system +12 / -1` | `12 / 500`
+* `2026-11-17` | Governance | Synchronized Rule 12 across `index/README.md` and `index/02_directory_management.md`, and updated root `README.md` | `system +15 / -0` | `27 / 500`
+* `2026-11-17` | Release | **Versioned missing syllabus protocol and autonomous AI reasoning fallback as 1.5.2 (PATCH)**
+
+---
+
 ## 7. Release Readiness Checklist
 
 Before tagging, committing, or pushing an architectural release:

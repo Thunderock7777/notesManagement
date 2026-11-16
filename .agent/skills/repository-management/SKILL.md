@@ -71,6 +71,9 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory w
 7. **AI Cognitive Primacy & Surgical Token-Conservation Invariant**:
    - The AI agent is the sole brain and cognitive engine of the entire repository workflow. Mechanical tools (`manage.bat`, `manage.py`, `tool/compile.bat`) are non-cognitive executors for deterministic I/O, hash calculation, Pandoc compilation, and catalog updates.
    - Token efficiency must never be pursued by offloading semantic reasoning to rigid scripts. Instead, the AI agent must enforce the 5 Token-Conservation Laws (macro-to-micro queries, line-sliced reads, relational mindmap traversal, and CPU-local scratch aggregation).
+8. **Missing Syllabus Protocol (Ask-First with Autonomous AI Fallback)**:
+   - If `index/00_syllabus_taxonomy.md` (or `index/syllabus.txt`) is absent in the workspace, the AI must first ask the user to provide their syllabus or curriculum specification (by pasting text or dropping a syllabus document into `scrap/` or `index/`).
+   - If the user does not provide one or instructs the agent to proceed without one, the AI must immediately use its own internal academic reasoning and cognitive domain knowledge to synthesize an authoritative curriculum breakdown (`SEC-01` to `SEC-XX`), generate `index/00_syllabus_taxonomy.md`, and proceed without blocking.
 
 ### 1.4 Universal Dropzone, File Sweeper & Quarantine Architecture (`scrap/`)
 1. **Universal User Dropzone**:
@@ -223,6 +226,10 @@ Before touching any files or executing commands:
      - `index/04_interconnection_mindmap.md`: YAML node fields `section:` and `syllabus_topic:`.
 3. **Real-Time Coverage Auditing**:
    - Run `cmd /c "manage.bat coverage"` (or `python manage.py coverage`) to generate a complete syllabus coverage audit, note counts, and curriculum gap alerts.
+4. **Missing Syllabus Handling Protocol (Ask-First with Autonomous AI Fallback)**:
+   - When entering an uninitialized workspace or if `index/00_syllabus_taxonomy.md` (or `index/syllabus.txt`) is missing:
+     1. *Interactive Prompt*: The AI must proactively ask the user to provide their syllabus or exam curriculum (pasting syllabus text or dropping a syllabus file into `scrap/` or `index/`).
+     2. *Autonomous Cognitive Fallback*: If the user does not provide one, or instructs the agent to proceed without one, the AI must immediately apply its own internal academic reasoning to derive a structured, logical section breakdown (`SEC-01` to `SEC-XX`) with 4–8 sub-topics each based on the domain and existing notes, generate `index/00_syllabus_taxonomy.md`, and proceed without blocking.
 
 ---
 
@@ -418,7 +425,7 @@ If this skill is introduced into a new, uninitialized folder:
      ```
      *(Or if in an existing repository with submodules: `git submodule update --init --recursive`).*
 4. **Initialize Control Plane**:
-   - Create `index/00_syllabus_taxonomy.md` defining the subject curriculum sections and sub-topics.
+   - **Syllabus Acquisition Protocol**: Check if `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` exists. If missing, ask the user to provide their syllabus. If not provided immediately, use autonomous AI academic reasoning to synthesize a complete curriculum breakdown (`SEC-01` to `SEC-XX`) and generate `index/00_syllabus_taxonomy.md`.
    - Create `index/03_topic_index.md` with the 8-column Master Table header.
    - Create `index/04_interconnection_mindmap.md` with baseline YAML header (`total_nodes: 0`, `total_edges: 0`).
 5. **Run Baseline Scan**: Execute `manage.bat scan` (or `python manage.py scan`) to verify clean initialization.

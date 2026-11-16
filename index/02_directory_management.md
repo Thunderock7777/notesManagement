@@ -130,6 +130,10 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
   4. *Scratch-Assisted Aggregation*: Run CPU-local Python scripts in `<scratch>` for multi-file audits, returning only concise 10–20 line summaries into conversation context.
   5. *Periodic Context Compaction*: Recommend `/compact` after heavy batch cycles to prune execution stdout logs while keeping all repository knowledge safe in Git.
 
+### Rule 12: Missing Syllabus Handling Protocol (Ask-First with Autonomous AI Fallback)
+- **Interactive Prompt**: If `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` is absent, the AI must first prompt the user to provide their syllabus or exam curriculum.
+- **Autonomous Cognitive Fallback**: If the user does not supply a syllabus or asks the AI to proceed without one, the AI must immediately use its own internal academic reasoning and domain knowledge to infer the domain structure from existing notes or academic standards, generate `index/00_syllabus_taxonomy.md` with sections (`SEC-01` to `SEC-XX`) and sub-topics, and continue with cataloging.
+
 ---
 
 ## Direct PDF Ingestion Protocol (`pdf/` Only)

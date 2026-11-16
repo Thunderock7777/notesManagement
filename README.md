@@ -141,6 +141,7 @@ Here is the exhaustive, categorized master list of chat prompts for every operat
 | **Comprehensive Syllabus Audit** | `"Check syllabus coverage"`<br>`"Show GATE 2027 preparation metrics"` | Queries `index/00_syllabus_taxonomy.md` (or runs `manage.bat coverage`) and reports active sections, total notes, sub-topic coverage percentages, and active document IDs. |
 | **Curriculum Blind-Spot Detection** | `"Show curriculum gaps"`<br>`"Which GATE physics sections need more notes?"` | Identifies sections or sub-topics with 0 active notes, alerting you to unrepresented areas so you can source or author missing material. |
 | **Section Deep Dive** | `"Show all notes under SEC-07 (Quantum Mechanics)"`<br>`"List all sub-topics under SEC-09 (Solid State Physics)"` | Filters `00_syllabus_taxonomy.md` and `03_topic_index.md` for specific GATE sections, listing all covered and pending syllabus units. |
+| **Bootstrap or Synthesize Syllabus** | `"Synthesize curriculum for <subject>"`<br>`"Bootstrap syllabus taxonomy"` | If `00_syllabus_taxonomy.md` is absent and no syllabus is provided, the AI uses autonomous academic reasoning to construct a structured section breakdown (`SEC-01` to `SEC-XX`) and sub-topics. |
 
 ### 5. 🛡️ Repository Health, Deduplication & Maintenance
 
@@ -199,3 +200,4 @@ Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SK
 2. **Source notes stay safe**: The AI will never alter the conceptual text of your notes in `txt_md/`.
 3. **Keep inputs in `txt_md/`**: Always drop your text/markdown files inside `txt_md/` (files placed in root or `index/` are ignored by design).
 4. **Automatic Deduplication**: If you accidentally paste a note or PDF that already exists, the AI detects the duplicate (via content hash, file size, and topic comparison) to prevent redundant catalog entries or duplicate PDFs.
+5. **Missing Syllabus Fallback**: If no syllabus file is present, the AI will ask you for one. If you don't provide one, the AI will automatically synthesize a complete academic curriculum taxonomy for your domain using its own reasoning.
