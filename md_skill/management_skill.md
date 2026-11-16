@@ -425,7 +425,24 @@ To ensure zero ambiguity during initialization and subsequent operation, the rep
 | **Tier 2: AI Dynamic Artifacts** | • `index/00_syllabus_taxonomy.md`<br>• `index/03_topic_index.md`<br>• `index/04_interconnection_mindmap.md`<br>• `txt_md/<name>.md` (provisional surrogates) | **Created Freshly by AI** | Generated from scratch on initialization. Populated, extended, and re-indexed dynamically by AI on every note ingestion. |
 | **Tier 3: Continuous Governance** | • `README.md` (root user manual)<br>• `index/README.md` (master index instructions)<br>• `index/05_contributing_and_versioning.md`<br>• `index/01_tool_usage.md`<br>• `index/02_directory_management.md` | **Initialized from Blueprint, Edited by AI Over Time** | Living governance documents. Incrementally edited and updated by the AI across development cycles (recording version ledgers, sync checklists, and feature evolution). |
 
-### 9.2 Step-by-Step Initialization Sequence
+### 9.2 First-Time Fresh Start Detection & Sanitation Protocol
+
+Before running initialization, the AI must check for the presence of the three foundational dynamic index files:
+1. `index/00_syllabus_taxonomy.md`
+2. `index/03_topic_index.md`
+3. `index/04_interconnection_mindmap.md`
+
+#### Fresh Start Trigger & Sanitation Rules:
+If **none of these three files exist**, the environment is unambiguously recognized as a **First-Time Deployment / Fresh Start**:
+1. **Mandatory `txt_md/` Purge & Reset**:
+   - If the workspace was created by cloning a repository template or copying a previous directory, `txt_md/` may contain residual notes or surrogate Markdown from an old subject.
+   - The AI must **delete and recreate `txt_md/` as a clean, empty folder** (or remove all files inside it) so that zero residual notes bleed into the new repository.
+   - Ensure `pdf/` and `scrap/` are likewise clean.
+2. **Environment Path Editing for `manage.bat` and `manage.py`**:
+   - **`manage.bat` Python Path Configuration**: The AI must inspect `manage.bat` and edit its Python interpreter path to match the current machine's environment (e.g. replacing any foreign `C:\Users\<old-user>\...` path with the active local Python executable path or `%LOCALAPPDATA%\Programs\Python\...`).
+   - **`manage.py` Dynamic Root Verification**: Confirm that `manage.py` resolves its root via `WORKSPACE = os.path.abspath(os.path.dirname(__file__))` and contains zero hardcoded machine paths.
+
+### 9.3 Step-by-Step Initialization Sequence
 
 If this skill is introduced into a new, uninitialized folder:
 1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.

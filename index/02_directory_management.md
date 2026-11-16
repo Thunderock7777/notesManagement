@@ -134,6 +134,11 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 - **Interactive Prompt**: If `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` is absent, the AI must first prompt the user to provide their syllabus or exam curriculum.
 - **Autonomous Cognitive Fallback**: If the user does not supply a syllabus or asks the AI to proceed without one, the AI must immediately use its own internal academic reasoning and domain knowledge to infer the domain structure from existing notes or academic standards, generate `index/00_syllabus_taxonomy.md` with sections (`SEC-01` to `SEC-XX`) and sub-topics, and continue with cataloging.
 
+### Rule 13: First-Time Fresh Start Detection & Sanitation Protocol
+- **Trigger**: Absence of `index/00_syllabus_taxonomy.md`, `index/03_topic_index.md`, and `index/04_interconnection_mindmap.md`.
+- **Sanitation Action**: Delete and recreate `txt_md/` as a clean, empty folder to clear residual template notes. Ensure `pdf/` and `scrap/` are clean.
+- **Path Configuration**: Inspect and edit `manage.bat` to ensure the Python interpreter path matches the local machine environment, and verify dynamic root resolution in `manage.py`.
+
 ---
 
 ## Direct PDF Ingestion Protocol (`pdf/` Only)

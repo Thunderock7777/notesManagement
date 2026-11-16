@@ -89,3 +89,6 @@ D:\STUDY\
 12. **Missing Syllabus Protocol (Ask-First with Autonomous AI Fallback)**:
     - If `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` is missing, the AI must first prompt the user to provide their syllabus or exam curriculum.
     - If the user does not provide one or instructs the AI to proceed, the AI must immediately use its own internal academic reasoning to derive a comprehensive curriculum breakdown (`SEC-01` to `SEC-XX`) and generate `index/00_syllabus_taxonomy.md` without blocking.
+13. **First-Time Fresh Start Detection & Sanitation Protocol**:
+    - If `00_syllabus_taxonomy.md`, `03_topic_index.md`, and `04_interconnection_mindmap.md` are all absent, this indicates a first-time fresh deployment.
+    - The AI must delete and recreate `txt_md/` as a clean, empty directory to purge any residual files from prior templates, and inspect/edit `manage.bat` (and verify `manage.py`) to bind to the host system's active Python interpreter path.

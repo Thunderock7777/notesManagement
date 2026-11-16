@@ -201,3 +201,4 @@ Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SK
 3. **Keep inputs in `txt_md/`**: Always drop your text/markdown files inside `txt_md/` (files placed in root or `index/` are ignored by design).
 4. **Automatic Deduplication**: If you accidentally paste a note or PDF that already exists, the AI detects the duplicate (via content hash, file size, and topic comparison) to prevent redundant catalog entries or duplicate PDFs.
 5. **Missing Syllabus Fallback**: If no syllabus file is present, the AI will ask you for one. If you don't provide one, the AI will automatically synthesize a complete academic curriculum taxonomy for your domain using its own reasoning.
+6. **Fresh Start Auto-Sanitation**: On a brand-new setup (when the 3 index files do not exist), the AI automatically purges `txt_md/` to ensure a completely clean start, and configures `manage.bat` to bind to your local Python path.
