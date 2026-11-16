@@ -139,6 +139,10 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 - **Sanitation Action**: Delete and recreate `txt_md/` as a clean, empty folder to clear residual template notes. Ensure `pdf/` and `scrap/` are clean.
 - **Path Configuration**: Inspect and edit `manage.bat` to ensure the Python interpreter path matches the local machine environment, and verify dynamic root resolution in `manage.py`.
 
+### Rule 14: User-Requested Fresh Start & Repository Reset Protocol
+- **Explicit Confirmation Gate**: When a user explicitly requests a fresh start (`"I want a fresh start"`), the AI must **NEVER** wipe files silently. It must issue a high-visibility warning and demand explicit user confirmation (`"CONFIRM FRESH START"` or `"YES"`).
+- **Autonomous Reset Execution**: Once confirmed, delete all notes in `txt_md/`, delete PDFs in `pdf/`, clear `scrap/`, edit `manage.bat` Python path for the local machine, reset `03_topic_index.md` and `04_interconnection_mindmap.md` to baseline zero, re-deploy skills via `md_skill/install.bat`, and prompt for the new syllabus.
+
 ---
 
 ## Direct PDF Ingestion Protocol (`pdf/` Only)

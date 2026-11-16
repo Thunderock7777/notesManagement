@@ -456,6 +456,7 @@ flowchart TD
   2. **Environment Path Editing for `manage.bat` and `manage.py`**:
      - Inspect `manage.bat` and edit its Python interpreter path to match the current machine's environment (e.g. replacing any foreign `C:\Users\<old-user>\...` path with the active local Python executable path or `%LOCALAPPDATA%\Programs\Python\...`).
      - Confirm that `manage.py` dynamically resolves its root relative to its location (`WORKSPACE = os.path.abspath(os.path.dirname(__file__))`) with zero hardcoded machine drives.
+- **Condition C (User Requests Fresh Start on Cloned Repo)**: If the repository was cloned with existing notes and the user explicitly requests a fresh start in chat (e.g. *"I want a fresh start"*), the AI must strictly require explicit confirmation before executing the **Section 9.3 User-Requested Fresh Start Protocol**.
 
 #### Step 2: Initialize Directory Skeleton
 Ensure all required directories exist: `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in `<WORKSPACE_ROOT>`.
@@ -473,3 +474,47 @@ Ensure all required directories exist: `txt_md/`, `pdf/`, `scrap/`, `index/`, `m
 
 #### Step 5: Run Baseline Scan
 Execute `manage.bat scan` (or `python manage.py scan`) to verify clean 0/0 initialization.
+
+---
+
+### 9.3 User-Requested Fresh Start & Repository Reset Protocol (Explicit Confirmation Gate)
+
+When a user clones this repository (which already contains existing notes, PDFs, and catalog files) and says:
+> *"I want a fresh start"* / *"Reset this repo for a new subject"* / *"Clear everything and start fresh"*
+
+The AI must strictly execute this protocol:
+
+#### 1. Mandatory Explicit Confirmation Gate ("Super Sure" Verification)
+Because resetting a cloned repository permanently deletes existing study material, **the AI must NEVER execute a wipe silently or on a single ambiguous prompt**.
+The AI must halt and ask for explicit confirmation:
+> ⚠️ **CRITICAL WARNING**: A fresh start will permanently:
+> 1. Delete all existing notes in `txt_md/`.
+> 2. Delete all compiled PDFs in `pdf/`.
+> 3. Clean out `scrap/`.
+> 4. Reset `index/03_topic_index.md` and `index/04_interconnection_mindmap.md` to baseline zero.
+> 5. Prompt for a new syllabus to regenerate `index/00_syllabus_taxonomy.md`.
+> 
+> **Are you completely sure you want to wipe all existing data and reset this repository for a fresh start?**
+> Please reply with **"CONFIRM FRESH START"** or **"YES"** to proceed.
+
+#### 2. Automated Clean Reset Execution (Only Upon Confirmation)
+Once the user explicitly confirms, the AI autonomously executes the complete reset:
+1. **Purge Data Directories**:
+   - Delete all files inside `txt_md/` (preserving the empty folder).
+   - Delete all PDF files inside `pdf/` (preserving only `pdf/.gitkeep`).
+   - Clear all files inside `scrap/`.
+2. **Reconfigure Local Host Paths**:
+   - Inspect `manage.bat` and edit its Python interpreter path to bind directly to the active host machine's Python executable (replacing any foreign username or machine paths).
+   - Verify dynamic root resolution in `manage.py`.
+3. **Re-deploy Core Skills**:
+   - Run `cmd /c "md_skill\install.bat"` to ensure `.agent/skills/` are freshly deployed and active.
+4. **Reset Control Plane to Baseline Zero**:
+   - Re-initialize `index/03_topic_index.md` with only the 8-column Master Table header (0 document rows, 0 detail blocks).
+   - Re-initialize `index/04_interconnection_mindmap.md` with empty YAML graph (`total_nodes: 0`, `total_edges: 0`, `nodes: []`, `edges: []`).
+   - Re-initialize `index/05_contributing_and_versioning.md` change ledger back to Version 1.0.0 for the user's new subject.
+5. **Trigger Syllabus Acquisition Protocol**:
+   - Prompt the user:
+     > *"The repository has been cleanly reset to baseline zero. Please provide your syllabus or exam curriculum for your new subject (paste text or drop a file into `scrap/`). If not provided, I will synthesize an academic curriculum using AI reasoning."*
+6. **Verify Baseline State**:
+   - Run `cmd /c "manage.bat scan"` to confirm `0 notes in txt_md/`, `0 PDFs in pdf/`, and `0 files in scrap/`.
+   - Report clean readiness to the user.

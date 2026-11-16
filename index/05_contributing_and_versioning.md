@@ -404,7 +404,8 @@ Cycle Date: 2026-11-17
 * `2026-11-17` | Governance | Synchronized Rule 12 across `index/README.md` and `index/02_directory_management.md`, and updated root `README.md` | `system +15 / -0` | `45 / 500`
 * `2026-11-17` | Governance | Codified First-Time Fresh Start Detection & Sanitation Protocol (purging `txt_md/` and editing `manage.bat`/`manage.py` paths) across `md_skill/management_skill.md` (Section 9.2), `SKILL.md`, `index/README.md` (Rule 13), `02_directory_management.md` (Rule 13), and root `README.md` | `system +28 / -0` | `73 / 500`
 * `2026-11-17` | Architecture | Codified Strict Chronological Bootstrapping Order of Operations in Section 9.2 with Mermaid flowchart, ensuring Pre-Flight Sanitation Gate (Step 1) executes before Control Plane generation (Step 4) | `system +35 / -4` | `104 / 500`
-* `2026-11-17` | Release | **Versioned missing syllabus protocol, autonomous AI fallback, artifact ownership matrix, and chronological fresh start sanitation as 1.5.2 (PATCH)**
+* `2026-11-17` | Governance | Codified User-Requested Fresh Start & Repository Reset Protocol in Section 9.3 with mandatory explicit confirmation gate ("super sure" verification) across `md_skill/management_skill.md`, `SKILL.md`, `index/README.md` (Rule 14), `02_directory_management.md` (Rule 14), and root `README.md` | `system +48 / -0` | `152 / 500`
+* `2026-11-17` | Release | **Versioned missing syllabus protocol, autonomous AI fallback, artifact ownership matrix, and user-requested fresh start reset as 1.5.2 (PATCH)**
 
 ---
 

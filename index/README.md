@@ -92,3 +92,6 @@ D:\STUDY\
 13. **First-Time Fresh Start Detection & Sanitation Protocol**:
     - If `00_syllabus_taxonomy.md`, `03_topic_index.md`, and `04_interconnection_mindmap.md` are all absent, this indicates a first-time fresh deployment.
     - The AI must delete and recreate `txt_md/` as a clean, empty directory to purge any residual files from prior templates, and inspect/edit `manage.bat` (and verify `manage.py`) to bind to the host system's active Python interpreter path.
+14. **User-Requested Fresh Start & Repository Reset Protocol (Explicit Confirmation Gate)**:
+    - If a user clones this repository (with existing notes/PDFs) and says *"I want a fresh start"* or *"Reset repository"*, the AI must **NEVER** wipe files silently. It must issue a high-visibility warning and demand explicit confirmation (`"CONFIRM FRESH START"` or `"YES"`).
+    - Upon confirmation, the AI autonomously purges old notes in `txt_md/`, deletes PDFs in `pdf/`, clears `scrap/`, reconfigures `manage.bat` Python paths, resets `03_topic_index.md` and `04_interconnection_mindmap.md` to baseline zero, and prompts for the new syllabus.

@@ -151,6 +151,7 @@ Here is the exhaustive, categorized master list of chat prompts for every operat
 | **Detect Exact & Semantic Duplicates** | `"Check if there are any duplicate notes"`<br>`"Audit duplicates by MD5 hash"` | Executes `manage.bat audit-duplicates` to detect exact hash collisions and normalized text overlap across `txt_md/` and `pdf/`. |
 | **Remove or Consolidate Notes** | `"Remove DOC-045 and clean up catalog and mindmap"`<br>`"Consolidate duplicate DOC-110 into DOC-002"` | Atomically removes specified files, strips the table row and detail block from `03_topic_index.md`, and prunes nodes and edges from `04_interconnection_mindmap.md`. |
 | **Verify Toolchain & Compiler Status** | `"Check if LaTeX compiler and tools are working"` | Verifies environment prerequisites (Python 3.10+, Pandoc, XeLaTeX) and checks `tool/compile.bat` responsiveness. |
+| **Request Fresh Start / Reset Repository** | `"I want a fresh start"`<br>`"Reset repository for a new subject"` | Triggers safety confirmation gate; once confirmed with "YES", purges all old notes, PDFs, and catalog entries, reconfigures `manage.bat` paths for your machine, resets to baseline zero, and prompts for your new syllabus. |
 
 ### 6. ⚡ Token Efficiency, Context Hygiene & Slash Commands
 
@@ -202,3 +203,4 @@ Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SK
 4. **Automatic Deduplication**: If you accidentally paste a note or PDF that already exists, the AI detects the duplicate (via content hash, file size, and topic comparison) to prevent redundant catalog entries or duplicate PDFs.
 5. **Missing Syllabus Fallback**: If no syllabus file is present, the AI will ask you for one. If you don't provide one, the AI will automatically synthesize a complete academic curriculum taxonomy for your domain using its own reasoning.
 6. **Fresh Start Auto-Sanitation**: On a brand-new setup (when the 3 index files do not exist), the AI automatically purges `txt_md/` to ensure a completely clean start, and configures `manage.bat` to bind to your local Python path.
+7. **Safe Fresh Start Command**: If you clone this repository to study a different subject, simply say *"I want a fresh start"*. The AI will verify with you first ("super sure" confirmation gate), then cleanly wipe the old notes, reset all indexes to zero, configure your local Python path, and set up your new curriculum.
