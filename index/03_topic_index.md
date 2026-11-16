@@ -87,7 +87,7 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 | DOC-056 | **SEC-07** | `7.8` Identical Particles & Pau | `ssp-pauli-exclusion-principle-fermions.pdf` | `ssp43.pdf (G58YK3IX)` | [ssp-pauli-exclusion-principle-fermions.pdf](file:///D:/STUDY/pdf/ssp-pauli-exclusion-principle-fermions.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-057 | **SEC-07** | `7.3` One-Dimensional Potential | `ssp-potential-wells-comparison-master-chart.pdf` | `ssp44.pdf (GU44DVHM)` | [ssp-potential-wells-comparison-master-chart.pdf](file:///D:/STUDY/pdf/ssp-potential-wells-comparison-master-chart.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-058 | **SEC-07** | `7.8` Identical Particles, Paul | `qm-how-singlet-state-turns-into.pdf` | `QM.pdf (HH4NPD9S)` | [qm-how-singlet-state-turns-into.pdf](file:///D:/STUDY/pdf/qm-how-singlet-state-turns-into.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
-| DOC-059 | **SEC-07** | `7.6` Central Potentials & Hydr | `nuc-radial-probability-density-hydrogen.pdf` | `nuc1.pdf (HI4T2G84)` | [nuc-radial-probability-density-hydrogen.pdf](file:///D:/STUDY/pdf/nuc-radial-probability-density-hydrogen.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
+| DOC-059 | **SEC-07** | `7.1` Foundations of QM (Bank) | `nuc-radial-probability-density-hydrogen.pdf` | `nuc1.pdf (HI4T2G84)` | [nuc-radial-probability-density-hydrogen.pdf](file:///D:/STUDY/pdf/nuc-radial-probability-density-hydrogen.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-060 | **SEC-07** | `7.9` Approximation Methods (Va | `qm-perturbation-theory-energy-correction-2.pdf` | `QM.pdf (HS72UC6H)` | [qm-perturbation-theory-energy-correction-2.pdf](file:///D:/STUDY/pdf/qm-perturbation-theory-energy-correction-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-061 | **SEC-09** | `9.5` Free Electron Theory, Ban | `ssp-density-of-states-effective-mass-2.pdf` | `ssp4n.pdf (HUGZCILI)` | [ssp-density-of-states-effective-mass-2.pdf](file:///D:/STUDY/pdf/ssp-density-of-states-effective-mass-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-062 | **SEC-07** | `7.1` Foundations of QM, Uncert | `qm-parity-operator-algebraic-properties-2.pdf` | `QM.pdf (HZT32EIA)` | [qm-parity-operator-algebraic-properties-2.pdf](file:///D:/STUDY/pdf/qm-parity-operator-algebraic-properties-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
@@ -149,9 +149,9 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 | DOC-119 | **SEC-07** | `7.2` Time-Independent & Time-D | `qm-set-up-the-wavefunction.pdf` | `QM.pdf (VJVWBKQW)` | [qm-set-up-the-wavefunction.pdf](file:///D:/STUDY/pdf/qm-set-up-the-wavefunction.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-120 | **SEC-09** | `9.2` Diffraction, Reciprocal L | `ssp-g-hkl-dbt.pdf` | `G_hkl_dbt.pdf (VLL6LW6E)` | [ssp-g-hkl-dbt.pdf](file:///D:/STUDY/pdf/ssp-g-hkl-dbt.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-121 | **SEC-09** | `9.6` Band Theory of Solids, Bl | `ssp-bloch-wavefunction-and-theorem-3.pdf` | `ssp42.pdf (VSBK3LSI)` | [ssp-bloch-wavefunction-and-theorem-3.pdf](file:///D:/STUDY/pdf/ssp-bloch-wavefunction-and-theorem-3.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
-| DOC-122 | **SEC-10** | `10.4` Nuclear Force & Two-Nucle | `nuc-deuteron-bound-state-nuclear-force.pdf` | `nuc1.pdf (WAH32AJT)` | [nuc-deuteron-bound-state-nuclear-force.pdf](file:///D:/STUDY/pdf/nuc-deuteron-bound-state-nuclear-force.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
+| DOC-122 | **SEC-10** | `10.1` Nuclear Properties (Bank) | `nuc-deuteron-bound-state-nuclear-force.pdf` | `nuc1.pdf (WAH32AJT)` | [nuc-deuteron-bound-state-nuclear-force.pdf](file:///D:/STUDY/pdf/nuc-deuteron-bound-state-nuclear-force.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-123 | **SEC-04** | `4.4` Classical and Quantum Sta | `stat-multiple-eigenstates.pdf` | `multiple_eigenstates.pdf (WJMLISW8)` | [stat-multiple-eigenstates.pdf](file:///D:/STUDY/pdf/stat-multiple-eigenstates.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
-| DOC-124 | **SEC-08** | `8.4` External Field Effects (Z | `nuc-zeeman-effect-energy-level-splitting-2.pdf` | `nuc1.pdf (WKKIIDPR)` | [nuc-zeeman-effect-energy-level-splitting-2.pdf](file:///D:/STUDY/pdf/nuc-zeeman-effect-energy-level-splitting-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
+| DOC-124 | **SEC-08** | `8.4` External Fields (Bank) | `nuc-zeeman-effect-energy-level-splitting-2.pdf` | `nuc1.pdf (WKKIIDPR)` | [nuc-zeeman-effect-energy-level-splitting-2.pdf](file:///D:/STUDY/pdf/nuc-zeeman-effect-energy-level-splitting-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-125 | **SEC-08** | `8.4` External Field Effects (Z | `qm-zeeman-effect-energy-level-splitting-2.pdf` | `QM.pdf (WRC5IHJC)` | [qm-zeeman-effect-energy-level-splitting-2.pdf](file:///D:/STUDY/pdf/qm-zeeman-effect-energy-level-splitting-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-126 | **SEC-07** | `7.5` Harmonic Oscillators (1D, | `qm-ladder-operators-harmonic-oscillator-3.pdf` | `QM.pdf (WUBRPVDC)` | [qm-ladder-operators-harmonic-oscillator-3.pdf](file:///D:/STUDY/pdf/qm-ladder-operators-harmonic-oscillator-3.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-127 | **SEC-09** | `9.1` Elements of Crystallograp | `ssp-the-golden-rule-of-the-translat.pdf` | `ssp44.pdf (X27ADG94)` | [ssp-the-golden-rule-of-the-translat.pdf](file:///D:/STUDY/pdf/ssp-the-golden-rule-of-the-translat.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
@@ -1086,15 +1086,14 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 - **Compiled PDF**: [nuc-radial-probability-density-hydrogen.pdf](file:///D:/STUDY/pdf/nuc-radial-probability-density-hydrogen.pdf)
 - **Original Filename**: `nuc1.pdf`
 - **GATE Section**: `SEC-07` (Quantum Mechanics)
-- **Syllabus Topic**: `7.6: Central Potentials & Hydrogen-like Atoms`
-- **Domain**: `Nuclear & Particle Physics`
+- **Syllabus Topic**: `7.1: Foundations of QM (GATE Master Bank)`
+- **Domain**: `Quantum Mechanics`
 - **Core Concepts**:
-  - Wavefunction
-  - Eigenvalues
-  - Hydrogen Atom
-  - Potential Well
+  - Quantum Mechanics
+  - GATE PYQ
+  - Question Bank
 - **Text Layer Quality**: Verified (LaTeX Typeset, 16 pages)
-- **Summary**: A particle of mass m is confined in a two-dimensional square well potential of dimension.
+- **Summary**: GATE Physics Quantum Mechanics Master Question Bank (74 Questions, 2012-2026).
 - **Processing Log**:
   - `2026-11-15`: Ingested from `Zotero/storage/HI4T2G84/nuc1.pdf`, verified text layer, renamed semantically, indexed in catalog and mindmap.
   - `2026-11-15`: Generated provisional surrogate Markdown via pymupdf4llm for text search and cataloging.
@@ -2078,12 +2077,14 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 - **Compiled PDF**: [nuc-deuteron-bound-state-nuclear-force.pdf](file:///D:/STUDY/pdf/nuc-deuteron-bound-state-nuclear-force.pdf)
 - **Original Filename**: `nuc1.pdf`
 - **GATE Section**: `SEC-10` (Nuclear & Particle Physics)
-- **Syllabus Topic**: `10.4: Nuclear Force & Two-Nucleon Problem (Deuteron)`
+- **Syllabus Topic**: `10.1: Nuclear Properties (GATE Master Bank)`
 - **Domain**: `Nuclear & Particle Physics`
 - **Core Concepts**:
   - Nuclear & Particle Physics
+  - GATE PYQ
+  - Question Bank
 - **Text Layer Quality**: Verified (LaTeX Typeset, 17 pages)
-- **Summary**: The decay process e−+ p →e−+ p + ν + ¯ν violates.
+- **Summary**: GATE Physics Nuclear & Particle Physics Master Question Bank (71 Questions, 2012-2026).
 - **Processing Log**:
   - `2026-11-15`: Ingested from `Zotero/storage/WAH32AJT/nuc1.pdf`, verified text layer, renamed semantically, indexed in catalog and mindmap.
   - `2026-11-15`: Generated provisional surrogate Markdown via pymupdf4llm for text search and cataloging.
@@ -2111,12 +2112,14 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 - **Compiled PDF**: [nuc-zeeman-effect-energy-level-splitting-2.pdf](file:///D:/STUDY/pdf/nuc-zeeman-effect-energy-level-splitting-2.pdf)
 - **Original Filename**: `nuc1.pdf`
 - **GATE Section**: `SEC-08` (Atomic & Molecular Physics)
-- **Syllabus Topic**: `8.4: External Field Effects (Zeeman, Paschen-Back, Stark)`
-- **Domain**: `Nuclear & Particle Physics`
+- **Syllabus Topic**: `8.4: External Field Effects (GATE Master Bank)`
+- **Domain**: `Atomic & Molecular Physics`
 - **Core Concepts**:
-  - Zeeman Effect
+  - Atomic & Molecular Physics
+  - GATE PYQ
+  - Question Bank
 - **Text Layer Quality**: Verified (LaTeX Typeset, 10 pages)
-- **Summary**: The ground state of sodium atom (11Na) is a 2S1/2 state.
+- **Summary**: GATE Physics Atomic & Molecular Physics Master Question Bank (45 Questions, 2012-2026).
 - **Processing Log**:
   - `2026-11-15`: Ingested from `Zotero/storage/WKKIIDPR/nuc1.pdf`, verified text layer, renamed semantically, indexed in catalog and mindmap.
   - `2026-11-15`: Generated provisional surrogate Markdown via pymupdf4llm for text search and cataloging.

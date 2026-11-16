@@ -15,9 +15,9 @@
 ## Semantic Relational Knowledge Graph
 
 ```yaml
-version: '1.3'
+version: '1.4'
 total_nodes: 131
-total_edges: 150
+total_edges: 191
 nodes:
 - id: DOC-001
   file: qm-two-state-time-evolved-wavefunction.pdf
@@ -26,7 +26,7 @@ nodes:
   core_concepts:
   - Wavefunction
   - Eigenstates
-  summary: Write the Time-Evolved Wavefunction.
+  summary: 'Solved Problem: Two-state time evolution revival probability after complete period T [Correct Answer: 1 (100%)].'
   source_note: qm-two-state-time-evolved-wavefunction.md
   section: SEC-07
   syllabus_topic: '`7.2` Time-Independent & Time-D'
@@ -68,7 +68,7 @@ nodes:
   - Hydrogen Atom
   - Liquid Drop Model
   - Radioactive Decay
-  summary: 'Welcome to Section 10: Nuclear and Particle Physics for GATE!.'
+  summary: 'Solved Problem: Liquid drop model semi-empirical mass formula binding energy calculation.'
   source_note: nuc-liquid-drop-model-mass-formula.md
   section: SEC-10
   syllabus_topic: '`10.2` Semi-Empirical Mass Formu'
@@ -91,7 +91,8 @@ nodes:
   - Wavefunction
   - Eigenvalues
   - Eigenstates
-  summary: Check Normalization of the State.
+  summary: 'Solved Problem: Step-by-step state normalization check (<psi|psi>=1) and expectation value [Correct Answer: Option
+    (a) 7/6*hbar].'
   source_note: qm-made-option-detailed.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of Quantum Me'
@@ -126,7 +127,7 @@ nodes:
   - Eigenvalues
   - Eigenstates
   - Spin-1/2
-  summary: Identify the Initial Quantum State.
+  summary: 'Solved Problem: Measurement probability in Sx basis for initial spin state |+z> [Correct Answer: Option (a) 1/2].'
   source_note: qm-spin-half-pauli-spin-matrices.md
   section: SEC-07
   syllabus_topic: '`7.7` Orbital and Spin Angular'
@@ -172,7 +173,7 @@ nodes:
   core_concepts:
   - Crystal Lattice
   - Einstein Temperature
-  summary: "When we call the Einstein Temperature (\u03B8E) the \u201Ccharacteristic thermal energy thresh-."
+  summary: When we call the Einstein Temperature (θE) the “characteristic thermal energy thresh-.
   source_note: ssp-einstein-temperature-lattice-oscillations.md
   section: SEC-09
   syllabus_topic: '`9.1` Crystallography, Bravais'
@@ -183,7 +184,7 @@ nodes:
   core_concepts:
   - Wavefunction
   - Crystal Lattice
-  summary: "It sounds like a paradox at first\u2014how can particles be identical and distinguishable."
+  summary: It sounds like a paradox at first—how can particles be identical and distinguishable.
   source_note: qm-identical-vs-distinguishable-particles.md
   section: SEC-07
   syllabus_topic: '`7.8` Identical Particles, Paul'
@@ -192,8 +193,10 @@ nodes:
   source_type: surrogate_md
   domain: Nuclear & Particle Physics
   core_concepts:
-  - Nuclear Shell Model
-  summary: "Nuclear and Particle Physics Study Boundary Guide (GATE Physics 2012\u2013."
+  - Nuclear & Particle Physics
+  - Exam Boundary
+  - Syllabus Analysis
+  summary: Nuclear and Particle Physics Study Boundary Guide (GATE Physics 2012-2018 Tested Sub-Topics & Scope Analysis).
   source_note: nuc-nuclear-shell-model-magic-numbers.md
   section: SEC-10
   syllabus_topic: '`10.3` Nuclear Shell Model & Mag'
@@ -246,7 +249,7 @@ nodes:
   core_concepts:
   - Eigenstates
   - Perturbation Theory
-  summary: "Here is the step-by-step mathematical breakdown of why and how the 2\xD72 perturbation."
+  summary: Here is the step-by-step mathematical breakdown of why and how the 2×2 perturbation.
   source_note: qm-degenerate-perturbation-theory.md
   section: SEC-07
   syllabus_topic: '`7.9` Approximation Methods (Va'
@@ -268,7 +271,7 @@ nodes:
   core_concepts:
   - Wavefunction
   - Brillouin Zone
-  summary: "To see how a constant spatial phase shift \u2206\u03D5 = ka turns a periodic wave pattern into a."
+  summary: To see how a constant spatial phase shift ∆ϕ = ka turns a periodic wave pattern into a.
   source_note: ssp-bloch-wavefunction-and-theorem.md
   section: SEC-09
   syllabus_topic: '`9.6` Band Theory of Solids, Bl'
@@ -427,7 +430,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Eigenstates
-  summary: Identify the Ladder Operator.
+  summary: 'Solved Problem: Angular momentum raising operator matrix element <1,0|L+|1,-1> [Correct Answer: Option (b) sqrt(2)*hbar].'
   source_note: qm-ladder-operators-harmonic-oscillator-2.md
   section: SEC-07
   syllabus_topic: '`7.5` Harmonic Oscillators (1D,'
@@ -448,7 +451,7 @@ nodes:
   core_concepts:
   - Eigenvalues
   - Eigenstates
-  summary: "In quantum mechanics, phase refers to the complex angle \u03B8 in a term ei\u03B8."
+  summary: In quantum mechanics, phase refers to the complex angle θ in a term eiθ.
   source_note: qm-relative-global-phase.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of QM, Uncert'
@@ -470,7 +473,7 @@ nodes:
   core_concepts:
   - Wavefunction
   - Perturbation Theory
-  summary: "What is the Magnetic Interaction Hamiltonian ( \u02C6Hmag)?."
+  summary: What is the Magnetic Interaction Hamiltonian ( ˆHmag)?.
   source_note: qm-zeeman-effect-formulaes4.md
   section: SEC-08
   syllabus_topic: '`8.4` External Field Effects (Z'
@@ -491,7 +494,8 @@ nodes:
   core_concepts:
   - Wavefunction
   - Eigenvalues
-  summary: Write the Energy Eigenvalue Formula for a 2D Box.
+  summary: 'Solved Problem: 2D square well energy eigenvalue formula derivation [Correct Answer: Option (d) 5*pi^2*hbar^2
+    / (2ma^2)].'
   source_note: qm-made-option-step.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of Quantum Me'
@@ -513,7 +517,8 @@ nodes:
   core_concepts:
   - Wavefunction
   - Spin-1/2
-  summary: Determine the Spin State of Ground State Helium.
+  summary: 'Solved Problem: Ground-state Helium spin expectation value <S1.S2> in singlet state [Correct Answer: Option (a)
+    -3/4*hbar^2].'
   source_note: qm-pauli-exclusion-principle-fermions-2.md
   section: SEC-07
   syllabus_topic: '`7.8` Identical Particles, Paul'
@@ -543,7 +548,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Quantum Mechanics
-  summary: 'Method 1: Operator Identity Expansion (Step-by-Step).'
+  summary: 'Solved Problem: Operator commutator [x^2, p^2] identity expansion [Correct Answer: Option (d) 2i*hbar*(xp + px)].'
   source_note: qm-made-option-detailed-2.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of Quantum Me'
@@ -576,7 +581,7 @@ nodes:
   domain: Solid State Physics
   core_concepts:
   - Solid State Physics
-  summary: "Yes\u2014you\u2019ve got the right idea, with one important wording tweak so it doesn\u2019t trip."
+  summary: Yes—you’ve got the right idea, with one important wording tweak so it doesn’t trip.
   source_note: ssp-a-bravais-lattice-is-purely-an.md
   section: SEC-09
   syllabus_topic: '`9.1` Crystallography, Bravais'
@@ -586,7 +591,8 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Quantum Mechanics
-  summary: Evaluate the Inner Commutator [x, H].
+  summary: 'Solved Problem: Inner commutator [x, H] evaluation for kinetic Hamiltonian [Correct Answer: Option (a) -i*hbar/m
+    * p].'
   source_note: qm-evaluate-the-inner-commutator.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of QM, Uncert'
@@ -610,7 +616,7 @@ nodes:
   - Eigenvalues
   - Eigenstates
   - Hydrogen Atom
-  summary: "3\xAFh2 (for the standard GATE question variant where the first term is \u03C8210)."
+  summary: 3¯h2 (for the standard GATE question variant where the first term is ψ210).
   source_note: qm-angular-momentum-commutation-relations.md
   section: SEC-07
   syllabus_topic: '`7.7` Orbital and Spin Angular'
@@ -621,7 +627,7 @@ nodes:
   core_concepts:
   - Potential Well
   - Crystal Lattice
-  summary: "When we look at what reshapes the electron wave inside a crystal, the \u201Cpush\u201D and \u201Cpull\u201D."
+  summary: When we look at what reshapes the electron wave inside a crystal, the “push” and “pull”.
   source_note: ssp-pauli-exclusion-principle-fermions.md
   section: SEC-07
   syllabus_topic: '`7.8` Identical Particles & Pau'
@@ -642,23 +648,22 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Wavefunction
-  summary: "The Rule of the Exchange Operator \u02C6P12."
+  summary: The Rule of the Exchange Operator ˆP12.
   source_note: qm-how-singlet-state-turns-into.md
   section: SEC-07
   syllabus_topic: '`7.8` Identical Particles, Paul'
 - id: DOC-059
   file: nuc-radial-probability-density-hydrogen.pdf
   source_type: surrogate_md
-  domain: Nuclear & Particle Physics
+  domain: Quantum Mechanics
   core_concepts:
-  - Wavefunction
-  - Eigenvalues
-  - Hydrogen Atom
-  - Potential Well
-  summary: A particle of mass m is confined in a two-dimensional square well potential of dimension.
+  - Quantum Mechanics
+  - GATE PYQ
+  - Question Bank
+  summary: GATE Physics Quantum Mechanics Master Question Bank (74 Questions, 2012-2026).
   source_note: nuc-radial-probability-density-hydrogen.md
   section: SEC-07
-  syllabus_topic: '`7.6` Central Potentials & Hydr'
+  syllabus_topic: '`7.1` Foundations of QM (GATE Master Bank)'
 - id: DOC-060
   file: qm-perturbation-theory-energy-correction-2.pdf
   source_type: surrogate_md
@@ -688,7 +693,7 @@ nodes:
   - Wavefunction
   - Eigenvalues
   - Parity Operator
-  summary: "The Parity Operator \u02C6P (also written as \u02C6\u03A0) performs a spatial reflection about the."
+  summary: The Parity Operator ˆP (also written as ˆΠ) performs a spatial reflection about the.
   source_note: qm-parity-operator-algebraic-properties-2.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of QM, Uncert'
@@ -731,7 +736,7 @@ nodes:
   domain: Solid State Physics
   core_concepts:
   - Solid State Physics
-  summary: "No \u2014 graphene\u2019s honeycomb arrangement of carbon atoms is NOT a Bravais."
+  summary: No — graphene’s honeycomb arrangement of carbon atoms is NOT a Bravais.
   source_note: ssp-the-rule-for-a-bravais-lattice.md
   section: SEC-09
   syllabus_topic: '`9.1` Crystallography, Bravais'
@@ -743,7 +748,8 @@ nodes:
   - Wavefunction
   - Hydrogen Atom
   - Radial Wavefunction
-  summary: Ground State Wavefunction of the Hydrogen Atom.
+  summary: 'Solved Problem: Hydrogen 1s radial probability density distribution function P(r) [Correct Answer: Option (a)
+    4/a0^3 * r^2 * e^(-2r/a0)].'
   source_note: qm-radial-probability-density-hydrogen-2.md
   section: SEC-07
   syllabus_topic: '`7.6` Central Potentials & Hydr'
@@ -753,7 +759,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Quantum Mechanics
-  summary: "Let\u2019s slow down completely and build this step-by-step from absolute first principles."
+  summary: Let’s slow down completely and build this step-by-step from absolute first principles.
   source_note: qm-abc.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of Quantum Me'
@@ -823,7 +829,7 @@ nodes:
   - Eigenstates
   - Hydrogen Atom
   - Potential Well
-  summary: "To understand what a Hilbert space is, let\u2019s start with a plain-English picture before."
+  summary: To understand what a Hilbert space is, let’s start with a plain-English picture before.
   source_note: qm-hilbert-space.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of QM, Uncert'
@@ -876,7 +882,8 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Eigenvalues
-  summary: "Write the Time-Evolved State |\u03C8(t)\u27E9."
+  summary: 'Solved Problem: Time evolution phase factor and state transition amplitude |psi(t)> [Correct Answer: Option (a)
+    e^(-i(E2-E1)t/hbar)].'
   source_note: qm-made-option-detailed-3.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of Quantum Me'
@@ -970,8 +977,10 @@ nodes:
   source_type: surrogate_md
   domain: Nuclear & Particle Physics
   core_concepts:
-  - Zeeman Effect
-  summary: "Atomic and Molecular Physics Study Boundary Guide (GATE Physics 2012\u2013."
+  - Atomic & Molecular Physics
+  - Exam Boundary
+  - Syllabus Analysis
+  summary: Atomic and Molecular Physics Study Boundary Guide (GATE Physics 2012-2018 Tested Sub-Topics & Scope Analysis).
   source_note: nuc-zeeman-effect-energy-level-splitting.md
   section: SEC-08
   syllabus_topic: '`8.4` External Field Effects (Z'
@@ -1030,7 +1039,8 @@ nodes:
   core_concepts:
   - Wavefunction
   - Perturbation Theory
-  summary: 'Method 1: The 10-Second Symmetry Shortcut.'
+  summary: 'Solved Problem: 1st order perturbation W(x)=beta*x in 1D box via midpoint symmetry shortcut [Correct Answer: Option
+    (a) beta*a/2].'
   source_note: qm-perturbation-theory-energy-correction-4.md
   section: SEC-07
   syllabus_topic: '`7.9` Approximation Methods (Va'
@@ -1050,7 +1060,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Spin-1/2
-  summary: "\u2022 Total Ground-State Energy (Etotal): 24 (in units of."
+  summary: '• Total Ground-State Energy (Etotal): 24 (in units of.'
   source_note: qm-pauli-exclusion-principle-fermions-4.md
   section: SEC-07
   syllabus_topic: '`7.8` Identical Particles, Paul'
@@ -1061,7 +1071,7 @@ nodes:
   core_concepts:
   - Wavefunction
   - Crystal Lattice
-  summary: "To see why the crystal Hamiltonian \u02C6H commutes with the lattice translation operator \u02C6Ta,."
+  summary: To see why the crystal Hamiltonian ˆH commutes with the lattice translation operator ˆTa,.
   source_note: ssp-definitions-of-the-two-operator.md
   section: SEC-09
   syllabus_topic: '`9.1` Elements of Crystallograp'
@@ -1138,7 +1148,7 @@ nodes:
   domain: Solid State Physics
   core_concepts:
   - Solid State Physics
-  summary: "\u2022 \xAFE0 (or \u27E8E\u27E90): The mean (average) energy per electron at absolute zero tem-."
+  summary: '• ¯E0 (or ⟨E⟩0): The mean (average) energy per electron at absolute zero tem-.'
   source_note: ssp-pauli-exclusion-principle-fermions-2.md
   section: SEC-07
   syllabus_topic: '`7.8` Identical Particles & Pau'
@@ -1216,7 +1226,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Quantum Mechanics
-  summary: "Here is the step-by-step algebraic breakdown of HOW we arrive at \u2206E = ml\xB5BB."
+  summary: Here is the step-by-step algebraic breakdown of HOW we arrive at ∆E = mlµBB.
   source_note: qm-zeeman-effect-formulaes1.md
   section: SEC-08
   syllabus_topic: '`8.4` External Field Effects (Z'
@@ -1238,7 +1248,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Eigenvalues
-  summary: Energy Expression for a 3D Cubic Box.
+  summary: 'Solved Problem: Energy degeneracy of (nx^2 + ny^2 + nz^2) = 14 state in 3D cubic box [Correct Answer: 6].'
   source_note: qm-3d-cubic-box-energy-degeneracy.md
   section: SEC-07
   syllabus_topic: '`7.3` One-Dimensional Potential'
@@ -1259,7 +1269,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Wavefunction
-  summary: Determine the Well Boundaries and Width.
+  summary: 'Solved Problem: Symmetric infinite square well ground state spatial parity [Correct Answer: Option (b) cos(pi*x/a)].'
   source_note: qm-determine-the-well-boundaries-a.md
   section: SEC-07
   syllabus_topic: '`7.3` One-Dimensional Potential'
@@ -1270,7 +1280,7 @@ nodes:
   core_concepts:
   - Perturbation Theory
   - Zeeman Effect
-  summary: "In the case of the Zeeman effect, the energy shift \u2206E is precisely the additional mag-."
+  summary: In the case of the Zeeman effect, the energy shift ∆E is precisely the additional mag-.
   source_note: qm-zeeman-effect-formulaes2.md
   section: SEC-08
   syllabus_topic: '`8.4` External Field Effects (Z'
@@ -1280,7 +1290,7 @@ nodes:
   domain: Quantum Mechanics
   core_concepts:
   - Quantum Mechanics
-  summary: "What is \u201CSmall l\u201D? (Orbital Angular Momentum Quantum Number)."
+  summary: What is “Small l”? (Orbital Angular Momentum Quantum Number).
   source_note: qm-angular-momentum-commutation-relations-2.md
   section: SEC-07
   syllabus_topic: '`7.7` Orbital and Spin Angular'
@@ -1333,10 +1343,12 @@ nodes:
   domain: Nuclear & Particle Physics
   core_concepts:
   - Nuclear & Particle Physics
-  summary: "The decay process e\u2212+ p \u2192e\u2212+ p + \u03BD + \xAF\u03BD violates."
+  - GATE PYQ
+  - Question Bank
+  summary: GATE Physics Nuclear & Particle Physics Master Question Bank (71 Questions, 2012-2026).
   source_note: nuc-deuteron-bound-state-nuclear-force.md
   section: SEC-10
-  syllabus_topic: '`10.4` Nuclear Force & Two-Nucle'
+  syllabus_topic: '`10.1` Nuclear Properties (GATE Master Bank)'
 - id: DOC-123
   file: stat-multiple-eigenstates.pdf
   source_type: surrogate_md
@@ -1353,13 +1365,15 @@ nodes:
 - id: DOC-124
   file: nuc-zeeman-effect-energy-level-splitting-2.pdf
   source_type: surrogate_md
-  domain: Nuclear & Particle Physics
+  domain: Atomic & Molecular Physics
   core_concepts:
-  - Zeeman Effect
-  summary: The ground state of sodium atom (11Na) is a 2S1/2 state.
+  - Atomic & Molecular Physics
+  - GATE PYQ
+  - Question Bank
+  summary: GATE Physics Atomic & Molecular Physics Master Question Bank (45 Questions, 2012-2026).
   source_note: nuc-zeeman-effect-energy-level-splitting-2.md
   section: SEC-08
-  syllabus_topic: '`8.4` External Field Effects (Z'
+  syllabus_topic: '`8.4` External Field Effects (GATE Master Bank)'
 - id: DOC-125
   file: qm-zeeman-effect-energy-level-splitting-2.pdf
   source_type: surrogate_md
@@ -1388,7 +1402,7 @@ nodes:
   domain: Solid State Physics
   core_concepts:
   - Wavefunction
-  summary: "The second term V (x + a)\u03C8(x + a) comes directly from how the Translation Operator."
+  summary: The second term V (x + a)ψ(x + a) comes directly from how the Translation Operator.
   source_note: ssp-the-golden-rule-of-the-translat.md
   section: SEC-09
   syllabus_topic: '`9.1` Elements of Crystallograp'
@@ -1421,11 +1435,10 @@ nodes:
   source_type: surrogate_md
   domain: Quantum Mechanics
   core_concepts:
-  - Harmonic Oscillator
-  - Wavefunction
-  - Eigenvalues
-  - Spin-1/2
-  summary: "Quantum Mechanics Study Boundary Guide (GATE Physics 2012\u20132018)."
+  - Quantum Mechanics
+  - Exam Boundary
+  - Syllabus Analysis
+  summary: Quantum Mechanics Study Boundary Guide (GATE Physics 2012-2018 Tested Sub-Topics & Scope Analysis).
   source_note: qm-parity-operator-algebraic-properties-3.md
   section: SEC-07
   syllabus_topic: '`7.1` Foundations of QM, Uncert'
@@ -1451,7 +1464,8 @@ nodes:
   - Crystal Structure
   - Graphene Honeycomb
   - Two-Atom Basis
-  summary: Distinction between pure Bravais lattices and crystal structures with a two-atom basis (Crystal = Lattice + Basis), covering graphene, diamond, HCP, and optical phonons.
+  summary: Distinction between pure Bravais lattices and crystal structures with a two-atom basis (Crystal = Lattice + Basis),
+    covering graphene, diamond, HCP, and optical phonons.
   source_note: ssp-graphene-two-atom-basis-crystal-structure.txt
   prerequisites:
   - DOC-066
@@ -1908,9 +1922,131 @@ edges:
 - from: DOC-097
   to: DOC-104
   relation: shares Eigenvalues
+- from: DOC-130
+  to: DOC-059
+  relation: boundary_guide_for
+- from: DOC-016
+  to: DOC-122
+  relation: boundary_guide_for
+- from: DOC-088
+  to: DOC-124
+  relation: boundary_guide_for
+- from: DOC-001
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-006
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-007
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-008
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-010
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-012
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-026
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-028
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-036
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-038
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-041
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-044
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-046
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-049
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-053
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-054
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-055
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-060
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-064
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-067
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-076
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-078
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-079
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-081
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-085
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-086
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-093
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-095
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-097
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-099
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-100
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-101
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-102
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-104
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-113
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-115
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-126
+  to: DOC-059
+  relation: solves_question_in
+- from: DOC-005
+  to: DOC-122
+  relation: solves_question_in
 framework: GATE 2027 PH Physics Syllabus (IIT Madras)
 sections_represented: 6
-
 ```
 
 ---
@@ -1999,4 +2135,45 @@ DOC-054 | shares Eigenvalues | DOC-060
 DOC-054 | shares Eigenvalues | DOC-062
 DOC-054 | shares Eigenvalues | DOC-063
 DOC-055 | shares Wavefunction | DOC-058
+DOC-130 | boundary_guide_for | DOC-059
+DOC-016 | boundary_guide_for | DOC-122
+DOC-088 | boundary_guide_for | DOC-124
+DOC-001 | solves_question_in | DOC-059
+DOC-006 | solves_question_in | DOC-059
+DOC-007 | solves_question_in | DOC-059
+DOC-008 | solves_question_in | DOC-059
+DOC-010 | solves_question_in | DOC-059
+DOC-012 | solves_question_in | DOC-059
+DOC-026 | solves_question_in | DOC-059
+DOC-028 | solves_question_in | DOC-059
+DOC-036 | solves_question_in | DOC-059
+DOC-038 | solves_question_in | DOC-059
+DOC-041 | solves_question_in | DOC-059
+DOC-044 | solves_question_in | DOC-059
+DOC-046 | solves_question_in | DOC-059
+DOC-049 | solves_question_in | DOC-059
+DOC-053 | solves_question_in | DOC-059
+DOC-054 | solves_question_in | DOC-059
+DOC-055 | solves_question_in | DOC-059
+DOC-060 | solves_question_in | DOC-059
+DOC-064 | solves_question_in | DOC-059
+DOC-067 | solves_question_in | DOC-059
+DOC-076 | solves_question_in | DOC-059
+DOC-078 | solves_question_in | DOC-059
+DOC-079 | solves_question_in | DOC-059
+DOC-081 | solves_question_in | DOC-059
+DOC-085 | solves_question_in | DOC-059
+DOC-086 | solves_question_in | DOC-059
+DOC-093 | solves_question_in | DOC-059
+DOC-095 | solves_question_in | DOC-059
+DOC-097 | solves_question_in | DOC-059
+DOC-099 | solves_question_in | DOC-059
+DOC-100 | solves_question_in | DOC-059
+DOC-101 | solves_question_in | DOC-059
+DOC-102 | solves_question_in | DOC-059
+DOC-104 | solves_question_in | DOC-059
+DOC-113 | solves_question_in | DOC-059
+DOC-115 | solves_question_in | DOC-059
+DOC-126 | solves_question_in | DOC-059
+DOC-005 | solves_question_in | DOC-122
 ```
