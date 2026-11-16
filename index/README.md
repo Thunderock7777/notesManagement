@@ -54,8 +54,9 @@ D:\STUDY\
    - **Direct PDF Imports & Provisional Surrogates**: Pre-compiled PDFs placed directly into `D:\STUDY\pdf\` without source notes are indexed and companion surrogate Markdown files are extracted via `pymupdf4llm` into `txt_md/<basename>.md` carrying the `DO NOT RECOMPILE` safeguard banner. This enables instant full-text search, token-efficient context retrieval, and Git backup without compiling.
    - **Authoritative Replacement**: When the user provides an authentic `.txt` or `.md` note, it automatically supersedes and deletes the provisional surrogate, unlocks compilation, and compiles the definitive XeLaTeX PDF into `pdf/`.
    - If a `.txt` or `.md` file exists anywhere else (e.g. mistakenly placed in `index/`, `tool/`, or workspace root), **DO NOT index it**.
-2. **`tool/` is Strictly Immutable**:
+2. **`tool/` is Strictly Immutable & Non-Recreatable**:
    - No AI model may edit, modify, overwrite, or delete files inside `tool/`.
+   - If `tool/` is missing, **DO NOT recreate it**. Automatically acquire it from its official public repository: [https://github.com/Thunderock7777/ai-ready-markdown-to-pdf](https://github.com/Thunderock7777/ai-ready-markdown-to-pdf) (`git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool` or `git submodule update --init --recursive`).
 3. **No Content Alteration**:
    - Never modify or summarize substantive content in `txt_md/`. Only syntax fixes are permitted when explicitly requested or required to resolve fatal build crashes.
 4. **Machine-Oriented Mindmap**:

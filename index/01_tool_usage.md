@@ -29,6 +29,15 @@ The core pipeline:
 - On Windows, `pandoc.exe` (located at `%LOCALAPPDATA%\Pandoc\pandoc.exe`) and `xelatex.exe` (located at `C:\texlive\2026\bin\windows\xelatex.exe`) require access to local directories outside the sandbox.
 - **Rule**: Whenever you invoke `compile.bat` or the compilation command from the agent environment, **always use `BypassSandbox: true`**. Do not hesitate or stall asking repeatedly about sandbox permissions—ask or execute with bypass directly to avoid permission denials.
 
+### Missing Tool Acquisition Policy (Do Not Recreate)
+- If the `tool/` directory does not exist in the workspace, **DO NOT attempt to remake, synthesize, or re-code it manually**.
+- It is an external standalone compiler engine hosted at its official public repository: [https://github.com/Thunderock7777/ai-ready-markdown-to-pdf](https://github.com/Thunderock7777/ai-ready-markdown-to-pdf).
+- Automatically download or clone it using:
+  ```cmd
+  git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool
+  ```
+  *(Or if working inside an existing Git repository with submodules: `git submodule update --init --recursive`).*
+
 ---
 
 ## Running the Compiler

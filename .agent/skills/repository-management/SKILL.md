@@ -45,8 +45,13 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory w
 ```
 
 ### 1.3 Immutable Boundaries & Core Safeguards
-1. **The `tool/` Directory is Read-Only & Strictly Immutable**:
+1. **The `tool/` Directory is Read-Only, Strictly Immutable & Non-Recreatable**:
    - Never edit, modify, overwrite, append, or delete ANY file in `tool/` (`compile.bat`, `setup.bat`, Lua filters in `config/`, `custom.tex`, or documentation). Treat `tool/` as an external, frozen compiler engine.
+   - **Missing Tool Invariant**: If the `tool/` folder does not exist in the workspace, **DO NOT attempt to remake or reconstruct it manually**. Instead, acquire the official tool automatically from its public repository:
+     ```cmd
+     git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool
+     ```
+     *(Or if inside an existing Git repository with submodules: `git submodule update --init --recursive`).*
 2. **Strict Ingestion Source Isolation**:
    - Only files placed inside `txt_md/` are eligible for note compilation.
    - Only pre-compiled PDFs placed inside `pdf/` are eligible for direct PDF ingestion.
@@ -328,7 +333,12 @@ When the user asks to search, find topics, explore conceptual connections, or re
 If this skill is introduced into a new, uninitialized folder:
 1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.
 2. **Install Skills**: Run `md_skill/install.bat` (or manually copy blueprints) to deploy into `.agent/skills/`.
-3. **Link Compiler Tool**: Ensure `tool/` is present as an immutable submodule or standalone directory.
+3. **Acquire Compiler Tool (Do Not Recreate)**:
+   - If `tool/` is not present, **NEVER attempt to remake or re-code it manually**. Automatically download/clone it from its official public repository:
+     ```cmd
+     git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool
+     ```
+     *(Or if in an existing repository with submodules: `git submodule update --init --recursive`).*
 4. **Initialize Control Plane**:
    - Create `index/00_syllabus_taxonomy.md` defining the subject curriculum sections and sub-topics.
    - Create `index/03_topic_index.md` with the 8-column Master Table header.

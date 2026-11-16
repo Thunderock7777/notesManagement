@@ -138,7 +138,7 @@ Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SK
 
 ## ⚠️ Important Rules to Keep in Mind
 
-1. **Leave `tool/` untouched**: The `tool/` directory is strictly read-only. It contains the compilation scripts and LaTeX templates. Never edit or delete files in `tool/`.
+1. **Leave `tool/` untouched (Do Not Recreate)**: The `tool/` directory is strictly read-only. It contains the compilation scripts and LaTeX templates. Never edit or delete files in `tool/`. If missing, do not attempt to recreate it manually; clone it from [https://github.com/Thunderock7777/ai-ready-markdown-to-pdf](https://github.com/Thunderock7777/ai-ready-markdown-to-pdf) (`git submodule update --init --recursive` or `git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool`).
 2. **Source notes stay safe**: The AI will never alter the conceptual text of your notes in `txt_md/`.
 3. **Keep inputs in `txt_md/`**: Always drop your text/markdown files inside `txt_md/` (files placed in root or `index/` are ignored by design).
 4. **Automatic Deduplication**: If you accidentally paste a note or PDF that already exists, the AI detects the duplicate (via content hash, file size, and topic comparison) to prevent redundant catalog entries or duplicate PDFs.

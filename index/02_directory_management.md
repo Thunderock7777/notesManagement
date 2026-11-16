@@ -31,9 +31,13 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
   - Scanned images, bitmap PDFs, or unreadable documents without clean text layers must be rejected and flagged to the user.
 - **Strict Ignore Filter**: If a `.txt` or `.md` file is found outside `D:\STUDY\txt_md/`, or an unreadable/scanned PDF is found, **DO NOT index it, DO NOT rename it, and DO NOT compile it**. Never pollute the index with files from unauthorized locations.
 
-### Rule 2: The `tool/` Folder is Strictly Immutable
-- **No file inside `D:\STUDY\tool\` may be altered, modified, overwritten, or removed.**
-- Treat `tool/` as an immutable external engine.
+### Rule 2: The `tool/` Folder is Strictly Immutable & Non-Recreatable
+- **No file inside `tool/` may be altered, modified, overwritten, or removed.** Treat `tool/` as an immutable external engine.
+- **Missing Tool Policy**: If the `tool/` folder does not exist, **DO NOT attempt to remake or reconstruct it manually**. Instead, acquire the official engine directly from its public repository: [https://github.com/Thunderock7777/ai-ready-markdown-to-pdf](https://github.com/Thunderock7777/ai-ready-markdown-to-pdf). Clone or initialize it via:
+  ```cmd
+  git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool
+  ```
+  *(Or if initialized as a Git submodule: `git submodule update --init --recursive`).*
 
 ### Rule 3: Non-Destructive Source Content Policy
 - **Never alter, rewrite, edit, or summarize the conceptual content of files in `D:\STUDY\txt_md/`.**

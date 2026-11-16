@@ -316,6 +316,21 @@ Cycle Date: 2026-11-16
 
 ---
 
+```text
+===============================================================================
+VERSION 1.3.3 CYCLE
+===============================================================================
+Cycle: Missing Tool Acquisition Policy & Public Upstream Tracking
+Starting Count: 0 / 500
+Cycle Date: 2026-11-16
+```
+
+### Version 1.3.3 Cycle Ledger
+* `2026-11-16` | Governance | Codified missing tool acquisition policy in `md_skill/management_skill.md`, `index/01_tool_usage.md`, `index/02_directory_management.md`, `index/README.md`, and root `README.md` forbidding manual tool recreation and referencing public repository `https://github.com/Thunderock7777/ai-ready-markdown-to-pdf` | `system +28 / -4` | `28 / 500`
+* `2026-11-16` | Release | **Versioned missing tool acquisition policy and upstream tracking as 1.3.3 (PATCH)**
+
+---
+
 ## 7. Release Readiness Checklist
 
 Before tagging, committing, or pushing an architectural release:
