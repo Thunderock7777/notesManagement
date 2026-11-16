@@ -1,6 +1,6 @@
 ---
 name: repository-management
-description: Master operational management skill for the Study Knowledge Hub and automated PDF pipeline. Governs workspace discovery, three-tier note ingestion lifecycles (authentic notes, direct PDFs, and provisional surrogate Markdown), non-destructive source policies, tool immutability, mechanical automation boundaries, machine-readable control plane indexation, search isolation, and Option 1 virtual curriculum taxonomy.
+description: Master operational management skill for the Study Knowledge Hub and automated PDF pipeline. Governs workspace discovery, three-tier note ingestion lifecycles (authentic notes, direct PDFs, and provisional surrogate Markdown), non-destructive source policies, tool immutability, mechanical automation boundaries, machine-readable control plane indexation, search isolation, Option 1 virtual curriculum taxonomy, AI cognitive architecture, and surgical token-conservation governance.
 ---
 
 # Repository Management Skill (Universal & Portable Edition)
@@ -68,6 +68,9 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory w
    - The entire surrogate extraction pipeline (`pymupdf4llm`), full-text search across `txt_md/`, and relational mindmap strictly operate under the foundational requirement that **all imported PDFs must possess a clean, extractable digital text layer** (LaTeX-typeset or digital print).
    - Scanned image PDFs, photocopies, handwritten notebook pictures converted to PDF, camera snapshots, and files with missing or corrupted font encodings (`< 50` characters of extractable text) are **strictly prohibited from entering `pdf/`**.
    - If a non-text PDF is provided, the manager automatically quarantines it in `scrap/` (where it is preserved indefinitely and never deleted). To process its academic content, users must author an authentic text/markdown note in `txt_md/` (Lifecycle 1) to be compiled cleanly by XeLaTeX.
+7. **AI Cognitive Primacy & Surgical Token-Conservation Invariant**:
+   - The AI agent is the sole brain and cognitive engine of the entire repository workflow. Mechanical tools (`manage.bat`, `manage.py`, `tool/compile.bat`) are non-cognitive executors for deterministic I/O, hash calculation, Pandoc compilation, and catalog updates.
+   - Token efficiency must never be pursued by offloading semantic reasoning to rigid scripts. Instead, the AI agent must enforce the 5 Token-Conservation Laws (macro-to-micro queries, line-sliced reads, relational mindmap traversal, and CPU-local scratch aggregation).
 
 ### 1.4 Universal Dropzone, File Sweeper & Quarantine Architecture (`scrap/`)
 1. **Universal User Dropzone**:
@@ -325,7 +328,64 @@ When the user asks to search, find topics, explore conceptual connections, or re
 
 ---
 
-## 7. Proactive Maintenance, Git Standards & 8-Document Audit Checklist
+## 7. AI Cognitive Architecture & Token-Conservation Governance
+
+### 7.1 Fundamental Axiom: The AI is the Sole Brain of the Workflow
+1. **Mechanical Automation vs. Cognitive Reasoning**:
+   - Mechanical tools (`manage.bat`, `manage.py`, `tool/compile.bat`) are strictly **executors**, never thinkers. They handle file system I/O, hash computing, Pandoc invocation, XeLaTeX formatting, table row appending, and basic integrity audits.
+   - The AI agent owns all conceptual reasoning: semantic classification, curriculum gap analysis, syllabus taxonomy mapping, intent comprehension, knowledge synthesis, equation verification, and relational discovery.
+2. **True Efficiency vs. Counterproductive Automation**:
+   - Token conservation must **NEVER** be pursued by replacing AI reasoning with brittle, blind shell scripts or mechanical keyword greps. Mechanical scripts lack semantic nuance, context awareness, and mathematical comprehension.
+   - Genuine token efficiency is achieved by empowering the AI brain with **hierarchical entry points, surgical inspection techniques, and clean context hygiene** so that every token loaded into working memory serves direct cognitive utility.
+
+### 7.2 The 5 Token-Conservation Laws of the Knowledge Hub
+
+#### Law 1: Hierarchical Macro-to-Micro Traversal (Stop Monolithic Dumps)
+- **Problem**: Opening `index/03_topic_index.md` (2,000+ lines, ~30,000 tokens) or `index/04_interconnection_mindmap.md` (2,000+ lines) on every preliminary lookup floods context memory with thousands of irrelevant tokens.
+- **Protocol**:
+  1. *Step 1 (Macro Entry)*: Query `index/00_syllabus_taxonomy.md` (~180 lines, ~1.5k tokens) to identify the relevant `SEC-XX` section and its cataloged sub-topics.
+  2. *Step 2 (Targeted Table Lookup)*: Read only the Master Table portion (first ~160 lines of `03_topic_index.md`) to resolve topic names to exact `DOC-XXX` identifiers and filenames.
+  3. *Step 3 (Surgical Detail Access)*: Open only the specific `### [DOC-XXX]` detail block or the targeted note file. Never read the entire 2,000-line catalog when querying a single concept.
+
+#### Law 2: Surgical Line-Sliced Reading (`StartLine` / `EndLine`)
+- **Problem**: Ingested textbooks and comprehensive reference works (e.g., DOC-133 to DOC-141) are 50 to 65+ pages (100k–180k characters). Dumping an entire surrogate into context burns 25,000–35,000 tokens in a single call, dilutes attention, and induces "Lost in the Middle" cognitive degradation.
+- **Protocol**:
+  - Always inspect the document outline or Table of Contents first, or read targeted line ranges using `read_file` with `StartLine` and `EndLine` parameters (e.g. 100–150 lines around the target derivation, proof, or equation).
+  - Treat textbook surrogates as reference libraries, not conversational dumps. Retrieve only the exact conceptual chunk needed to answer the user's inquiry.
+
+#### Law 3: Relational Graph Traversal (Pre-Computed Edges)
+- **Problem**: Performing broad, unfocused keyword searches across dozens of individual note files to discover connections wastes massive I/O and context tokens.
+- **Protocol**:
+  - Exploit the pre-computed relational triples in `index/04_interconnection_mindmap.md` and the `Prerequisites` / `Core Concepts` fields in `index/03_topic_index.md`.
+  - Traverse explicit edges (`shares Hamiltonian`, `prerequisite for Perturbation Theory`) directly from known nodes rather than rediscovering conceptual links from scratch.
+
+#### Law 4: Ephemeral Scratch-Assisted Local Filtering
+- **Problem**: Multi-document audits, cross-catalog regex scans, or structural YAML verifications across 140+ files stream megabytes of raw text into the conversation history if executed via raw agent tool dumps.
+- **Protocol**:
+  - For repository-wide batch analyses, write a small, single-purpose Python script inside `<scratch>` (`<appDataDir>/brain/<conversation-id>/scratch/`).
+  - The script executes locally on CPU, computes aggregates, extracts exact matching snippets, and prints a compact, structured 10-to-20 line summary.
+  - Only the distilled summary enters the AI's context window, preserving tens of thousands of tokens while keeping full cognitive control with the AI.
+
+#### Law 5: Proactive Context Hygiene & Compaction Cadence
+- **Problem**: Multi-step file sweeps, batch compilations, and iterative index reconciliations leave extensive terminal output logs and JSON staging blocks in conversation history, compounding prompt tokens on every subsequent turn.
+- **Protocol**:
+  - After completing heavy ingestion batches or approximately every 10–15 conversational turns, evaluate context size.
+  - Recommend or trigger `/compact` to summarize trajectory history and flush ephemeral compiler stdout logs.
+  - Because 100% of repository state, taxonomies, and relational graphs are persistently committed to `index/` and Git, context compaction preserves all critical knowledge while instantly reducing turn token consumption by 80–90%.
+
+### 7.3 Cognitive Efficiency vs. Token Waste Matrix
+
+| Operational Phase | Token-Wasteful Practice (Avoid) | Surgical AI Practice (Enforce) | Token Savings |
+|---|---|---|---|
+| **Topic Identification** | Reading all of `03_topic_index.md` (30k tokens) | Check `00_syllabus_taxonomy.md` + table slice (~2k tokens) | **~93%** |
+| **Concept Retrieval** | Dumping 60-page textbook surrogate (35k tokens) | Line-sliced read (`StartLine`/`EndLine` 120 lines) (~1.5k tokens) | **~95%** |
+| **Relation Discovery** | Full-text searching all 140 files in `txt_md/` | Traversing `edges:` in `04_interconnection_mindmap.md` | **~90%** |
+| **Batch File Auditing** | Looping `read_file` on 20+ notes sequentially | CPU-local `<scratch>` script returning 15-line table | **~98%** |
+| **Long Session Drift** | Allowing 30+ turns of compiler logs to accumulate | Clean compaction via `/compact` after major batch cycles | **~85%** |
+
+---
+
+## 8. Proactive Maintenance, Git Standards & 8-Document Audit Checklist
 
 1. **Session Entry Check**: Proactively run `manage.bat scan` on session startup.
 2. **Zero Redundancy**: If duplicates are detected, consolidate into a single document ID immediately via `manage.bat remove-doc`.
@@ -346,7 +406,7 @@ When the user asks to search, find topics, explore conceptual connections, or re
 
 ---
 
-## 8. Portable Bootstrapping Guide: Deploying in a Fresh Directory
+## 9. Portable Bootstrapping Guide: Deploying in a Fresh Directory
 
 If this skill is introduced into a new, uninitialized folder:
 1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.

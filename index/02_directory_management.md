@@ -121,6 +121,15 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 - **Dual Format Support (`.md` and `.txt`)**:
   - Raw notes deposited in `scrap/` or `txt_md/` can freely be **either Markdown (`.md`) or raw plaintext (`.txt`)**; both extensions are first-class formats throughout ingestion, renaming, and compilation.
 
+### Rule 11: AI Cognitive Primacy & Token-Conservation Governance
+- **Fundamental Law**: The AI agent is the sole cognitive brain of this repository. Mechanical tools (`manage.bat`, `manage.py`, `tool/compile.bat`) are non-thinking executors for deterministic file I/O, hash comparisons, Pandoc compilation, and table updates. The AI retains exclusive ownership over semantic understanding, curriculum mapping, concept classification, and relational synthesis.
+- **Token Efficiency Invariant**: Efficiency is achieved not by blind scripts, but by surgical AI behavior:
+  1. *Macro-to-Micro Navigation*: Start with `00_syllabus_taxonomy.md` (~1.5k tokens) and the Master Table header of `03_topic_index.md` before accessing detailed records.
+  2. *Line-Sliced Reading*: Use `read_file` with `StartLine`/`EndLine` on large textbook surrogates rather than reading whole 60-page files into working context.
+  3. *Relational Graph Navigation*: Use the pre-computed edges in `04_interconnection_mindmap.md` rather than wide-net keyword searches across 140+ files.
+  4. *Scratch-Assisted Aggregation*: Run CPU-local Python scripts in `<scratch>` for multi-file audits, returning only concise 10–20 line summaries into conversation context.
+  5. *Periodic Context Compaction*: Recommend `/compact` after heavy batch cycles to prune execution stdout logs while keeping all repository knowledge safe in Git.
+
 ---
 
 ## Direct PDF Ingestion Protocol (`pdf/` Only)

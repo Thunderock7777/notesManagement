@@ -83,3 +83,6 @@ D:\STUDY\
 10. **Universal Dropzone & File Sweeper (`scrap/`)**:
     - Users may drop raw notes or PDFs directly into `scrap/` (or workspace root).
     - Running `cmd /c "manage.bat sweep"` scans the workspace, moving notes to `txt_md/`, digital PDFs to `pdf/`, and quarantining non-text PDFs into `scrap/`. Quarantined files in `scrap/` are preserved indefinitely and **never deleted unless explicitly requested**.
+11. **AI Cognitive Primacy & Surgical Token-Conservation**:
+    - The AI agent is the sole brain of the repository workflow; mechanical tools (`manage.bat`, `manage.py`, `tool/compile.bat`) are executors, never cognitive engines. The AI retains exclusive ownership over semantic understanding, curriculum mapping, concept classification, and relational synthesis.
+    - To prevent context bloat and token waste, the AI must strictly practice surgical inspection (macro-to-micro queries via `00_syllabus_taxonomy.md`, line-sliced reads with `StartLine`/`EndLine`, relational graph traversal, and CPU-local scratch filtering).

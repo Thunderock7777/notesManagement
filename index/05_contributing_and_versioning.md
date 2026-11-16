@@ -370,6 +370,23 @@ Cycle Date: 2026-11-16
 
 ---
 
+```text
+===============================================================================
+VERSION 1.5.1 CYCLE
+===============================================================================
+Cycle: AI Cognitive Architecture & Token-Conservation Governance
+Starting Count: 0 / 500
+Cycle Date: 2026-11-17
+```
+
+### Version 1.5.1 Cycle Ledger
+* `2026-11-17` | Skills | Codified Section 7: "AI Cognitive Architecture & Token-Conservation Governance" in `md_skill/management_skill.md`, establishing the 5 Token-Conservation Laws and affirming AI as the sole brain | `system +62 / -2` | `62 / 500`
+* `2026-11-17` | Deployment | Deployed updated management skill blueprint to `.agent/skills/repository-management/SKILL.md` via `md_skill/install.bat` and verified SHA256 integrity | `system +62 / -2` | `62 / 500`
+* `2026-11-17` | Governance | Synchronized AI cognitive primacy and token-conservation directives across `index/README.md` (Rule 11) and `index/02_directory_management.md` (Rule 11) | `system +24 / -0` | `86 / 500`
+* `2026-11-17` | Release | **Versioned AI cognitive architecture and token-conservation governance as 1.5.1 (PATCH)**
+
+---
+
 ## 7. Release Readiness Checklist
 
 Before tagging, committing, or pushing an architectural release:
