@@ -399,9 +399,10 @@ Cycle Date: 2026-11-17
 
 ### Version 1.5.2 Cycle Ledger
 * `2026-11-17` | Skills | Codified Section 1.3 Rule 8, Section 3.4, and Section 9 Step 4 in `md_skill/management_skill.md`: Ask-first with autonomous AI reasoning fallback when syllabus is missing | `system +12 / -1` | `12 / 500`
-* `2026-11-17` | Deployment | Deployed updated skill blueprint to `.agent/skills/repository-management/SKILL.md` via `md_skill/install.bat` and verified SHA256 integrity | `system +12 / -1` | `12 / 500`
-* `2026-11-17` | Governance | Synchronized Rule 12 across `index/README.md` and `index/02_directory_management.md`, and updated root `README.md` | `system +15 / -0` | `27 / 500`
-* `2026-11-17` | Release | **Versioned missing syllabus protocol and autonomous AI reasoning fallback as 1.5.2 (PATCH)**
+* `2026-11-17` | Skills | Codified Section 9.1 in `md_skill/management_skill.md`: Matrix of Artifact Ownership & Mutation Lifecycle distinguishing external user inputs, AI dynamic control files, and living governance documents | `system +18 / -0` | `30 / 500`
+* `2026-11-17` | Deployment | Deployed updated skill blueprint to `.agent/skills/repository-management/SKILL.md` via `md_skill/install.bat` and verified SHA256 integrity | `system +30 / -1` | `30 / 500`
+* `2026-11-17` | Governance | Synchronized Rule 12 across `index/README.md` and `index/02_directory_management.md`, and updated root `README.md` | `system +15 / -0` | `45 / 500`
+* `2026-11-17` | Release | **Versioned missing syllabus protocol, autonomous AI fallback, and artifact ownership matrix as 1.5.2 (PATCH)**
 
 ---
 

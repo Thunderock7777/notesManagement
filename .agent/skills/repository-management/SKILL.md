@@ -415,6 +415,18 @@ When the user asks to search, find topics, explore conceptual connections, or re
 
 ## 9. Portable Bootstrapping Guide: Deploying in a Fresh Directory
 
+### 9.1 Matrix of Artifact Ownership & Mutation Lifecycle
+
+To ensure zero ambiguity during initialization and subsequent operation, the repository establishes three distinct tiers of artifact ownership:
+
+| Tier | File / Directory | Who Provides / Creates It? | Lifecycle & Mutation Rule |
+|---|---|---|---|
+| **Tier 1: External Inputs** | • `txt_md/*.txt`, `txt_md/*.md`<br>• `pdf/*.pdf` (digital text layer)<br>• `index/syllabus.txt` (or `.md`)<br>• Universal dropzone `scrap/` | **User ONLY** (external source) | Dropped by user (or pasted via chat). Untouched conceptually by AI. Non-destructive preservation. |
+| **Tier 2: AI Dynamic Artifacts** | • `index/00_syllabus_taxonomy.md`<br>• `index/03_topic_index.md`<br>• `index/04_interconnection_mindmap.md`<br>• `txt_md/<name>.md` (provisional surrogates) | **Created Freshly by AI** | Generated from scratch on initialization. Populated, extended, and re-indexed dynamically by AI on every note ingestion. |
+| **Tier 3: Continuous Governance** | • `README.md` (root user manual)<br>• `index/README.md` (master index instructions)<br>• `index/05_contributing_and_versioning.md`<br>• `index/01_tool_usage.md`<br>• `index/02_directory_management.md` | **Initialized from Blueprint, Edited by AI Over Time** | Living governance documents. Incrementally edited and updated by the AI across development cycles (recording version ledgers, sync checklists, and feature evolution). |
+
+### 9.2 Step-by-Step Initialization Sequence
+
 If this skill is introduced into a new, uninitialized folder:
 1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.
 2. **Install Skills**: Run `md_skill/install.bat` (or manually copy blueprints) to deploy into `.agent/skills/`.
@@ -428,4 +440,5 @@ If this skill is introduced into a new, uninitialized folder:
    - **Syllabus Acquisition Protocol**: Check if `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` exists. If missing, ask the user to provide their syllabus. If not provided immediately, use autonomous AI academic reasoning to synthesize a complete curriculum breakdown (`SEC-01` to `SEC-XX`) and generate `index/00_syllabus_taxonomy.md`.
    - Create `index/03_topic_index.md` with the 8-column Master Table header.
    - Create `index/04_interconnection_mindmap.md` with baseline YAML header (`total_nodes: 0`, `total_edges: 0`).
+   - Scaffold governance files (`index/05_contributing_and_versioning.md`, `index/README.md`, `README.md`, `01_tool_usage.md`, `02_directory_management.md`) from blueprints, to be maintained and edited over time.
 5. **Run Baseline Scan**: Execute `manage.bat scan` (or `python manage.py scan`) to verify clean initialization.
