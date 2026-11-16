@@ -88,6 +88,16 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 - **Isolation Guarantee**: Files in `md_skill/` are reserved exclusively for agent behavior and workflow governance. They are never ingested, renamed, or cataloged as academic subject notes.
 - **First-Time Deployment**: When deploying in a new environment, run `cmd /c "D:\STUDY\md_skill\install.bat"` to copy blueprints into `.agent/skills/`.
 
+### Rule 8: GATE 2027 PH Physics Syllabus Taxonomy & Virtual Mapping (Option 1)
+- **Flat Physical Storage**: All notes in `D:\STUDY\txt_md/` and all PDFs in `D:\STUDY\pdf/` must remain strictly in a flat directory layout. Physical sub-directories per section (e.g. `txt_md/SEC-07/`) are strictly prohibited to maintain 100% path safety for Pandoc compilation, LaTeX dependencies, and Git versioning history.
+- **Virtual Control Plane Mapping**:
+  - The control plane maps every document into one of the 11 formal GATE 2027 Sections (`SEC-01` through `SEC-11`) and its specific sub-topic (1 of 78 curriculum units).
+  - Defined in [index/00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md) with full sub-topic listings and curriculum coverage matrix.
+  - Recorded in [index/03_topic_index.md](file:///D:/STUDY/index/03_topic_index.md) (columns `Section` and `Syllabus Topic` in the Master Table and Document Details blocks).
+  - Embedded in [index/04_interconnection_mindmap.md](file:///D:/STUDY/index/04_interconnection_mindmap.md) (YAML fields `section` and `syllabus_topic` on each node).
+- **Curriculum Auditing**:
+  - Run `cmd /c "D:\STUDY\manage.bat coverage"` or `python manage.py coverage` to inspect real-time preparation metrics and curriculum gaps across all 11 sections.
+
 ---
 
 ## Direct PDF Ingestion Protocol (`pdf/` Only)

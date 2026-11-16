@@ -141,6 +141,7 @@ After any architectural, engine, or workflow change, the following documents MUS
 |---|---|
 | [README.md](file:///D:/STUDY/README.md) | Root user manual, quick start, workflow descriptions, and index references. |
 | [index/README.md](file:///D:/STUDY/index/README.md) | Master AI instructions, folder structure tree, operational rules, and sandbox execution shapes. |
+| [index/00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md) | GATE 2027 PH Physics 11-section curriculum breakdown, 78 sub-topics, note linking & coverage metrics. |
 | [index/01_tool_usage.md](file:///D:/STUDY/index/01_tool_usage.md) | Compiler flags, `manage.bat` command shapes, execution permissions, and tool usage boundaries. |
 | [index/02_directory_management.md](file:///D:/STUDY/index/02_directory_management.md) | Taxonomic rules, kebab-case schemas, deduplication checks, and SOP workflows A, B, and C. |
 | [index/03_topic_index.md](file:///D:/STUDY/index/03_topic_index.md) | Machine-readable document inventory, document counts, file links, and status tags. |
@@ -258,6 +259,25 @@ Cycle Date: 2026-11-15
 * `2026-11-15` | Skills | Created `md_skill/` reusable vault, `install.bat` 1-click deployment driver, and installation guide (`md_skill/README.md`) | `system +82 / -0` | `248 / 500`
 * `2026-11-15` | Governance | Codified Rule 7 in `02_directory_management.md` and updated workspace trees in `README.md` and `index/README.md` | `system +26 / -2` | `272 / 500`
 * `2026-11-15` | Release | **Versioned native duplicate auditing, consolidation engine, and md_skill vault as 1.2.1 (PATCH)**
+
+---
+
+```text
+===============================================================================
+VERSION 1.3.0 CYCLE
+===============================================================================
+Cycle: GATE 2027 PH Physics Syllabus Virtual Taxonomy & Coverage Engine
+Starting Count: 0 / 500
+Cycle Date: 2026-11-16
+```
+
+### Version 1.3.0 Cycle Ledger
+* `2026-11-16` | Control | Created `index/00_syllabus_taxonomy.md` structuring the IIT Madras GATE 2027 PH curriculum across 11 sections and 78 sub-topics with live coverage matrix | `system +120 / -0` | `120 / 500`
+* `2026-11-16` | Control | Upgraded `index/03_topic_index.md` with real-time GATE coverage dashboard, 8-column layout (`Section`, `Syllabus Topic`), and detail block enrichment | `system +65 / -12` | `173 / 500`
+* `2026-11-16` | Control | Upgraded `index/04_interconnection_mindmap.md` to v1.3 with GATE 2027 PH framework and `section`/`syllabus_topic` metadata on all 131 nodes | `system +52 / -8` | `217 / 500`
+* `2026-11-16` | Engine | Implemented `cmd_coverage()` and `classify_document()` in `manage.py` and `manage.bat coverage` for terminal preparation audits | `system +95 / -4` | `308 / 500`
+* `2026-11-16` | Governance | Codified Option 1 virtual taxonomy in `02_directory_management.md` (Rule 8), updated `01_tool_usage.md`, `README.md`, and skills | `system +88 / -10` | `386 / 500`
+* `2026-11-16` | Release | **Versioned GATE 2027 PH Physics syllabus virtual taxonomy and coverage engine as 1.3.0 (MINOR)**
 
 ---
 

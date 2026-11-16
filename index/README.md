@@ -20,6 +20,7 @@
 D:\STUDY\
 ├── index/                     <-- INTERNAL AI CONTROL PLANE (Machine-readable)
 │   ├── README.md              <-- Master entry point (this file)
+│   ├── 00_syllabus_taxonomy.md <-- GATE 2027 PH Physics curriculum breakdown & coverage matrix
 │   ├── 01_tool_usage.md       <-- Compiler usage, execution flags & bypass commands
 │   ├── 02_directory_management.md <-- Governance, strict txt_md isolation & renaming SOP
 │   ├── 03_topic_index.md      <-- Machine-readable document inventory & metadata
@@ -69,3 +70,6 @@ D:\STUDY\
    - **Compilation Interlock**: `manage.py` strictly refuses to compile any file marked with the provisional surrogate header (`DO NOT RECOMPILE`).
 7. **Execution Permissions**:
    - Run compilation and ingestion via `cmd /c "D:\STUDY\manage.bat process"` with `BypassSandbox: true` (auto-approvable static command shape).
+8. **GATE 2027 PH Physics Syllabus Virtual Taxonomy (Option 1)**:
+   - Physical note files in `D:\STUDY\txt_md\` and PDFs in `D:\STUDY\pdf\` remain strictly flat to ensure 100% path safety for Pandoc compilation, LaTeX dependencies, and Git tracking.
+   - The entire control plane ([00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md), [03_topic_index.md](file:///D:/STUDY/index/03_topic_index.md), [04_interconnection_mindmap.md](file:///D:/STUDY/index/04_interconnection_mindmap.md)) and the automation engine (`manage.bat coverage`) map each document into one of the 11 formal GATE 2027 Physics Sections (`SEC-01` through `SEC-11`) and its corresponding sub-topic.

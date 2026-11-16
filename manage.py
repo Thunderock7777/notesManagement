@@ -71,7 +71,71 @@ def check_duplicate_content(source_path, target_dir):
                     return fname
     return None
 
-def update_topic_index_file(doc_id, semantic_name, orig_name, domain, concepts, pdf_name, summary, source_type="txt_md", revision_info=None):
+def classify_document(pdf_name, domain=""):
+    """Classifies a document into a GATE 2027 PH section and syllabus topic."""
+    name = pdf_name.lower()
+    
+    if "cauchy" in name or name.startswith("math-"):
+        return ("SEC-02", "Mathematical Physics", "2.4: Complex Analysis, Cauchy-Riemann & Singularities")
+    if "thermodynamics" in name or "statistical" in name or name.startswith("stat-"):
+        return ("SEC-04", "Thermodynamics & Statistical Mechanics", "4.4: Classical and Quantum Statistics")
+    if "zeeman" in name:
+        return ("SEC-08", "Atomic & Molecular Physics", "8.4: External Field Effects (Zeeman, Paschen-Back, Stark)")
+    if "electric-dipole" in name:
+        return ("SEC-08", "Atomic & Molecular Physics", "8.5: Electric Dipole Transitions & Selection Rules")
+    if name.startswith("nuc-") or "liquid-drop" in name or "shell-model" in name or "deuteron" in name:
+        if "deuteron" in name or "nuclear-force" in name:
+            return ("SEC-10", "Nuclear & Particle Physics", "10.4: Nuclear Force & Two-Nucleon Problem (Deuteron)")
+        elif "shell-model" in name:
+            return ("SEC-10", "Nuclear & Particle Physics", "10.3: Nuclear Shell Model & Magic Numbers")
+        elif "liquid-drop" in name or "mass-formula" in name:
+            return ("SEC-10", "Nuclear & Particle Physics", "10.2: Semi-Empirical Mass Formula & Liquid Drop Model")
+        elif "radial-probability" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.6: Central Potentials & Hydrogen-like Atoms")
+        else:
+            return ("SEC-10", "Nuclear & Particle Physics", "10.1: Nuclear Properties & Models")
+    if name.startswith("ssp-") or "brillouin" in name or "bravais" in name or "lattice" in name or "bloch" in name or "wigner-seitz" in name or "miller-indices" in name or "ewald" in name or "lau-condition" in name or "effective-mass" in name:
+        if "wigner-seitz" in name or "bravais" in name or "lattice" in name or "miller-indices" in name:
+            return ("SEC-09", "Solid State Physics", "9.1: Crystallography, Bravais Lattices, Miller Indices & Unit Cells")
+        elif "ewald" in name or "lau" in name or "first-brillouin" in name or "reciprocal-lattice" in name or "g-hkl" in name:
+            return ("SEC-09", "Solid State Physics", "9.2: Diffraction, Reciprocal Lattice, Ewald Sphere & Laue Condition")
+        elif "einstein-temperature" in name or "oscillations" in name:
+            return ("SEC-09", "Solid State Physics", "9.4: Lattice Vibrations, Phonons & Thermal Properties")
+        elif "bloch" in name or "band" in name or "anisotropic-effective-mass" in name:
+            return ("SEC-09", "Solid State Physics", "9.6: Band Theory of Solids, Bloch's Theorem & Effective Mass")
+        elif "density-of-states" in name or "effective-mass" in name:
+            return ("SEC-09", "Solid State Physics", "9.5: Free Electron Theory, Band Theory & Density of States")
+        elif "dielectric" in name:
+            return ("SEC-09", "Solid State Physics", "9.8: Dielectric Properties of Solids, Polarizability & Ferroelectricity")
+        elif "potential-wells" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.3: One-Dimensional Potentials & Wells")
+        elif "pauli" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.8: Identical Particles & Pauli Exclusion Principle")
+        else:
+            return ("SEC-09", "Solid State Physics", "9.1: Elements of Crystallography & Crystal Structures")
+    if name.startswith("qm-") or "wavefunction" in name or "operator" in name or "perturbation" in name or "harmonic-oscillator" in name or "pauli" in name or "potential" in name or "commutator" in name:
+        if "harmonic-oscillator" in name or "ladder-operators" in name or "truncated-half" in name or "2d-isotropic" in name or "3d-isotropic" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.5: Harmonic Oscillators (1D, 2D, 3D & Degeneracy)")
+        elif "potential-well" in name or "potential" in name or "box" in name or "boundaries" in name or "attenuation" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.3: One-Dimensional Potentials (Step, Wells, Tunneling, Delta Functions)")
+        elif "parity" in name or "operator" in name or "eigenvalue" in name or "eigenstate" in name or "hilbert" in name or "commutator" in name or "hermitian" in name or "phase" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.1: Foundations of QM, Uncertainty Principle & Hilbert Space Operators")
+        elif "hydrogen" in name or "radial" in name or "bohr" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.6: Central Potentials & Hydrogen-like Atoms (Radial & Angular Wavefunctions)")
+        elif "spin" in name or "pauli-spin" in name or "angular-momentum" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.7: Orbital and Spin Angular Momenta & Pauli Spin Matrices")
+        elif "pauli-exclusion" in name or "identical" in name or "singlet" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.8: Identical Particles, Pauli Exclusion Principle & Fermions/Bosons")
+        elif "perturbation" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.9: Approximation Methods (Variational Method & Perturbation Theory)")
+        elif "time-evolved" in name or "wavefunction" in name:
+            return ("SEC-07", "Quantum Mechanics", "7.2: Time-Independent & Time-Dependent Schrödinger Dynamics")
+        else:
+            return ("SEC-07", "Quantum Mechanics", "7.1: Foundations of Quantum Mechanics")
+            
+    return ("SEC-07", "Quantum Mechanics", "7.1: Foundations of Quantum Mechanics")
+
+def update_topic_index_file(doc_id, semantic_name, orig_name, domain, concepts, pdf_name, summary, source_type="txt_md", revision_info=None, section=None, topic=None):
     """Safely updates or appends to 03_topic_index.md."""
     if not os.path.exists(TOPIC_INDEX_FILE):
         print(f"Error: {TOPIC_INDEX_FILE} not found.")
@@ -80,19 +144,20 @@ def update_topic_index_file(doc_id, semantic_name, orig_name, domain, concepts, 
     with open(TOPIC_INDEX_FILE, "r", encoding="utf-8") as f:
         lines = f.readlines()
         
-    # Check if doc_id already exists (update existing)
-    existing_idx = -1
-    for i, line in enumerate(lines):
-        if line.strip().startswith(f"| {doc_id} |") or line.strip().startswith(f"### [{doc_id}]"):
-            existing_idx = i
-            break
-            
-    concepts_str = ", ".join(concepts[:2]) if concepts else domain
+    sec_code, sec_title, unit = classify_document(pdf_name, domain)
+    if section:
+        sec_code = section
+    if topic:
+        unit = topic
+    unit_code = unit.split(":")[0].strip()
+    unit_short = unit.split(":")[1].strip() if ":" in unit else unit
+    
     status_str = "Compiled from Source" if source_type == "txt_md" else "Indexed (Direct PDF Import)"
+    if "surrogate" in source_type:
+        status_str = "Provisional Source (Auto-extracted)"
     today = "2026-11-15"
     
-    table_row = f"| {doc_id} | `{pdf_name}` | `{orig_name}` | **{domain}**: {concepts_str} | [{pdf_name}](file:///D:/STUDY/pdf/{pdf_name}) | {status_str} | {today} |\n"
-    
+    table_row = f"| {doc_id} | **{sec_code}** | `{unit_code}` {unit_short[:25]} | `{pdf_name}` | `{orig_name}` | [{pdf_name}](file:///D:/STUDY/pdf/{pdf_name}) | {status_str} | {today} |\n"
     source_file_entry = f"[{semantic_name}](file:///D:/STUDY/txt_md/{semantic_name})" if source_type == "txt_md" else f"`N/A - Direct PDF Import`"
     
     concepts_list_str = "\n".join([f"  - {c}" for c in concepts])
@@ -103,6 +168,8 @@ def update_topic_index_file(doc_id, semantic_name, orig_name, domain, concepts, 
 - **Source File**: {source_file_entry}
 - **Compiled PDF**: [{pdf_name}](file:///D:/STUDY/pdf/{pdf_name})
 - **Original Filename**: `{orig_name}`
+- **GATE Section**: `{sec_code}` ({sec_title})
+- **Syllabus Topic**: `{unit}`
 - **Domain**: `{domain}`
 - **Core Concepts**:
 {concepts_list_str}
@@ -116,7 +183,6 @@ def update_topic_index_file(doc_id, semantic_name, orig_name, domain, concepts, 
     
     # If doc_id already exists in detailed block, replace it
     if f"### [{doc_id}]" in full_content:
-        # Update table row
         new_lines = []
         for line in lines:
             if line.strip().startswith(f"| {doc_id} |"):
@@ -124,12 +190,9 @@ def update_topic_index_file(doc_id, semantic_name, orig_name, domain, concepts, 
             else:
                 new_lines.append(line)
         full_content = "".join(new_lines)
-        
-        # Replace detail block
         pattern = rf"### \[{doc_id}\][\s\S]*?(?=\n### \[|\n---|\Z)"
         full_content = re.sub(pattern, detail_block.strip() + "\n", full_content)
     else:
-        # Append to table
         table_end = -1
         for i, line in enumerate(lines):
             if line.strip() == "---":
@@ -145,7 +208,7 @@ def update_topic_index_file(doc_id, semantic_name, orig_name, domain, concepts, 
         f.write(full_content)
     return True
 
-def update_mindmap_file(doc_id, pdf_name, source_type, domain, concepts, summary, source_note=None, prerequisites=None):
+def update_mindmap_file(doc_id, pdf_name, source_type, domain, concepts, summary, source_note=None, prerequisites=None, section=None, topic=None):
     """Safely updates or appends node to 04_interconnection_mindmap.md."""
     if not os.path.exists(MINDMAP_FILE):
         return False
@@ -153,13 +216,21 @@ def update_mindmap_file(doc_id, pdf_name, source_type, domain, concepts, summary
     with open(MINDMAP_FILE, "r", encoding="utf-8") as f:
         content = f.read()
         
+    sec_code, sec_title, unit = classify_document(pdf_name, domain)
+    if section:
+        sec_code = section
+    if topic:
+        unit = topic
+        
     node_dict = {
         "id": doc_id,
         "file": pdf_name,
         "source_type": source_type,
         "domain": domain,
         "core_concepts": concepts,
-        "summary": summary
+        "summary": summary,
+        "section": sec_code,
+        "syllabus_topic": unit
     }
     if source_note:
         node_dict["source_note"] = source_note
@@ -167,16 +238,12 @@ def update_mindmap_file(doc_id, pdf_name, source_type, domain, concepts, summary
         node_dict["prerequisites"] = prerequisites
         
     yaml_node = yaml.dump([node_dict], sort_keys=False, indent=2)
-    # Strip opening list dash indentation to match schema
     node_str = "  " + yaml_node.strip().replace("\n", "\n  ") + "\n"
     
-    # Check if node exists
     if f"id: {doc_id}" in content:
-        # Node already present, updated in place
         pattern = rf"- id: {doc_id}[\s\S]*?(?=\n- id:|\nedges:)"
         content = re.sub(pattern, yaml.dump(node_dict, sort_keys=False).strip(), content)
     else:
-        # Insert before edges:
         if "edges:" in content:
             content = content.replace("edges:\n", f"{yaml.dump([node_dict], sort_keys=False)}\nedges:\n")
         else:
@@ -523,6 +590,36 @@ def cmd_remove_doc(args):
     
     print(f"[DONE] Successfully removed {doc_id} and consolidated into {consolidate_into or 'None'}.")
 
+def cmd_coverage():
+    """Calculates and prints the real-time GATE 2027 PH Physics syllabus coverage metrics."""
+    taxonomy_file = os.path.join(INDEX_DIR, "00_syllabus_taxonomy.md")
+    if not os.path.exists(taxonomy_file):
+        print("Error: 00_syllabus_taxonomy.md not found.")
+        return
+        
+    with open(taxonomy_file, "r", encoding="utf-8") as f:
+        content = f.read()
+        
+    print("==========================================================================")
+    print("      GATE 2027 PH PHYSICS: SYLLABUS PREPARATION & COVERAGE AUDIT        ")
+    print("==========================================================================")
+    
+    matrix_match = re.search(r"## 📊 Real-Time Syllabus Coverage Matrix\n\n(.*?)\n---", content, re.DOTALL)
+    if matrix_match:
+        table_text = matrix_match.group(1).strip()
+        lines = table_text.splitlines()
+        for l in lines:
+            if l.startswith("| **SEC-") or l.startswith("| **TOTAL"):
+                parts = [p.strip() for p in l.split("|")[1:-1]]
+                sec = parts[0].replace("*", "")
+                title = parts[1][:30]
+                notes = parts[2].replace("*", "")
+                status = parts[5]
+                print(f" {sec:7} | {title:30} | {notes:10} | {status}")
+    print("==========================================================================")
+    print(" Detailed section breakdown available at: index/00_syllabus_taxonomy.md")
+    print("==========================================================================")
+
 def cmd_process():
     """Reads .pending.json and executes the requested ingestion action."""
     pending_file = os.path.join(WORKSPACE, ".pending.json")
@@ -569,6 +666,7 @@ def main():
 
     # scan
     subparsers.add_parser("scan", help="Scan repository for status and unindexed files")
+    subparsers.add_parser("coverage", help="Display GATE 2027 Physics syllabus coverage metrics")
     
     # audit-duplicates
     subparsers.add_parser("audit-duplicates", help="Audit repository for exact and normalized duplicate notes/PDFs")
@@ -602,6 +700,8 @@ def main():
         cmd_process()
     elif args.command == "scan":
         cmd_scan()
+    elif args.command == "coverage":
+        cmd_coverage()
     elif args.command == "audit-duplicates":
         cmd_audit_duplicates()
     elif args.command == "remove-doc":

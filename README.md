@@ -11,9 +11,15 @@ D:\STUDY\
 ├── txt_md/     <-- INPUT & SURROGATES: Authoritative notes & provisional search surrogates
 ├── pdf/        <-- OUTPUT & STORAGE: All compiled and imported PDFs live here
 ├── index/      <-- CONTROL PLANE: Master topic catalog, mindmap, governance & version ledger
+│   ├── 00_syllabus_taxonomy.md <-- GATE 2027 PH Physics curriculum & coverage matrix
+│   ├── 01_tool_usage.md       <-- Compiler usage & CLI automation
+│   ├── 02_directory_management.md <-- Governance, naming SOP & rules
+│   ├── 03_topic_index.md      <-- Master document catalog & coverage dashboard
+│   ├── 04_interconnection_mindmap.md <-- Knowledge graph & relational triples
+│   └── 05_contributing_and_versioning.md <-- Architecture & version ledger
 ├── md_skill/   <-- REUSABLE SKILLS VAULT: Skill blueprints & 1-click installer (install.bat)
 ├── tool/       <-- COMPILER: Pandoc + XeLaTeX publishing engine (STRICTLY IMMUTABLE)
-├── manage.bat  <-- One-click automation runner (scan, process, audit-duplicates, remove-doc)
+├── manage.bat  <-- One-click automation runner (scan, process, audit-duplicates, coverage)
 ├── manage.py   <-- Master automation engine
 └── README.md   <-- User manual (this file)
 ```
@@ -79,6 +85,11 @@ Your knowledge base has two companion indexing files inside [index/](file:///D:/
 
 The AI queries the mindmap graph and provides instant, contextual answers with direct links to the relevant PDFs.
 
+### 3. GATE 2027 PH Physics Syllabus Taxonomy & Coverage Matrix ([index/00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md))
+- **What it is**: Complete curriculum breakdown of the official IIT Madras GATE 2027 PH Physics syllabus across 11 sections and 78 sub-topics, linking notes assigned to each unit and tracking real-time preparation progress.
+- **How to check preparation metrics**:
+  - Run `cmd /c "D:\STUDY\manage.bat coverage"` in the terminal or ask in chat: *"Check syllabus coverage"* or *"Show GATE preparation gaps"*.
+
 ---
 
 ## ⚡ Useful Chat Commands
@@ -94,6 +105,7 @@ Here are quick prompts you can give the AI at any time:
 | Find prerequisites | `"What do I need to know before reading DOC-023?"` |
 | Inspect a specific PDF | `"Read DOC-015 and summarize its key equations"` |
 | Audit duplicate notes | `"Check if there are any duplicate notes"` |
+| Audit syllabus coverage & gaps | `"Check syllabus coverage"` / `"Show curriculum gaps"` |
 
 ---
 

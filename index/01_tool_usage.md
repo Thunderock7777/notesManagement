@@ -48,6 +48,7 @@ cmd /c "D:\STUDY\manage.bat process"
 - Ingest source note: `cmd /c "D:\STUDY\manage.bat ingest-note --file ... --name ... --domain ... --concepts ... --summary ..."`
 - Ingest direct PDF: `cmd /c "D:\STUDY\manage.bat ingest-pdf --file ... --name ... --domain ... --concepts ... --summary ..."`
 - Proactive scan: `cmd /c "D:\STUDY\manage.bat scan"` (audits repository and counts authentic source notes vs provisional surrogates)
+- Syllabus coverage audit: `cmd /c "D:\STUDY\manage.bat coverage"` (computes and displays the complete GATE 2027 PH Physics syllabus preparation & coverage audit across all 11 sections, note counts, coverage levels, and curriculum gap alerts)
 - Surrogate extraction: batch extracts companion Markdown approximations for all sourceless PDFs via `pymupdf4llm`.
 
 ---
@@ -72,6 +73,9 @@ cmd /c "D:\STUDY\manage.bat process"
 4. **Automated Deduplication & Repository Scanning**:
    - Checking MD5 content hashes against existing files in `txt_md/` and `pdf/` to prevent duplicate notes or PDFs.
    - Performing proactive scans (`manage.bat scan`) on session startup.
+5. **Syllabus Coverage Auditing & Automatic Classification**:
+   - Running `manage.bat coverage` to audit preparation progress across all 11 sections of the GATE 2027 PH Physics curriculum.
+   - Automatically assigning GATE section (`SEC-01` to `SEC-11`) and syllabus sub-topics when generating new index entries in `03_topic_index.md` and `04_interconnection_mindmap.md`.
 
 ---
 

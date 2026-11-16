@@ -168,11 +168,25 @@ When the user asks to search, find topics, explore conceptual connections, or re
    * `.gitignore` must ignore `pdf/*` (except `pdf/.gitkeep`). Binary PDFs are never pushed.
    * All note text in `txt_md/` (authentic + surrogate) and index files in `index/` are tracked and pushed.
    * Never commit `.pending.json`, `tool/md2pdf_cache/`, `__pycache__/`, or scratch files.
-4. **Audit Checklist**: After any workflow or engine modification, audit and synchronize all 7 core documents:
+4. **Audit Checklist**: After any workflow or engine modification, audit and synchronize all 8 core documents:
    * `README.md`
    * `index/README.md`
+   * `index/00_syllabus_taxonomy.md`
    * `index/01_tool_usage.md`
    * `index/02_directory_management.md`
    * `index/03_topic_index.md`
    * `index/04_interconnection_mindmap.md`
    * `index/05_contributing_and_versioning.md`
+
+---
+
+## 6. GATE 2027 PH Physics Syllabus Alignment & Virtual Taxonomy (Option 1)
+
+1. **Option 1 Virtual Taxonomy Mandate**:
+   * `D:\STUDY\txt_md\` and `D:\STUDY\pdf\` remain strictly flat. Never create nested section directories (e.g. `txt_md/SEC-07/`) to prevent breaking relative compilation paths, LaTeX build scripts, or Git tracking.
+   * The entire control plane ([00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md), [03_topic_index.md](file:///D:/STUDY/index/03_topic_index.md), [04_interconnection_mindmap.md](file:///D:/STUDY/index/04_interconnection_mindmap.md)) maps every document virtually into one of the 11 formal GATE Sections (`SEC-01` to `SEC-11`) and its specific sub-topic (1 of 78 units).
+2. **Official GATE Curriculum Taxonomy**:
+   * Complete 11-section curriculum breakdown defined in [index/00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md).
+   * All 131+ notes indexed with `- **GATE Section**:` and `- **Syllabus Topic**:` in `03_topic_index.md` and YAML tags `section:` and `syllabus_topic:` in `04_interconnection_mindmap.md`.
+3. **Curriculum Coverage Auditing**:
+   * Run `cmd /c "D:\STUDY\manage.bat coverage"` or `python manage.py coverage` to inspect real-time syllabus coverage metrics, section note counts, and curriculum gap alerts across the 11 sections.
