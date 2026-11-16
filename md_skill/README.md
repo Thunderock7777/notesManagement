@@ -8,8 +8,8 @@ This directory serves as the **master reusable skill vault** for the Study Knowl
 
 | Skill Name | Blueprint Source | Installed Location | Core Purpose |
 |---|---|---|---|
-| **`karpathy-guidelines`** | [`SKILL.md`](file:///D:/STUDY/md_skill/SKILL.md) | `.agent/skills/karpathy-guidelines/SKILL.md` | Behavioral guidelines reducing common LLM coding pitfalls, forcing surgical changes, eliminating speculative code, and establishing verifiable completion criteria. |
-| **`repository-management`** | [`management_skill.md`](file:///D:/STUDY/md_skill/management_skill.md) | `.agent/skills/repository-management/SKILL.md` | Master operational management skill governing three-tier note ingestion lifecycles (authentic notes, direct PDFs, and surrogate Markdown), compilation locks, tool immutability, and search isolation. |
+| **`karpathy-guidelines`** | [`SKILL.md`](SKILL.md) | `.agent/skills/karpathy-guidelines/SKILL.md` | Behavioral guidelines reducing common LLM coding pitfalls, forcing surgical changes, eliminating speculative code, and establishing verifiable completion criteria. |
+| **`repository-management`** | [`management_skill.md`](management_skill.md) | `.agent/skills/repository-management/SKILL.md` | Master operational management skill governing three-tier note ingestion lifecycles (authentic notes, direct PDFs, and surrogate Markdown), compilation locks, tool immutability, and search isolation. |
 
 ---
 
@@ -20,9 +20,9 @@ This directory serves as the **master reusable skill vault** for the Study Knowl
 Simply run the batch installer from the workspace root or inside `md_skill/`:
 
 ```cmd
-cmd /c "D:\STUDY\md_skill\install.bat"
+cmd /c "md_skill\install.bat"
 ```
-*(Or in Windows File Explorer, simply double-click `install.bat`).*
+*(Or in Windows File Explorer, simply double-click `install.bat` inside `md_skill\`).*
 
 ---
 

@@ -281,6 +281,22 @@ Cycle Date: 2026-11-16
 
 ---
 
+```text
+===============================================================================
+VERSION 1.3.1 CYCLE
+===============================================================================
+Cycle: Universal Portability & Dynamic Workspace Resolution for Skills
+Starting Count: 0 / 500
+Cycle Date: 2026-11-16
+```
+
+### Version 1.3.1 Cycle Ledger
+* `2026-11-16` | Skills | Refactored `md_skill/management_skill.md` and `.agent/skills/repository-management/SKILL.md` to Universal & Portable Edition, replacing machine-specific paths with dynamic `<WORKSPACE_ROOT>` resolution | `system +85 / -35` | `85 / 500`
+* `2026-11-16` | Skills | Codified 7-phase systematic order of operations (Phase 0 Discovery to Phase 6 Fresh Bootstrapping) for complete portability | `system +45 / -10` | `120 / 500`
+* `2026-11-16` | Release | **Versioned universal skill portability and dynamic workspace resolution as 1.3.1 (PATCH)**
+
+---
+
 ## 7. Release Readiness Checklist
 
 Before tagging, committing, or pushing an architectural release:
