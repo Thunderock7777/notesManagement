@@ -105,9 +105,19 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 ### Rule 9: Fundamental Prerequisite Assumption & Text-Layer Mandate (Option C Gate)
 - **Core Structural Invariant**: The repository's entire automated control plane, surrogate markdown generation (`pymupdf4llm`), full-text search across `txt_md/`, semantic graph edges, and deduplication logic operate on the strict assumption that **all PDFs in `pdf/` have a clean, digital, extractable text layer** (LaTeX-typeset or native digital publication).
 - **Prohibited File Types**:
-  - Scanned image PDFs, photocopies, handwritten notebook pictures converted to PDF, camera snapshots, and PDFs with missing or corrupted `ToUnicode` font encodings (`< 50` characters of extractable text) are **strictly rejected**.
-  - `manage.py ingest-pdf` halts immediately with exit code 1 (`[ERROR] PDF has no extractable text layer (scanned/bitmap). Rejected.`).
+  - Scanned image PDFs, photocopies, handwritten notebook pictures converted to PDF, camera snapshots, and PDFs with missing or corrupted `ToUnicode` font encodings (`< 50` characters of extractable text) are **strictly prohibited from entering `pdf/`**.
+  - When non-text PDFs are detected during ingestion or sweeping, they are automatically quarantined into `scrap/`.
 - **Handling Non-Digital / Scanned Notes**: If the user possesses handwritten or scanned study material, they must NOT place the image PDF directly into `pdf/`. Instead, they must transcribe or author an authentic `.txt` or `.md` note in `txt_md/` (Lifecycle 1), which `tool/compile.bat` will compile cleanly into a publication-grade XeLaTeX digital PDF.
+
+### Rule 10: Universal Dropzone, File Sweeper & Quarantine Architecture (`scrap/`)
+- **Universal User Dropzone**: The `scrap/` directory serves as an inbox where the user can drop any raw `.txt`, `.md`, or `.pdf` file without manually sorting folders.
+- **Automated Sweeper (`manage.bat sweep`)**:
+  - Scans `scrap/`, root, `index/`, `txt_md/`, and `pdf/` to detect misplaced files.
+  - Automatically routes `.txt` and `.md` notes into `txt_md/`.
+  - Automatically routes verified digital PDFs into `pdf/`.
+  - Automatically isolates non-text or scanned PDFs into `scrap/`.
+- **Quarantine Preservation (Zero Destruction)**:
+  - Scanned/non-text PDFs placed in `scrap/` are preserved indefinitely and **will never be deleted unless explicitly requested by the user**.
 
 ---
 

@@ -25,6 +25,7 @@ import yaml
 WORKSPACE = os.path.abspath(os.path.dirname(__file__))
 TXT_MD_DIR = os.path.join(WORKSPACE, "txt_md")
 PDF_DIR = os.path.join(WORKSPACE, "pdf")
+SCRAP_DIR = os.path.join(WORKSPACE, "scrap")
 INDEX_DIR = os.path.join(WORKSPACE, "index")
 TOOL_DIR = os.path.join(WORKSPACE, "tool")
 COMPILE_BAT = os.path.join(TOOL_DIR, "compile.bat")
@@ -38,6 +39,15 @@ def get_file_hash(filepath):
         while chunk := f.read(65536):
             hasher.update(chunk)
     return hasher.hexdigest()
+
+def has_text_layer(pdf_path, min_chars=50):
+    """Checks if a PDF has an extractable digital text layer of at least min_chars."""
+    try:
+        with fitz.open(pdf_path) as doc:
+            text = "".join([page.get_text() for page in doc])
+        return len(text.strip()) >= min_chars
+    except Exception:
+        return False
 
 def get_next_doc_id():
     """Parse 03_topic_index.md to find the highest DOC-XXX number."""
@@ -275,6 +285,13 @@ def cmd_scan():
     print(f"Notes in txt_md/: {len(txt_files)} ({authentic_count} authentic source notes, {surrogate_count} provisional surrogates)")
     print(f"PDFs in pdf/:     {len(pdf_files)}")
     
+    # Check scrap/
+    scrap_files = [f for f in os.listdir(SCRAP_DIR) if os.path.isfile(os.path.join(SCRAP_DIR, f)) and not f.startswith('.')] if os.path.exists(SCRAP_DIR) else []
+    if scrap_files:
+        print(f"Files in scrap/:  {len(scrap_files)} (Quarantined non-text PDFs or dropzone items: {scrap_files})")
+    else:
+        print("Files in scrap/:  0 (Clean dropzone & quarantine)")
+    
     with open(TOPIC_INDEX_FILE, "r", encoding="utf-8") as f:
         index_text = f.read()
         
@@ -290,6 +307,12 @@ def cmd_scan():
         print(f" [!] Unindexed PDFs in pdf/: {unindexed_pdf}")
     else:
         print(" [OK] All PDFs in pdf/ are cataloged.")
+        
+    # Check for misplaced files in workspace root
+    misplaced_root = [f for f in os.listdir(WORKSPACE) if os.path.isfile(os.path.join(WORKSPACE, f)) and f.endswith(('.txt', '.md', '.pdf')) and f != "README.md"]
+    if misplaced_root:
+        print(f" [!] Misplaced notes/PDFs in workspace root: {misplaced_root}")
+        print("     Tip: Run 'manage.bat sweep' to auto-route misplaced notes to txt_md/ and PDFs to pdf/ or scrap/.")
 
 def cmd_ingest_note(args):
     """Executes atomic ingestion of a source note."""
@@ -400,12 +423,15 @@ def cmd_ingest_pdf(args):
     semantic_pdf_name = f"{target_base}.pdf"
     final_pdf_path = os.path.join(PDF_DIR, semantic_pdf_name)
     
-    # 1. Verify Text Layer
-    with fitz.open(src_file) as doc:
-        text = "".join([page.get_text() for page in doc])
-    if len(text.strip()) < 50:
-        print("[ERROR] PDF has no extractable text layer (scanned/bitmap). Rejected.")
-        sys.exit(1)
+    # 1. Verify Text Layer (Option C Gate with scrap/ Quarantine)
+    if not has_text_layer(src_file, min_chars=50):
+        os.makedirs(SCRAP_DIR, exist_ok=True)
+        quarantine_dest = os.path.join(SCRAP_DIR, orig_name)
+        if src_file != quarantine_dest:
+            shutil.move(src_file, quarantine_dest)
+        print(f"[QUARANTINE -> scrap/] PDF '{orig_name}' has no extractable digital text layer (scanned/bitmap).")
+        print(f"                      Moved to scrap/{orig_name} (preserved indefinitely; will not delete until asked).")
+        sys.exit(0)
         
     # 2. Deduplication Check
     dup_pdf = check_duplicate_content(src_file, PDF_DIR)
@@ -657,6 +683,152 @@ def cmd_process():
         if os.path.exists(pending_file):
             os.remove(pending_file)
 
+def cmd_sweep():
+    """
+    Sweeps the repository for misplaced notes and PDFs:
+    - Notes (.txt/.md) found in scrap/, root, index/, or pdf/ -> moved to txt_md/
+    - PDFs found in scrap/, root, index/, or txt_md/:
+        - If has digital text layer (>= 50 chars) -> moved to pdf/
+        - If has NO text layer (< 50 chars) -> moved to scrap/ (quarantined)
+    - PDFs in pdf/ with NO text layer -> moved to scrap/ (quarantined)
+    """
+    print("=== REPOSITORY FILE SWEEPER & ROUTER ===")
+    os.makedirs(SCRAP_DIR, exist_ok=True)
+    os.makedirs(TXT_MD_DIR, exist_ok=True)
+    os.makedirs(PDF_DIR, exist_ok=True)
+    
+    moved_count = 0
+    quarantine_count = 0
+    
+    # 1. Sweep scrap/ (Universal Dropzone & Quarantine)
+    if os.path.exists(SCRAP_DIR):
+        for f in os.listdir(SCRAP_DIR):
+            if f.startswith("."):
+                continue
+            fpath = os.path.join(SCRAP_DIR, f)
+            if not os.path.isfile(fpath):
+                continue
+                
+            ext = os.path.splitext(f)[1].lower()
+            if ext in (".txt", ".md"):
+                dest = os.path.join(TXT_MD_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [ROUTED -> txt_md/] Staged note from scrap/: {f}")
+                moved_count += 1
+            elif ext == ".pdf":
+                if has_text_layer(fpath):
+                    dest = os.path.join(PDF_DIR, f)
+                    shutil.move(fpath, dest)
+                    print(f" [ROUTED -> pdf/] Digital PDF from scrap/: {f}")
+                    moved_count += 1
+                else:
+                    print(f" [QUARANTINE in scrap/] Non-text/scanned PDF remains in scrap/: {f}")
+                    quarantine_count += 1
+
+    # 2. Sweep workspace root
+    for f in os.listdir(WORKSPACE):
+        if f.startswith(".") or f == "README.md":
+            continue
+        fpath = os.path.join(WORKSPACE, f)
+        if not os.path.isfile(fpath):
+            continue
+            
+        ext = os.path.splitext(f)[1].lower()
+        if ext in (".txt", ".md"):
+            dest = os.path.join(TXT_MD_DIR, f)
+            shutil.move(fpath, dest)
+            print(f" [ROUTED -> txt_md/] Misplaced note in root moved to txt_md/: {f}")
+            moved_count += 1
+        elif ext == ".pdf":
+            if has_text_layer(fpath):
+                dest = os.path.join(PDF_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [ROUTED -> pdf/] Misplaced digital PDF in root moved to pdf/: {f}")
+                moved_count += 1
+            else:
+                dest = os.path.join(SCRAP_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [QUARANTINE -> scrap/] Scanned PDF in root moved to scrap/: {f}")
+                quarantine_count += 1
+                moved_count += 1
+
+    # 3. Sweep txt_md/ (Catch PDFs mistakenly dropped here)
+    for f in os.listdir(TXT_MD_DIR):
+        if f.startswith("."):
+            continue
+        fpath = os.path.join(TXT_MD_DIR, f)
+        if not os.path.isfile(fpath):
+            continue
+        ext = os.path.splitext(f)[1].lower()
+        if ext == ".pdf":
+            if has_text_layer(fpath):
+                dest = os.path.join(PDF_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [ROUTED -> pdf/] PDF found in txt_md/ moved to pdf/: {f}")
+                moved_count += 1
+            else:
+                dest = os.path.join(SCRAP_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [QUARANTINE -> scrap/] Scanned PDF in txt_md/ moved to scrap/: {f}")
+                quarantine_count += 1
+                moved_count += 1
+
+    # 4. Sweep pdf/ (Catch notes dropped here or non-text PDFs)
+    for f in os.listdir(PDF_DIR):
+        if f.startswith("."):
+            continue
+        fpath = os.path.join(PDF_DIR, f)
+        if not os.path.isfile(fpath):
+            continue
+        ext = os.path.splitext(f)[1].lower()
+        if ext in (".txt", ".md"):
+            dest = os.path.join(TXT_MD_DIR, f)
+            shutil.move(fpath, dest)
+            print(f" [ROUTED -> txt_md/] Note found in pdf/ moved to txt_md/: {f}")
+            moved_count += 1
+        elif ext == ".pdf":
+            if not has_text_layer(fpath):
+                dest = os.path.join(SCRAP_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [QUARANTINE -> scrap/] Scanned PDF in pdf/ moved to scrap/: {f}")
+                quarantine_count += 1
+                moved_count += 1
+
+    # 5. Sweep index/ (Protect control plane from stray notes/PDFs)
+    INDEX_CORE = {"README.md", "00_syllabus_taxonomy.md", "01_tool_usage.md",
+                  "02_directory_management.md", "03_topic_index.md",
+                  "04_interconnection_mindmap.md", "05_contributing_and_versioning.md",
+                  "syllabus.txt"}
+    for f in os.listdir(INDEX_DIR):
+        if f in INDEX_CORE or f.startswith("."):
+            continue
+        fpath = os.path.join(INDEX_DIR, f)
+        if not os.path.isfile(fpath):
+            continue
+        ext = os.path.splitext(f)[1].lower()
+        if ext in (".txt", ".md"):
+            dest = os.path.join(TXT_MD_DIR, f)
+            shutil.move(fpath, dest)
+            print(f" [ROUTED -> txt_md/] Stray note in index/ moved to txt_md/: {f}")
+            moved_count += 1
+        elif ext == ".pdf":
+            if has_text_layer(fpath):
+                dest = os.path.join(PDF_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [ROUTED -> pdf/] Stray digital PDF in index/ moved to pdf/: {f}")
+                moved_count += 1
+            else:
+                dest = os.path.join(SCRAP_DIR, f)
+                shutil.move(fpath, dest)
+                print(f" [QUARANTINE -> scrap/] Scanned PDF in index/ moved to scrap/: {f}")
+                quarantine_count += 1
+                moved_count += 1
+
+    print("-" * 50)
+    print(f"Sweeping complete. Files auto-routed: {moved_count}, Quarantined in scrap/: {quarantine_count}")
+    if quarantine_count > 0:
+        print(" [NOTE] Non-text PDFs in scrap/ are preserved indefinitely and will never be deleted unless explicitly requested.")
+
 def main():
     parser = argparse.ArgumentParser(description="Study Repository Automation Engine")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -666,6 +838,7 @@ def main():
 
     # scan
     subparsers.add_parser("scan", help="Scan repository for status and unindexed files")
+    subparsers.add_parser("sweep", help="Collect and auto-route misplaced notes/PDFs and quarantine non-text PDFs into scrap/")
     subparsers.add_parser("coverage", help="Display GATE 2027 Physics syllabus coverage metrics")
     
     # audit-duplicates
@@ -700,6 +873,8 @@ def main():
         cmd_process()
     elif args.command == "scan":
         cmd_scan()
+    elif args.command == "sweep":
+        cmd_sweep()
     elif args.command == "coverage":
         cmd_coverage()
     elif args.command == "audit-duplicates":

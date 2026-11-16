@@ -57,6 +57,7 @@ cmd /c "D:\STUDY\manage.bat process"
 - Ingest source note: `cmd /c "D:\STUDY\manage.bat ingest-note --file ... --name ... --domain ... --concepts ... --summary ..."`
 - Ingest direct PDF: `cmd /c "D:\STUDY\manage.bat ingest-pdf --file ... --name ... --domain ... --concepts ... --summary ..."`
 - Proactive scan: `cmd /c "D:\STUDY\manage.bat scan"` (audits repository and counts authentic source notes vs provisional surrogates)
+- Workspace sweeper: `cmd /c "D:\STUDY\manage.bat sweep"` (sweeps scrap/, root, and misplaced directories; auto-routes notes to txt_md/, digital PDFs to pdf/, and quarantines non-text PDFs into scrap/)
 - Syllabus coverage audit: `cmd /c "D:\STUDY\manage.bat coverage"` (computes and displays the complete GATE 2027 PH Physics syllabus preparation & coverage audit across all 11 sections, note counts, coverage levels, and curriculum gap alerts)
 - Surrogate extraction: batch extracts companion Markdown approximations for all sourceless PDFs via `pymupdf4llm`.
 
@@ -85,9 +86,11 @@ cmd /c "D:\STUDY\manage.bat process"
 5. **Syllabus Coverage Auditing & Automatic Classification**:
    - Running `manage.bat coverage` to audit preparation progress across all 11 sections of the GATE 2027 PH Physics curriculum.
    - Automatically assigning GATE section (`SEC-01` to `SEC-11`) and syllabus sub-topics when generating new index entries in `03_topic_index.md` and `04_interconnection_mindmap.md`.
-6. **Enforcing Strict Text-Layer Quality Gate (Option C)**:
+6. **Enforcing Strict Text-Layer Quality Gate & Quarantine (Option C)**:
    - In `manage.py ingest-pdf`: Verifying that incoming PDFs possess $\ge 50$ characters of extractable digital text.
-   - Halting immediately with error code 1 (`[ERROR] PDF has no extractable text layer (scanned/bitmap). Rejected.`) when an image-only, scanned, or non-digital PDF is supplied.
+   - Automatically quarantining image-only, scanned, or non-digital PDFs into `scrap/` (preserving them indefinitely without deleting).
+7. **Automated Misplaced File Sweeping (`manage.bat sweep`)**:
+   - Scanning `scrap/`, root, and misplaced directories to auto-route notes to `txt_md/` and digital PDFs to `pdf/`.
 
 ---
 

@@ -2,6 +2,10 @@
 /pdf/*
 !/pdf/.gitkeep
 
+# Ignore quarantined non-text PDFs in scrap
+/scrap/*
+!/scrap/.gitkeep
+
 # Temporary staging and cache files
 .pending.json
 /tool/md2pdf_cache/

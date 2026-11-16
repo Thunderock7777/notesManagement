@@ -10,6 +10,7 @@ Welcome to your study repository! This directory is an automated knowledge base 
 D:\STUDY\
 ├── txt_md/     <-- INPUT & SURROGATES: Authoritative notes & provisional search surrogates
 ├── pdf/        <-- OUTPUT & STORAGE: All compiled and imported PDFs live here
+├── scrap/      <-- UNIVERSAL DROPZONE & QUARANTINE: Drop raw files here; quarantines non-text PDFs
 ├── index/      <-- CONTROL PLANE: Master topic catalog, mindmap, governance & version ledger
 │   ├── 00_syllabus_taxonomy.md <-- GATE 2027 PH Physics curriculum & coverage matrix
 │   ├── 01_tool_usage.md       <-- Compiler usage & CLI automation
@@ -19,7 +20,7 @@ D:\STUDY\
 │   └── 05_contributing_and_versioning.md <-- Architecture & version ledger
 ├── md_skill/   <-- REUSABLE SKILLS VAULT: Skill blueprints & 1-click installer (install.bat)
 ├── tool/       <-- COMPILER: Pandoc + XeLaTeX publishing engine (STRICTLY IMMUTABLE)
-├── manage.bat  <-- One-click automation runner (scan, process, audit-duplicates, coverage)
+├── manage.bat  <-- One-click automation runner (scan, process, sweep, audit-duplicates, coverage)
 ├── manage.py   <-- Master automation engine
 └── README.md   <-- User manual (this file)
 ```
@@ -106,6 +107,7 @@ Here are quick prompts you can give the AI at any time:
 | Inspect a specific PDF | `"Read DOC-015 and summarize its key equations"` |
 | Audit duplicate notes | `"Check if there are any duplicate notes"` |
 | Audit syllabus coverage & gaps | `"Check syllabus coverage"` / `"Show curriculum gaps"` |
+| Sweep misplaced files & dropzone | `"Sweep repository"` / `"Collect misplaced notes and PDFs"` |
 
 ---
 

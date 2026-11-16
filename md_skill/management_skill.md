@@ -21,6 +21,7 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory w
 <WORKSPACE_ROOT>/
 ├── txt_md/     <-- INGESTION & TEXT: Authentic source notes & provisional search surrogates ONLY
 ├── pdf/        <-- PUBLISHED OUTPUT: Final compiled XeLaTeX PDFs and verified digital PDF imports
+├── scrap/      <-- UNIVERSAL DROPZONE & QUARANTINE: Dropzone for incoming files; quarantines non-text PDFs
 ├── index/      <-- CONTROL PLANE: Internal AI-only machine-readable indexation & relational graph
 │   ├── README.md              <-- Master control plane index and quick entry
 │   ├── 00_syllabus_taxonomy.md <-- Formal curriculum breakdown, sub-topic inventory & coverage matrix
@@ -65,8 +66,20 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory w
    - `manage.py` is a mechanical executor, NOT a search engine. When the user asks to search, find topics, or trace relationships, **`manage.py` must NEVER be used**. The AI agent performs all searching directly using native reading tools.
 6. **Fundamental Architectural Prerequisite: Digital Text-Layer Mandate (Option C Gate)**:
    - The entire surrogate extraction pipeline (`pymupdf4llm`), full-text search across `txt_md/`, and relational mindmap strictly operate under the foundational requirement that **all imported PDFs must possess a clean, extractable digital text layer** (LaTeX-typeset or digital print).
-   - Scanned image PDFs, photocopies, handwritten notebook pictures converted to PDF, camera snapshots, and files with missing or corrupted font encodings (`< 50` characters of extractable text) are **strictly prohibited and rejected at the ingestion gate**.
-   - Non-digital, scanned, or handwritten study material must NEVER be dropped into `pdf/`. Users must author an authentic text/markdown note in `txt_md/` (Lifecycle 1) to be compiled cleanly by XeLaTeX.
+   - Scanned image PDFs, photocopies, handwritten notebook pictures converted to PDF, camera snapshots, and files with missing or corrupted font encodings (`< 50` characters of extractable text) are **strictly prohibited from entering `pdf/`**.
+   - If a non-text PDF is provided, the manager automatically quarantines it in `scrap/` (where it is preserved indefinitely and never deleted). To process its academic content, users must author an authentic text/markdown note in `txt_md/` (Lifecycle 1) to be compiled cleanly by XeLaTeX.
+
+### 1.4 Universal Dropzone, File Sweeper & Quarantine Architecture (`scrap/`)
+1. **Universal User Dropzone**:
+   - The `scrap/` folder serves as a frictionless entry point. The user may paste any mixed collection of `.txt`, `.md`, or `.pdf` files directly into `scrap/` (or into workspace root) without worrying about folder conventions.
+2. **Automated Misplaced File Sweeping (`manage.bat sweep` / `python manage.py sweep`)**:
+   - When executed, the manager scans `scrap/`, workspace root, `index/`, `txt_md/`, and `pdf/`:
+     - Text/Markdown notes (`.txt`, `.md`) are moved to their authoritative home in `txt_md/`.
+     - Valid digital PDFs ($\ge 50$ clean characters) are moved to `pdf/`.
+     - PDFs lacking extractable digital text ($< 50$ characters) are quarantined in `scrap/`.
+3. **Quarantine Safety Policy (Zero Destruction)**:
+   - Scanned, handwritten, or image-only PDFs quarantined in `scrap/` are preserved indefinitely.
+   - The system **will never delete files in `scrap/` unless explicitly instructed by the user**.
 
 ---
 
@@ -214,6 +227,7 @@ The automation script (`manage.bat` on Windows, or `python manage.py` universall
 | Command | Arguments / Flags | Core Responsibility |
 |---|---|---|
 | `scan` | *(none)* | Audits physical files vs index, counts authentic notes vs surrogates, reports uncataloged files. |
+| `sweep` | *(none)* | Sweeps `scrap/`, root, and misplaced directories; auto-routes notes to `txt_md/`, digital PDFs to `pdf/`, and quarantines non-text PDFs into `scrap/`. |
 | `process` | *(reads `.pending.json`)* | Executes staged ingestion without interactive permission prompts. |
 | `ingest-note` | `--file <path> --name <kebab> --domain <str> --concepts <csv> --summary <str> [--prerequisites <csv>]` | Renames note, compiles XeLaTeX PDF, routes PDF to `pdf/`, and registers in catalog & mindmap. |
 | `ingest-pdf` | `--file <path> --name <kebab> --domain <str> --concepts <csv> --summary <str>` | Verifies text layer ($\ge 50$ chars), extracts surrogate `.md`, locks compilation, and catalogs. |
@@ -331,7 +345,7 @@ When the user asks to search, find topics, explore conceptual connections, or re
 ## 8. Portable Bootstrapping Guide: Deploying in a Fresh Directory
 
 If this skill is introduced into a new, uninitialized folder:
-1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.
+1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.
 2. **Install Skills**: Run `md_skill/install.bat` (or manually copy blueprints) to deploy into `.agent/skills/`.
 3. **Acquire Compiler Tool (Do Not Recreate)**:
    - If `tool/` is not present, **NEVER attempt to remake or re-code it manually**. Automatically download/clone it from its official public repository:

@@ -41,7 +41,8 @@ D:\STUDY\
 │
 ├── txt_md/                    <-- EXCLUSIVE INGESTION SOURCE (User puts raw files here)
 ├── pdf/                       <-- FINAL PUBLISHED PDFS (Compiled outputs saved here)
-├── manage.bat                 <-- One-click automation runner
+├── scrap/                     <-- UNIVERSAL DROPZONE & QUARANTINE (Dropzone & non-text PDF quarantine)
+├── manage.bat                 <-- One-click automation runner (scan, process, sweep, coverage)
 └── manage.py                  <-- Master automation engine (renaming, compiling, indexing)
 ```
 
@@ -76,4 +77,8 @@ D:\STUDY\
    - The entire control plane ([00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md), [03_topic_index.md](file:///D:/STUDY/index/03_topic_index.md), [04_interconnection_mindmap.md](file:///D:/STUDY/index/04_interconnection_mindmap.md)) and the automation engine (`manage.bat coverage`) map each document into one of the 11 formal GATE 2027 Physics Sections (`SEC-01` through `SEC-11`) and its corresponding sub-topic.
 9. **Fundamental Prerequisite: Digital Text-Layer Mandate (Option C Gate)**:
    - The automated pipeline, surrogate extraction (`pymupdf4llm`), full-text search, and relational mindmap strictly assume and require that **all direct PDF imports in `pdf/` possess a clean, extractable digital text layer** (LaTeX-typeset or digital print).
-   - Scanned documents, handwritten image PDFs, camera captures, and files with corrupted font encodings (`< 50` characters of clean text) are **strictly prohibited and rejected** at ingestion. To incorporate scanned or handwritten study material, the user must provide an authentic typed note in `txt_md/` (Lifecycle 1) rather than dropping an image PDF into `pdf/`.
+   - Scanned documents, handwritten image PDFs, camera captures, and files with corrupted font encodings (`< 50` characters of clean text) are **strictly prohibited from entering `pdf/`**.
+   - If non-text PDFs arrive, the manager quarantines them in `scrap/` (preserved indefinitely and never deleted).
+10. **Universal Dropzone & File Sweeper (`scrap/`)**:
+    - Users may drop raw notes or PDFs directly into `scrap/` (or workspace root).
+    - Running `cmd /c "manage.bat sweep"` scans the workspace, moving notes to `txt_md/`, digital PDFs to `pdf/`, and quarantining non-text PDFs into `scrap/`. Quarantined files in `scrap/` are preserved indefinitely and **never deleted unless explicitly requested**.
