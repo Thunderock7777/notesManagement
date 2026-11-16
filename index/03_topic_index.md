@@ -8,19 +8,18 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 
 | Section Code | Section Name | Notes Cataloged | Syllabus Coverage |
 |---|---|---|---|
-| **SEC-01** | Measurements and Error Analysis | **0 notes** | 🔴 0% (Curriculum Gap) |
-| **SEC-02** | Mathematical Physics | **3 notes** | 🟡 17% Covered |
-| **SEC-03** | Classical Mechanics | **0 notes** | 🔴 0% (Curriculum Gap) |
+| **SEC-01** | Measurements and Error Analysis | **1 note** | 🟡 14% Covered |
+| **SEC-02** | Mathematical Physics | **4 notes** | 🟡 33% Covered |
+| **SEC-03** | Classical Mechanics | **1 note** | 🟡 14% Covered |
 | **SEC-04** | Thermodynamics and Statistical Mechanics | **2 notes** | 🟡 12% Covered |
-| **SEC-05** | Electromagnetic Theory | **0 notes** | 🔴 0% (Curriculum Gap) |
-| **SEC-06** | Optical Physics | **0 notes** | 🔴 0% (Curriculum Gap) |
+| **SEC-05** | Electromagnetic Theory | **1 note** | 🟡 12% Covered |
+| **SEC-06** | Optical Physics | **1 note** | 🟡 17% Covered |
 | **SEC-07** | Quantum Mechanics | **79 notes** | 🟢 80% Covered |
-| **SEC-08** | Atomic and Molecular Physics | **9 notes** | 🟡 22% Covered |
-| **SEC-09** | Solid State Physics | **33 notes** | 🟢 50% Covered |
-| **SEC-10** | Nuclear and Particle Physics | **5 notes** | 🟡 40% Covered |
-| **SEC-11** | Electronics | **0 notes** | 🔴 0% (Curriculum Gap) |
-| **TOTAL** | **11 GATE Sections** | **131 notes** | **26.9% Overall (21 / 78 Sub-Topics)** |
-
+| **SEC-08** | Atomic and Molecular Physics | **10 notes** | 🟡 33% Covered |
+| **SEC-09** | Solid State Physics | **34 notes** | 🟢 50% Covered |
+| **SEC-10** | Nuclear and Particle Physics | **6 notes** | 🟡 40% Covered |
+| **SEC-11** | Electronics | **1 note** | 🟡 14% Covered |
+| **TOTAL** | **11 GATE Sections** | **140 notes** | **35.9% Overall (28 / 78 Sub-Topics)** |
 *For complete sub-topic mappings and curriculum gaps, see [00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md).*
 
 ---
@@ -159,7 +158,16 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 | DOC-129 | **SEC-07** | `7.1` Foundations of QM, Uncert | `qm-multiple-eigenvalues.pdf` | `multiple_eigenvalues.pdf (XX8XA927)` | [qm-multiple-eigenvalues.pdf](file:///D:/STUDY/pdf/qm-multiple-eigenvalues.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-130 | **SEC-07** | `7.1` Foundations of QM, Uncert | `qm-parity-operator-algebraic-properties-3.pdf` | `nuc1.pdf (Y3VYSNNW)` | [qm-parity-operator-algebraic-properties-3.pdf](file:///D:/STUDY/pdf/qm-parity-operator-algebraic-properties-3.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
 | DOC-131 | **SEC-09** | `9.2` Diffraction, Reciprocal L | `ssp-first-brillouin-zone-construction-2.pdf` | `ssp3.pdf (YXFDN9TP)` | [ssp-first-brillouin-zone-construction-2.pdf](file:///D:/STUDY/pdf/ssp-first-brillouin-zone-construction-2.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
-| DOC-132 | **SEC-09** | `9.1` Elements of Crystallograp | `ssp-graphene-two-atom-basis-crystal-structure.pdf` | `ssp-graphene-two-atom-basis-crystal-structure.txt` | [ssp-graphene-two-atom-basis-crystal-structure.pdf](file:///D:/STUDY/pdf/ssp-graphene-two-atom-basis-crystal-structure.pdf) | Compiled from Source | 2026-11-15 |
+| DOC-132 | **SEC-09** | `9.1` Elements of Crystallograp | `ssp-graphene-two-atom-basis-crystal-structure.pdf` | `ssp-graphene-two-atom-basis-crystal-structure.txt` | [ssp-graphene-two-atom-basis-crystal-structure.pdf](file:///D:/STUDY/pdf/ssp-graphene-two-atom-basis-crystal-structure.pdf) | Compiled from Source | 2026-11-15 || DOC-133 | **SEC-01** | `1.1` Units, Dimensions & Error An | `mea-experimental-methods-error-analysis.pdf` | `Measurements and Error Analysis.pdf` | [mea-experimental-methods-error-analysis.pdf](file:///D:/STUDY/pdf/mea-experimental-methods-error-analysis.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-134 | **SEC-02** | `2.1` Linear Vector Spaces, Basis, | `math-linear-vector-spaces-matrix-algebra.pdf` | `Mathematical Physics.pdf` | [math-linear-vector-spaces-matrix-algebra.pdf](file:///D:/STUDY/pdf/math-linear-vector-spaces-matrix-algebra.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-135 | **SEC-03** | `3.1` D'Alembert's Principle, Eule | `cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf` | `Classical Mechanics.pdf` | [cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf](file:///D:/STUDY/pdf/cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-136 | **SEC-05** | `5.1` Electrostatic & Magnetostati | `emt-electrodynamics-boundary-value-problems.pdf` | `Electromagnetic theory.pdf` | [emt-electrodynamics-boundary-value-problems.pdf](file:///D:/STUDY/pdf/emt-electrodynamics-boundary-value-problems.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-137 | **SEC-06** | `6.1` Wave Equation, Superposition | `opt-optics-wave-dynamics-ray-matrix.pdf` | `Optical Physics.pdf` | [opt-optics-wave-dynamics-ray-matrix.pdf](file:///D:/STUDY/pdf/opt-optics-wave-dynamics-ray-matrix.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-138 | **SEC-08** | `8.1` Spectra of One- and Many-Ele | `at-atomic-spectra-coupling-schemes.pdf` | `Atomic Physics.pdf` | [at-atomic-spectra-coupling-schemes.pdf](file:///D:/STUDY/pdf/at-atomic-spectra-coupling-schemes.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-139 | **SEC-09** | `9.1` Elements of Crystallography, | `ssp-crystallography-diffraction-bonding-phonons.pdf` | `Solid State Physics.pdf` | [ssp-crystallography-diffraction-bonding-phonons.pdf](file:///D:/STUDY/pdf/ssp-crystallography-diffraction-bonding-phonons.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-140 | **SEC-10** | `10.1` Nuclear Properties (Binding  | `nuc-nuclear-models-structure-binding-energy.pdf` | `Nuclear Physics.pdf` | [nuc-nuclear-models-structure-binding-energy.pdf](file:///D:/STUDY/pdf/nuc-nuclear-models-structure-binding-energy.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+| DOC-141 | **SEC-11** | `11.1` Semiconductor Devices (Carri | `elec-semiconductor-devices-pn-junctions-transistors.pdf` | `Electronics.pdf` | [elec-semiconductor-devices-pn-junctions-transistors.pdf](file:///D:/STUDY/pdf/elec-semiconductor-devices-pn-junctions-transistors.pdf) | Provisional Source (Auto-extracted) | 2026-11-16 |
+
 ---
 
 ## Detailed File Registry & History
@@ -2257,3 +2265,166 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 - **Summary**: Distinction between pure Bravais lattices and crystal structures with a two-atom basis (Crystal = Lattice + Basis), covering graphene, diamond, HCP, and optical phonons.
 - **Processing Log**:
   - `2026-11-15`: Compiled from source note ssp-graphene-two-atom-basis-crystal-structure.txt
+
+### [DOC-133] mea-experimental-methods-error-analysis.pdf
+- **Source File**: [mea-experimental-methods-error-analysis.md](file:///D:/STUDY/txt_md/mea-experimental-methods-error-analysis.md) (Provisional Surrogate)
+- **Compiled PDF**: [mea-experimental-methods-error-analysis.pdf](file:///D:/STUDY/pdf/mea-experimental-methods-error-analysis.pdf)
+- **Original Filename**: `Measurements and Error Analysis.pdf`
+- **GATE Section**: `SEC-01` (Measurements and Error Analysis)
+- **Syllabus Topic**: `1.1: Units, Dimensions & Error Analysis`
+- **Domain**: `Measurements and Error Analysis`
+- **Core Concepts**:
+  - Units and Dimensions
+  - Error Analysis
+  - Significant Figures
+  - Error Propagation
+  - Least Count
+- **Text Layer Quality**: Verified (LaTeX Typeset, 26 pages)
+- **Summary**: Comprehensive GATE study guide on units, dimensions, least count, experimental error analysis, and error propagation mathematics.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Measurements and Error Analysis.pdf`, swept to `pdf/`, semantically renamed to `mea-experimental-methods-error-analysis.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-134] math-linear-vector-spaces-matrix-algebra.pdf
+- **Source File**: [math-linear-vector-spaces-matrix-algebra.md](file:///D:/STUDY/txt_md/math-linear-vector-spaces-matrix-algebra.md) (Provisional Surrogate)
+- **Compiled PDF**: [math-linear-vector-spaces-matrix-algebra.pdf](file:///D:/STUDY/pdf/math-linear-vector-spaces-matrix-algebra.pdf)
+- **Original Filename**: `Mathematical Physics.pdf`
+- **GATE Section**: `SEC-02` (Mathematical Physics)
+- **Syllabus Topic**: `2.1: Linear Vector Spaces, Basis, Orthogonality & Completeness`
+- **Domain**: `Mathematical Physics`
+- **Core Concepts**:
+  - Linear Vector Spaces
+  - Basis and Orthogonality
+  - Matrix Algebra
+  - Diagonalization
+  - Eigenvalues
+- **Text Layer Quality**: Verified (LaTeX Typeset, 43 pages)
+- **Summary**: Exhaustive study notes on linear vector spaces, inner product spaces, matrix algebra, similarity transformations, and diagonalization.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Mathematical Physics.pdf`, swept to `pdf/`, semantically renamed to `math-linear-vector-spaces-matrix-algebra.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-135] cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf
+- **Source File**: [cm-core-analytical-mechanics-lagrangian-hamiltonian.md](file:///D:/STUDY/txt_md/cm-core-analytical-mechanics-lagrangian-hamiltonian.md) (Provisional Surrogate)
+- **Compiled PDF**: [cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf](file:///D:/STUDY/pdf/cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf)
+- **Original Filename**: `Classical Mechanics.pdf`
+- **GATE Section**: `SEC-03` (Classical Mechanics)
+- **Syllabus Topic**: `3.1: D'Alembert's Principle, Euler-Lagrange Equations & Hamilton's Principle`
+- **Domain**: `Classical Mechanics`
+- **Core Concepts**:
+  - Lagrangian Dynamics
+  - Hamiltonian Mechanics
+  - Poisson Brackets
+  - Canonical Transformations
+  - Small Oscillations
+- **Text Layer Quality**: Verified (LaTeX Typeset, 58 pages)
+- **Summary**: Advanced review module covering Lagrangian and Hamiltonian mechanics, symmetry, conservation laws, Poisson brackets, and canonical transformations.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Classical Mechanics.pdf`, swept to `pdf/`, semantically renamed to `cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-136] emt-electrodynamics-boundary-value-problems.pdf
+- **Source File**: [emt-electrodynamics-boundary-value-problems.md](file:///D:/STUDY/txt_md/emt-electrodynamics-boundary-value-problems.md) (Provisional Surrogate)
+- **Compiled PDF**: [emt-electrodynamics-boundary-value-problems.pdf](file:///D:/STUDY/pdf/emt-electrodynamics-boundary-value-problems.pdf)
+- **Original Filename**: `Electromagnetic theory.pdf`
+- **GATE Section**: `SEC-05` (Electromagnetic Theory)
+- **Syllabus Topic**: `5.1: Electrostatic & Magnetostatic Boundary Value Problems`
+- **Domain**: `Electromagnetic Theory`
+- **Core Concepts**:
+  - Electrostatics
+  - Magnetostatics
+  - Boundary Value Problems
+  - Method of Images
+  - Multipole Expansion
+- **Text Layer Quality**: Verified (LaTeX Typeset, 65 pages)
+- **Summary**: Comprehensive study notes on electrostatic and magnetostatic boundary value problems, Laplace/Poisson solutions, method of images, and multipole expansions.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Electromagnetic theory.pdf`, swept to `pdf/`, semantically renamed to `emt-electrodynamics-boundary-value-problems.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-137] opt-optics-wave-dynamics-ray-matrix.pdf
+- **Source File**: [opt-optics-wave-dynamics-ray-matrix.md](file:///D:/STUDY/txt_md/opt-optics-wave-dynamics-ray-matrix.md) (Provisional Surrogate)
+- **Compiled PDF**: [opt-optics-wave-dynamics-ray-matrix.pdf](file:///D:/STUDY/pdf/opt-optics-wave-dynamics-ray-matrix.pdf)
+- **Original Filename**: `Optical Physics.pdf`
+- **GATE Section**: `SEC-06` (Optical Physics)
+- **Syllabus Topic**: `6.1: Wave Equation, Superposition, Standing Waves, Phase & Group Velocities`
+- **Domain**: `Optical Physics`
+- **Core Concepts**:
+  - Wave Equations
+  - Interference
+  - Diffraction
+  - Polarization
+  - Ray Transfer Matrix
+- **Text Layer Quality**: Verified (LaTeX Typeset, 64 pages)
+- **Summary**: Exhaustive review notes on plane and spherical wave equations, interference, coherence, diffraction, polarization, and ray-transfer matrix methods.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Optical Physics.pdf`, swept to `pdf/`, semantically renamed to `opt-optics-wave-dynamics-ray-matrix.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-138] at-atomic-spectra-coupling-schemes.pdf
+- **Source File**: [at-atomic-spectra-coupling-schemes.md](file:///D:/STUDY/txt_md/at-atomic-spectra-coupling-schemes.md) (Provisional Surrogate)
+- **Compiled PDF**: [at-atomic-spectra-coupling-schemes.pdf](file:///D:/STUDY/pdf/at-atomic-spectra-coupling-schemes.pdf)
+- **Original Filename**: `Atomic Physics.pdf`
+- **GATE Section**: `SEC-08` (Atomic and Molecular Physics)
+- **Syllabus Topic**: `8.1: Spectra of One- and Many-Electron Atoms`
+- **Domain**: `Atomic and Molecular Physics`
+- **Core Concepts**:
+  - One-Electron Spectra
+  - Spin-Orbit Interaction
+  - LS and jj Coupling
+  - Fine Structure
+  - Hyperfine Structure
+- **Text Layer Quality**: Verified (LaTeX Typeset, 64 pages)
+- **Summary**: Meticulously structured study notes on one- and many-electron atomic spectra, spin-orbit physics, LS and jj coupling schemes, and fine/hyperfine splitting.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Atomic Physics.pdf`, swept to `pdf/`, semantically renamed to `at-atomic-spectra-coupling-schemes.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-139] ssp-crystallography-diffraction-bonding-phonons.pdf
+- **Source File**: [ssp-crystallography-diffraction-bonding-phonons.md](file:///D:/STUDY/txt_md/ssp-crystallography-diffraction-bonding-phonons.md) (Provisional Surrogate)
+- **Compiled PDF**: [ssp-crystallography-diffraction-bonding-phonons.pdf](file:///D:/STUDY/pdf/ssp-crystallography-diffraction-bonding-phonons.pdf)
+- **Original Filename**: `Solid State Physics.pdf`
+- **GATE Section**: `SEC-09` (Solid State Physics)
+- **Syllabus Topic**: `9.1: Elements of Crystallography, Bravais Lattices, Miller Indices & Unit Cells`
+- **Domain**: `Solid State Physics`
+- **Core Concepts**:
+  - Crystallography
+  - Bravais Lattices
+  - X-ray Diffraction
+  - Chemical Bonding
+  - Lattice Vibrations
+  - Phonons
+- **Text Layer Quality**: Verified (LaTeX Typeset, 65 pages)
+- **Summary**: Comprehensive textbook notes covering crystal lattices, diffraction methods, bonding in solids, lattice vibrations, and thermal phonon properties.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Solid State Physics.pdf`, swept to `pdf/`, semantically renamed to `ssp-crystallography-diffraction-bonding-phonons.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-140] nuc-nuclear-models-structure-binding-energy.pdf
+- **Source File**: [nuc-nuclear-models-structure-binding-energy.md](file:///D:/STUDY/txt_md/nuc-nuclear-models-structure-binding-energy.md) (Provisional Surrogate)
+- **Compiled PDF**: [nuc-nuclear-models-structure-binding-energy.pdf](file:///D:/STUDY/pdf/nuc-nuclear-models-structure-binding-energy.pdf)
+- **Original Filename**: `Nuclear Physics.pdf`
+- **GATE Section**: `SEC-10` (Nuclear and Particle Physics)
+- **Syllabus Topic**: `10.1: Nuclear Properties (Binding Energy, Electric & Magnetic Moments)`
+- **Domain**: `Nuclear and Particle Physics`
+- **Core Concepts**:
+  - Binding Energy
+  - Liquid Drop Model
+  - Electric and Magnetic Moments
+  - Nuclear Shell Model
+  - Magic Numbers
+- **Text Layer Quality**: Verified (LaTeX Typeset, 55 pages)
+- **Summary**: Comprehensive study guide on nuclear binding energy, semi-empirical mass formula, electric quadrupole/magnetic dipole moments, and single-particle shell model.
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Nuclear Physics.pdf`, swept to `pdf/`, semantically renamed to `nuc-nuclear-models-structure-binding-energy.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-141] elec-semiconductor-devices-pn-junctions-transistors.pdf
+- **Source File**: [elec-semiconductor-devices-pn-junctions-transistors.md](file:///D:/STUDY/txt_md/elec-semiconductor-devices-pn-junctions-transistors.md) (Provisional Surrogate)
+- **Compiled PDF**: [elec-semiconductor-devices-pn-junctions-transistors.pdf](file:///D:/STUDY/pdf/elec-semiconductor-devices-pn-junctions-transistors.pdf)
+- **Original Filename**: `Electronics.pdf`
+- **GATE Section**: `SEC-11` (Electronics)
+- **Syllabus Topic**: `11.1: Semiconductor Devices (Carrier Statistics, Diodes, BJTs, JFETs & MOSFETs)`
+- **Domain**: `Electronics`
+- **Core Concepts**:
+  - p-n Junction Diode
+  - Depletion Region
+  - Bipolar Junction Transistors (BJT)
+  - JFET and MOSFET
+  - I-V Characteristics
+- **Text Layer Quality**: Verified (LaTeX Typeset, 59 pages)
+- **Summary**: Detailed study notes on semiconductor physics, p-n junction diode mechanics, carrier diffusion, BJTs, and field-effect transistors (JFET/MOSFET).
+- **Processing Log**:
+  - `2026-11-16`: Ingested from `scrap/Electronics.pdf`, swept to `pdf/`, semantically renamed to `elec-semiconductor-devices-pn-junctions-transistors.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.

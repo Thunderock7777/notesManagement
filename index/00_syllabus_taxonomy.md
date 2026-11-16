@@ -11,29 +11,29 @@
 
 | Section Code | Section Name | Notes Cataloged | Total Sub-Topics | Sub-Topics Covered | Coverage Status |
 |---|---|---|---|---|---|
-| **SEC-01** | Measurements and Error Analysis | **0 notes** | 7 | 0 | 🔴 0% (Curriculum Gap) |
-| **SEC-02** | Mathematical Physics | **3 notes** | 6 | 1 | 🟡 Moderate (17% Covered) |
-| **SEC-03** | Classical Mechanics | **0 notes** | 7 | 0 | 🔴 0% (Curriculum Gap) |
+| **SEC-01** | Measurements and Error Analysis | **1 note** | 7 | 1 | 🟡 Moderate (14% Covered) |
+| **SEC-02** | Mathematical Physics | **4 notes** | 6 | 2 | 🟡 Moderate (33% Covered) |
+| **SEC-03** | Classical Mechanics | **1 note** | 7 | 1 | 🟡 Moderate (14% Covered) |
 | **SEC-04** | Thermodynamics and Statistical Mechanics | **2 notes** | 8 | 1 | 🟡 Moderate (12% Covered) |
-| **SEC-05** | Electromagnetic Theory | **0 notes** | 8 | 0 | 🔴 0% (Curriculum Gap) |
-| **SEC-06** | Optical Physics | **0 notes** | 6 | 0 | 🔴 0% (Curriculum Gap) |
+| **SEC-05** | Electromagnetic Theory | **1 note** | 8 | 1 | 🟡 Moderate (12% Covered) |
+| **SEC-06** | Optical Physics | **1 note** | 6 | 1 | 🟡 Moderate (17% Covered) |
 | **SEC-07** | Quantum Mechanics | **79 notes** | 10 | 8 | 🟢 High (80% Covered) |
-| **SEC-08** | Atomic and Molecular Physics | **9 notes** | 9 | 2 | 🟡 Moderate (22% Covered) |
-| **SEC-09** | Solid State Physics | **33 notes** | 10 | 5 | 🟢 High (50% Covered) |
-| **SEC-10** | Nuclear and Particle Physics | **5 notes** | 10 | 4 | 🟡 Moderate (40% Covered) |
-| **SEC-11** | Electronics | **0 notes** | 7 | 0 | 🔴 0% (Curriculum Gap) |
-| **TOTAL** | **11 Sections** | **131 notes** | **78 Sub-Topics** | **21 Covered** | **26.9% Overall** |
+| **SEC-08** | Atomic and Molecular Physics | **10 notes** | 9 | 3 | 🟡 Moderate (33% Covered) |
+| **SEC-09** | Solid State Physics | **34 notes** | 10 | 5 | 🟢 High (50% Covered) |
+| **SEC-10** | Nuclear and Particle Physics | **6 notes** | 10 | 4 | 🟡 Moderate (40% Covered) |
+| **SEC-11** | Electronics | **1 note** | 7 | 1 | 🟡 Moderate (14% Covered) |
+| **TOTAL** | **11 Sections** | **140 notes** | **78 Sub-Topics** | **28 Covered** | **35.9% Overall (ZERO Gaps)** |
 
 ---
 
 ## 📚 Section-by-Section Topic Breakdown & Document Registry
 
-### SEC-01: Measurements and Error Analysis (0 notes)
+### SEC-01: Measurements and Error Analysis (1 note)
 *Units and dimensions, dimensional analysis; least count, significant figures; Methods of measurement and error analysis for physical quantities; 2-probe and 4-probe methods; Grounding, ground loops; DC power supply design, Lock-in amplifiers.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `1.1` | Units, Dimensions & Dimensional Analysis | ⚪ *Pending Notes* | `None` |
+| `1.1` | **Units, Dimensions & Dimensional Analysis** | 🟢 Covered (1) | [DOC-133](file:///D:/STUDY/pdf/mea-experimental-methods-error-analysis.pdf) |
 | `1.2` | Least Count & Significant Figures | ⚪ *Pending Notes* | `None` |
 | `1.3` | Methods of Measurement & Error Analysis | ⚪ *Pending Notes* | `None` |
 | `1.4` | 2-Probe and 4-Probe Resistance Measurement | ⚪ *Pending Notes* | `None` |
@@ -41,24 +41,24 @@
 | `1.6` | Design of DC Power Supply | ⚪ *Pending Notes* | `None` |
 | `1.7` | Signal Processing through Lock-in Amplifiers | ⚪ *Pending Notes* | `None` |
 
-### SEC-02: Mathematical Physics (3 notes)
+### SEC-02: Mathematical Physics (4 notes)
 *Linear vector spaces, basis, orthogonality, completeness; matrices, similarity, diagonalization, eigenvalues/eigenvectors; linear differential equations; complex analysis, Cauchy-Riemann, singularities, residue theorem; Fourier analysis; tensors.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `2.1` | Linear Vector Spaces, Basis, Orthogonality & Completeness | ⚪ *Pending Notes* | `None` |
+| `2.1` | **Linear Vector Spaces, Basis, Orthogonality & Completeness** | 🟢 Covered (1) | [DOC-134](file:///D:/STUDY/pdf/math-linear-vector-spaces-matrix-algebra.pdf) |
 | `2.2` | Matrices, Similarity Transformations, Diagonalization, Eigenvalues & Eigenvectors | ⚪ *Pending Notes* | `None` |
 | `2.3` | Linear Differential Equations (First & Second Order) & Applications | ⚪ *Pending Notes* | `None` |
 | `2.4` | **Complex Analysis, Cauchy-Riemann Conditions, Singularities & Residue Theorem** | 🟢 Covered (3) | [DOC-037](file:///D:/STUDY/pdf/math-cauchy-sequence.pdf), [DOC-043](file:///D:/STUDY/pdf/math-cauchy-sequence1.pdf), [DOC-084](file:///D:/STUDY/pdf/math-cauchy-sequence2.pdf) |
 | `2.5` | Fourier Analysis | ⚪ *Pending Notes* | `None` |
 | `2.6` | Tensors, Tensor Transformations, Covariant & Contravariant Tensors | ⚪ *Pending Notes* | `None` |
 
-### SEC-03: Classical Mechanics (0 notes)
+### SEC-03: Classical Mechanics (1 note)
 *D'Alembert's principle, Euler-Lagrange, Hamilton's principle; symmetry & conservation laws; central force & Kepler problem; small oscillations; rigid body dynamics, inertia tensor; Hamiltonian, canonical transformations, Poisson brackets; Special relativity.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `3.1` | D'Alembert's Principle, Euler-Lagrange Equations & Hamilton's Principle | ⚪ *Pending Notes* | `None` |
+| `3.1` | **D'Alembert's Principle, Euler-Lagrange Equations & Hamilton's Principle** | 🟢 Covered (1) | [DOC-135](file:///D:/STUDY/pdf/cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf) |
 | `3.2` | Symmetry and Conservation Laws | ⚪ *Pending Notes* | `None` |
 | `3.3` | Central Force Motion & Kepler Problem | ⚪ *Pending Notes* | `None` |
 | `3.4` | Small Oscillations, Coupled Oscillations & Normal Modes | ⚪ *Pending Notes* | `None` |
@@ -80,12 +80,12 @@
 | `4.7` | Bose-Einstein Condensation | ⚪ *Pending Notes* | `None` |
 | `4.8` | Phase Transitions (First & Second Order), Phase Equilibria & Critical Phenomena | ⚪ *Pending Notes* | `None` |
 
-### SEC-05: Electromagnetic Theory (0 notes)
+### SEC-05: Electromagnetic Theory (1 note)
 *Electrostatic/magnetostatic boundary value problems; method of images; separation of variables; dielectrics, conductors, magnetic materials; multipole expansion; Maxwell's equations; potentials, gauges; EM waves, polarization, Poynting vector.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `5.1` | Electrostatic & Magnetostatic Boundary Value Problems | ⚪ *Pending Notes* | `None` |
+| `5.1` | **Electrostatic & Magnetostatic Boundary Value Problems** | 🟢 Covered (1) | [DOC-136](file:///D:/STUDY/pdf/emt-electrodynamics-boundary-value-problems.pdf) |
 | `5.2` | Method of Images & Separation of Variables | ⚪ *Pending Notes* | `None` |
 | `5.3` | Dielectrics, Conductors & Magnetic Materials | ⚪ *Pending Notes* | `None` |
 | `5.4` | Multipole Expansion | ⚪ *Pending Notes* | `None` |
@@ -94,12 +94,12 @@
 | `5.7` | Reflection, Transmission & Polarization of EM Waves | ⚪ *Pending Notes* | `None` |
 | `5.8` | Poynting Vector, Poynting Theorem & Energy-Momentum of EM Waves | ⚪ *Pending Notes* | `None` |
 
-### SEC-06: Optical Physics (0 notes)
+### SEC-06: Optical Physics (1 note)
 *Wave equation, superposition, standing waves, velocities; interference, coherence, films, Newton's ring, interferometers; diffraction, apertures, resolution, gratings; polarization, Jones vectors/matrices, ray transfer matrix; lasers, Einstein coefficients.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `6.1` | Wave Equation, Superposition, Standing Waves, Phase & Group Velocities | ⚪ *Pending Notes* | `None` |
+| `6.1` | **Wave Equation, Superposition, Standing Waves, Phase & Group Velocities** | 🟢 Covered (1) | [DOC-137](file:///D:/STUDY/pdf/opt-optics-wave-dynamics-ray-matrix.pdf) |
 | `6.2` | Interference (Spatial & Temporal Coherence, Thin Films, Newton's Rings) | ⚪ *Pending Notes* | `None` |
 | `6.3` | Interferometers (Michelson, Fabry-Perot & Etalon) | ⚪ *Pending Notes* | `None` |
 | `6.4` | Diffraction (Fresnel & Fraunhofer, Apertures, Slits, Grating & Rayleigh Criterion) | ⚪ *Pending Notes* | `None` |
@@ -122,12 +122,12 @@
 | `7.9` | **Approximation Methods (Variational Method & Time-Independent Perturbation Theory)** | 🟢 Covered (9) | [DOC-021](file:///D:/STUDY/pdf/qm-degenerate-perturbation-theory.pdf), [DOC-036](file:///D:/STUDY/pdf/qm-degenerate-perturbation-theory-2.pdf), [DOC-041](file:///D:/STUDY/pdf/qm-perturbation-theory-energy-correction.pdf), [DOC-054](file:///D:/STUDY/pdf/qm-degenerate-perturbation-theory-3.pdf), [DOC-060](file:///D:/STUDY/pdf/qm-perturbation-theory-energy-correction-2.pdf), [DOC-073](file:///D:/STUDY/pdf/qm-degenerate-perturbation-theory-4.pdf), [DOC-087](file:///D:/STUDY/pdf/qm-perturbation-theory-energy-correction-3.pdf), [DOC-093](file:///D:/STUDY/pdf/qm-perturbation-theory-energy-correction-4.pdf), [DOC-100](file:///D:/STUDY/pdf/qm-perturbation-theory-energy-correction-5.pdf) |
 | `7.10` | Elementary Scattering Theory & Born Approximation | ⚪ *Pending Notes* | `None` |
 
-### SEC-08: Atomic and Molecular Physics (9 notes)
+### SEC-08: Atomic and Molecular Physics (10 notes)
 *Spectra of one- and many-electron atoms; spin-orbit, LS and jj coupling; fine/hyperfine structure; Zeeman, Paschen-Back, Stark effects; selection rules; diatomic rotational/vibrational spectra; electronic spectra, Franck-Condon; Raman, NMR, ESR, Mossbauer.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `8.1` | Spectra of One- and Many-Electron Atoms | ⚪ *Pending Notes* | `None` |
+| `8.1` | **Spectra of One- and Many-Electron Atoms** | 🟢 Covered (1) | [DOC-138](file:///D:/STUDY/pdf/at-atomic-spectra-coupling-schemes.pdf) |
 | `8.2` | Spin-Orbit Interaction, L-S & j-j Coupling Schemes | ⚪ *Pending Notes* | `None` |
 | `8.3` | Fine and Hyperfine Structures | ⚪ *Pending Notes* | `None` |
 | `8.4` | **External Field Effects (Zeeman Effect, Paschen-Back Effect & Stark Effect)** | 🟢 Covered (8) | [DOC-042](file:///D:/STUDY/pdf/qm-zeeman-effect-formulaes4.pdf), [DOC-045](file:///D:/STUDY/pdf/qm-zeeman-effect-formulaes3.pdf), [DOC-088](file:///D:/STUDY/pdf/nuc-zeeman-effect-energy-level-splitting.pdf), [DOC-104](file:///D:/STUDY/pdf/qm-zeeman-effect-energy-level-splitting.pdf), [DOC-111](file:///D:/STUDY/pdf/qm-zeeman-effect-formulaes1.pdf), [DOC-116](file:///D:/STUDY/pdf/qm-zeeman-effect-formulaes2.pdf), [DOC-124](file:///D:/STUDY/pdf/nuc-zeeman-effect-energy-level-splitting-2.pdf), [DOC-125](file:///D:/STUDY/pdf/qm-zeeman-effect-energy-level-splitting-2.pdf) |
@@ -137,12 +137,12 @@
 | `8.8` | Raman Effect & Spectroscopy | ⚪ *Pending Notes* | `None` |
 | `8.9` | Magnetic Resonance & Modern Spectroscopies (NMR, ESR, X-ray & Mössbauer) | ⚪ *Pending Notes* | `None` |
 
-### SEC-09: Solid State Physics (33 notes)
+### SEC-09: Solid State Physics (34 notes)
 *Crystallography; diffraction methods; bonding; lattice vibrations, thermal properties; free electron theory; band theory, Bloch's theorem, effective mass; semiconductors, junctions, contacts; dielectrics, ferroelectricity; magnetism; superconductivity.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `9.1` | **Elements of Crystallography, Bravais Lattices, Miller Indices & Unit Cells** | 🟢 Covered (21) | [DOC-014](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations.pdf), [DOC-018](file:///D:/STUDY/pdf/ssp-the-core-concept-in-classical-c.pdf), [DOC-019](file:///D:/STUDY/pdf/ssp-python-code-import-os-import-ma.pdf), [DOC-030](file:///D:/STUDY/pdf/ssp-lattice-basis.pdf), [DOC-031](file:///D:/STUDY/pdf/ssp-condition-for-the-crest-a-crest.pdf), [DOC-032](file:///D:/STUDY/pdf/ssp-the-phase-shift-in-space.pdf), [DOC-034](file:///D:/STUDY/pdf/ssp-miller-indices.pdf), [DOC-052](file:///D:/STUDY/pdf/ssp-a-bravais-lattice-is-purely-an.pdf), [DOC-066](file:///D:/STUDY/pdf/ssp-the-rule-for-a-bravais-lattice.pdf), [DOC-069](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell.pdf), [DOC-070](file:///D:/STUDY/pdf/ssp-ssp35.pdf), [DOC-083](file:///D:/STUDY/pdf/ssp-miller-indices1.pdf), [DOC-089](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell-2.pdf), [DOC-091](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations-2.pdf), [DOC-094](file:///D:/STUDY/pdf/ssp-made-represents-number.pdf), [DOC-096](file:///D:/STUDY/pdf/ssp-definitions-of-the-two-operator.pdf), [DOC-098](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties.pdf), [DOC-105](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties-2.pdf), [DOC-110](file:///D:/STUDY/pdf/ssp-python-visualization-code-impor.pdf), [DOC-127](file:///D:/STUDY/pdf/ssp-the-golden-rule-of-the-translat.pdf), [DOC-132](file:///D:/STUDY/pdf/ssp-graphene-two-atom-basis-crystal-structure.pdf) |
+| `9.1` | **Elements of Crystallography, Bravais Lattices, Miller Indices & Unit Cells** | 🟢 Covered (22) | [DOC-014](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations.pdf), [DOC-018](file:///D:/STUDY/pdf/ssp-the-core-concept-in-classical-c.pdf), [DOC-019](file:///D:/STUDY/pdf/ssp-python-code-import-os-import-ma.pdf), [DOC-030](file:///D:/STUDY/pdf/ssp-lattice-basis.pdf), [DOC-031](file:///D:/STUDY/pdf/ssp-condition-for-the-crest-a-crest.pdf), [DOC-032](file:///D:/STUDY/pdf/ssp-the-phase-shift-in-space.pdf), [DOC-034](file:///D:/STUDY/pdf/ssp-miller-indices.pdf), [DOC-052](file:///D:/STUDY/pdf/ssp-a-bravais-lattice-is-purely-an.pdf), [DOC-066](file:///D:/STUDY/pdf/ssp-the-rule-for-a-bravais-lattice.pdf), [DOC-069](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell.pdf), [DOC-070](file:///D:/STUDY/pdf/ssp-ssp35.pdf), [DOC-083](file:///D:/STUDY/pdf/ssp-miller-indices1.pdf), [DOC-089](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell-2.pdf), [DOC-091](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations-2.pdf), [DOC-094](file:///D:/STUDY/pdf/ssp-made-represents-number.pdf), [DOC-096](file:///D:/STUDY/pdf/ssp-definitions-of-the-two-operator.pdf), [DOC-098](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties.pdf), [DOC-105](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties-2.pdf), [DOC-110](file:///D:/STUDY/pdf/ssp-python-visualization-code-impor.pdf), [DOC-127](file:///D:/STUDY/pdf/ssp-the-golden-rule-of-the-translat.pdf), [DOC-132](file:///D:/STUDY/pdf/ssp-graphene-two-atom-basis-crystal-structure.pdf), [DOC-139](file:///D:/STUDY/pdf/ssp-crystallography-diffraction-bonding-phonons.pdf) |
 | `9.2` | **Diffraction Methods, Reciprocal Lattice, Ewald Sphere & Laue Condition** | 🟢 Covered (5) | [DOC-022](file:///D:/STUDY/pdf/ssp-ewald-brillouin.pdf), [DOC-035](file:///D:/STUDY/pdf/ssp-lau-condition.pdf), [DOC-075](file:///D:/STUDY/pdf/ssp-first-brillouin-zone-construction.pdf), [DOC-120](file:///D:/STUDY/pdf/ssp-g-hkl-dbt.pdf), [DOC-131](file:///D:/STUDY/pdf/ssp-first-brillouin-zone-construction-2.pdf) |
 | `9.3` | Chemical Bonding in Solids | ⚪ *Pending Notes* | `None` |
 | `9.4` | Lattice Vibrations, Phonons & Thermal Properties (Einstein & Debye Models) | ⚪ *Pending Notes* | `None` |
@@ -153,12 +153,12 @@
 | `9.9` | Magnetic Properties of Solids (Dia, Para, Ferro, Antiferro, Ferri & Domains) | ⚪ *Pending Notes* | `None` |
 | `9.10` | Superconductivity (Type-I/II, Meissner Effect, London Equation, BCS Theory, Flux Quantization) | ⚪ *Pending Notes* | `None` |
 
-### SEC-10: Nuclear and Particle Physics (5 notes)
+### SEC-10: Nuclear and Particle Physics (6 notes)
 *Binding energy, moments; semi-empirical mass formula; nuclear models, liquid drop, shell model; nuclear force, deuteron; alpha/beta/gamma decay; Rutherford scattering, nuclear reactions; fission/fusion; accelerators, detectors; elementary particles, quark model, symmetries.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `10.1` | **Nuclear Properties (Binding Energy, Electric & Magnetic Moments)** | 🟢 Covered (1) | [DOC-039](file:///D:/STUDY/pdf/nuc-the-actual-sub-topics.pdf) |
+| `10.1` | **Nuclear Properties (Binding Energy, Electric & Magnetic Moments)** | 🟢 Covered (2) | [DOC-039](file:///D:/STUDY/pdf/nuc-the-actual-sub-topics.pdf), [DOC-140](file:///D:/STUDY/pdf/nuc-nuclear-models-structure-binding-energy.pdf) |
 | `10.2` | **Semi-Empirical Mass Formula & Liquid Drop Model** | 🟢 Covered (1) | [DOC-005](file:///D:/STUDY/pdf/nuc-liquid-drop-model-mass-formula.pdf) |
 | `10.3` | **Nuclear Shell Model & Magic Numbers** | 🟢 Covered (2) | [DOC-016](file:///D:/STUDY/pdf/nuc-nuclear-shell-model-magic-numbers.pdf), [DOC-027](file:///D:/STUDY/pdf/nuc-nuclear-shell-model-magic-numbers-2.pdf) |
 | `10.4` | **Nuclear Force & Two-Nucleon Problem (Deuteron)** | 🟢 Covered (1) | [DOC-122](file:///D:/STUDY/pdf/nuc-deuteron-bound-state-nuclear-force.pdf) |
@@ -169,7 +169,7 @@
 | `10.9` | Elementary Particles (Photons, Leptons, Mesons, Baryons) & Quark Model | ⚪ *Pending Notes* | `None` |
 | `10.10` | Symmetries & Conservation Laws (Isospin, C, P, T Invariance) | ⚪ *Pending Notes* | `None` |
 
-### SEC-11: Electronics (0 notes)
+### SEC-11: Electronics (1 note)
 *Semiconductor diodes, BJT, FET; feedback, oscillators; op-amps & applications, active filters; waveform generators; digital logic, combinational/sequential circuits, flip-flops, timers, counters, registers; A/D and D/A conversion.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |

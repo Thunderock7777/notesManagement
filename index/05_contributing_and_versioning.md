@@ -350,6 +350,26 @@ Cycle Date: 2026-11-16
 
 ---
 
+```text
+===============================================================================
+VERSION 1.5.0 CYCLE
+===============================================================================
+Cycle: Scrap Dropzone Batch Ingestion, Full Curriculum Zero-Gap Elevation
+Starting Count: 0 / 500
+Cycle Date: 2026-11-16
+```
+
+### Version 1.5.0 Cycle Ledger
+* `2026-11-16` | Ingestion | Swept 11 mixed syllabus textbooks from `scrap/` via `manage.bat sweep` into `pdf/` | `system +11 / -0` | `11 / 500`
+* `2026-11-16` | Deduplication | Audited exact MD5 duplicates; safely pruned redundant copies of `Quantum Mechanics.pdf` and `Thermodynamics and Statistical Mechanics.pdf` matching DOC-002 and DOC-109 | `system +0 / -2` | `11 / 500`
+* `2026-11-16` | Ingestion | Semantically renamed 9 new comprehensive GATE textbooks (`DOC-133` to `DOC-141`) spanning Measurements, Math, Classical, EMT, Optics, Atomic, Solid State, Nuclear, and Electronics | `system +9 / -0` | `20 / 500`
+* `2026-11-16` | Extraction | Batch extracted full companion surrogate markdown notes via `pymupdf4llm` into `txt_md/` carrying the provisional compilation lock banner | `system +9 / -0` | `29 / 500`
+* `2026-11-16` | Control Plane | Updated `index/00_syllabus_taxonomy.md` eliminating all curriculum blind spots (11 of 11 GATE sections now active, 28/78 sub-topics covered, 35.9% overall) | `system +45 / -22` | `52 / 500`
+* `2026-11-16` | Control Plane | Registered 9 new entries in `index/03_topic_index.md` and added 9 nodes with 12 foundational cross-domain edges in `index/04_interconnection_mindmap.md` (now 140 nodes, 203 edges) | `system +95 / -8` | `139 / 500`
+* `2026-11-16` | Release | **Versioned 9-textbook curriculum elevation and zero-gap milestone as 1.5.0 (MINOR)**
+
+---
+
 ## 7. Release Readiness Checklist
 
 Before tagging, committing, or pushing an architectural release:

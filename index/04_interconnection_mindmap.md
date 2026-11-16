@@ -16,8 +16,8 @@
 
 ```yaml
 version: '1.4'
-total_nodes: 131
-total_edges: 191
+total_nodes: 140
+total_edges: 203
 nodes:
 - id: DOC-001
   file: qm-two-state-time-evolved-wavefunction.pdf
@@ -1471,6 +1471,142 @@ nodes:
   - DOC-066
   section: SEC-09
   syllabus_topic: '`9.1` Elements of Crystallograp'
+- id: DOC-133
+  file: mea-experimental-methods-error-analysis.pdf
+  source_type: surrogate_md
+  domain: Measurements and Error Analysis
+  core_concepts:
+  - Units and Dimensions
+  - Error Analysis
+  - Significant Figures
+  - Error Propagation
+  - Least Count
+  summary: Comprehensive GATE study guide on units, dimensions, least count, experimental error analysis, and error propagation
+    mathematics.
+  source_note: mea-experimental-methods-error-analysis.md
+  section: SEC-01
+  syllabus_topic: '`1.1` Units, Dimensions & Error An'
+- id: DOC-134
+  file: math-linear-vector-spaces-matrix-algebra.pdf
+  source_type: surrogate_md
+  domain: Mathematical Physics
+  core_concepts:
+  - Linear Vector Spaces
+  - Basis and Orthogonality
+  - Matrix Algebra
+  - Diagonalization
+  - Eigenvalues
+  summary: Exhaustive study notes on linear vector spaces, inner product spaces, matrix algebra, similarity transformations,
+    and diagonalization.
+  source_note: math-linear-vector-spaces-matrix-algebra.md
+  section: SEC-02
+  syllabus_topic: '`2.1` Linear Vector Spaces, Basis,'
+- id: DOC-135
+  file: cm-core-analytical-mechanics-lagrangian-hamiltonian.pdf
+  source_type: surrogate_md
+  domain: Classical Mechanics
+  core_concepts:
+  - Lagrangian Dynamics
+  - Hamiltonian Mechanics
+  - Poisson Brackets
+  - Canonical Transformations
+  - Small Oscillations
+  summary: Advanced review module covering Lagrangian and Hamiltonian mechanics, symmetry, conservation laws, Poisson brackets,
+    and canonical transformations.
+  source_note: cm-core-analytical-mechanics-lagrangian-hamiltonian.md
+  section: SEC-03
+  syllabus_topic: '`3.1` D''Alembert''s Principle, Eule'
+- id: DOC-136
+  file: emt-electrodynamics-boundary-value-problems.pdf
+  source_type: surrogate_md
+  domain: Electromagnetic Theory
+  core_concepts:
+  - Electrostatics
+  - Magnetostatics
+  - Boundary Value Problems
+  - Method of Images
+  - Multipole Expansion
+  summary: Comprehensive study notes on electrostatic and magnetostatic boundary value problems, Laplace/Poisson solutions,
+    method of images, and multipole expansions.
+  source_note: emt-electrodynamics-boundary-value-problems.md
+  section: SEC-05
+  syllabus_topic: '`5.1` Electrostatic & Magnetostati'
+- id: DOC-137
+  file: opt-optics-wave-dynamics-ray-matrix.pdf
+  source_type: surrogate_md
+  domain: Optical Physics
+  core_concepts:
+  - Wave Equations
+  - Interference
+  - Diffraction
+  - Polarization
+  - Ray Transfer Matrix
+  summary: Exhaustive review notes on plane and spherical wave equations, interference, coherence, diffraction, polarization,
+    and ray-transfer matrix methods.
+  source_note: opt-optics-wave-dynamics-ray-matrix.md
+  section: SEC-06
+  syllabus_topic: '`6.1` Wave Equation, Superposition'
+- id: DOC-138
+  file: at-atomic-spectra-coupling-schemes.pdf
+  source_type: surrogate_md
+  domain: Atomic and Molecular Physics
+  core_concepts:
+  - One-Electron Spectra
+  - Spin-Orbit Interaction
+  - LS and jj Coupling
+  - Fine Structure
+  - Hyperfine Structure
+  summary: Meticulously structured study notes on one- and many-electron atomic spectra, spin-orbit physics, LS and jj coupling
+    schemes, and fine/hyperfine splitting.
+  source_note: at-atomic-spectra-coupling-schemes.md
+  section: SEC-08
+  syllabus_topic: '`8.1` Spectra of One- and Many-Ele'
+- id: DOC-139
+  file: ssp-crystallography-diffraction-bonding-phonons.pdf
+  source_type: surrogate_md
+  domain: Solid State Physics
+  core_concepts:
+  - Crystallography
+  - Bravais Lattices
+  - X-ray Diffraction
+  - Chemical Bonding
+  - Lattice Vibrations
+  - Phonons
+  summary: Comprehensive textbook notes covering crystal lattices, diffraction methods, bonding in solids, lattice vibrations,
+    and thermal phonon properties.
+  source_note: ssp-crystallography-diffraction-bonding-phonons.md
+  section: SEC-09
+  syllabus_topic: '`9.1` Elements of Crystallography,'
+- id: DOC-140
+  file: nuc-nuclear-models-structure-binding-energy.pdf
+  source_type: surrogate_md
+  domain: Nuclear and Particle Physics
+  core_concepts:
+  - Binding Energy
+  - Liquid Drop Model
+  - Electric and Magnetic Moments
+  - Nuclear Shell Model
+  - Magic Numbers
+  summary: Comprehensive study guide on nuclear binding energy, semi-empirical mass formula, electric quadrupole/magnetic
+    dipole moments, and single-particle shell model.
+  source_note: nuc-nuclear-models-structure-binding-energy.md
+  section: SEC-10
+  syllabus_topic: '`10.1` Nuclear Properties (Binding '
+- id: DOC-141
+  file: elec-semiconductor-devices-pn-junctions-transistors.pdf
+  source_type: surrogate_md
+  domain: Electronics
+  core_concepts:
+  - p-n Junction Diode
+  - Depletion Region
+  - Bipolar Junction Transistors (BJT)
+  - JFET and MOSFET
+  - I-V Characteristics
+  summary: Detailed study notes on semiconductor physics, p-n junction diode mechanics, carrier diffusion, BJTs, and field-effect
+    transistors (JFET/MOSFET).
+  source_note: elec-semiconductor-devices-pn-junctions-transistors.md
+  section: SEC-11
+  syllabus_topic: '`11.1` Semiconductor Devices (Carri'
 edges:
 - from: DOC-001
   to: DOC-007
@@ -2045,8 +2181,44 @@ edges:
 - from: DOC-005
   to: DOC-122
   relation: solves_question_in
+- from: DOC-134
+  to: DOC-135
+  relation: mathematical_foundation_for
+- from: DOC-134
+  to: DOC-002
+  relation: mathematical_foundation_for
+- from: DOC-134
+  to: DOC-136
+  relation: mathematical_foundation_for
+- from: DOC-135
+  to: DOC-002
+  relation: classical_limit_of
+- from: DOC-135
+  to: DOC-109
+  relation: prerequisite_for
+- from: DOC-136
+  to: DOC-137
+  relation: governing_equations_for
+- from: DOC-136
+  to: DOC-141
+  relation: electrodynamic_foundation_for
+- from: DOC-139
+  to: DOC-141
+  relation: condensed_matter_foundation_for
+- from: DOC-002
+  to: DOC-138
+  relation: quantum_foundation_for
+- from: DOC-002
+  to: DOC-140
+  relation: quantum_foundation_for
+- from: DOC-133
+  to: DOC-137
+  relation: experimental_methodology_for
+- from: DOC-133
+  to: DOC-141
+  relation: experimental_methodology_for
 framework: GATE 2027 PH Physics Syllabus (IIT Madras)
-sections_represented: 6
+sections_represented: 11
 ```
 
 ---
@@ -2176,4 +2348,16 @@ DOC-113 | solves_question_in | DOC-059
 DOC-115 | solves_question_in | DOC-059
 DOC-126 | solves_question_in | DOC-059
 DOC-005 | solves_question_in | DOC-122
+DOC-134 | mathematical_foundation_for | DOC-135
+DOC-134 | mathematical_foundation_for | DOC-002
+DOC-134 | mathematical_foundation_for | DOC-136
+DOC-135 | classical_limit_of | DOC-002
+DOC-135 | prerequisite_for | DOC-109
+DOC-136 | governing_equations_for | DOC-137
+DOC-136 | electrodynamic_foundation_for | DOC-141
+DOC-139 | condensed_matter_foundation_for | DOC-141
+DOC-002 | quantum_foundation_for | DOC-138
+DOC-002 | quantum_foundation_for | DOC-140
+DOC-133 | experimental_methodology_for | DOC-137
+DOC-133 | experimental_methodology_for | DOC-141
 ```
