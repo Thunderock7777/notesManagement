@@ -7,20 +7,20 @@ description: Master operational management skill for the Study Knowledge Hub and
 
 This skill defines the operational laws, lifecycle state machines, directory governance, and automated pipeline rules for managing an automated **Study Knowledge Hub & Notes Management Repository**.
 
-Any AI agent entering this workspace—whether pre-existing or initialized in a brand-new directory—must execute strictly under this specification in coordination with the `karpathy-guidelines` skill.
+Any AI agent entering this workspace—whether pre-existing or initialized fresh in a brand-new directory on any machine—must execute strictly under this specification in coordination with the `karpathy-guidelines` skill.
 
 ---
 
-## 1. Portable Workspace Architecture & Directory Layout
+## 1. Portable Workspace Architecture & Dynamic Root Resolution
 
 ### 1.1 Dynamic Root Resolution
-The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the project root where `manage.py`, `manage.bat`, and `README.md` reside). **NEVER hardcode absolute machine paths** (such as specific drive letters or user directories). All operational paths are resolved relative to `<WORKSPACE_ROOT>`.
+The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory where `manage.py`, `manage.bat`, and `README.md` reside). **NEVER hardcode absolute machine paths** (such as specific drive letters `C:`, `D:`, or user profiles). All operational paths are resolved relative to `<WORKSPACE_ROOT>`.
 
 ### 1.2 Universal Directory Roles
 ```text
 <WORKSPACE_ROOT>/
 ├── txt_md/     <-- INGESTION & TEXT: Authentic source notes & provisional search surrogates ONLY
-├── pdf/        <-- PUBLISHED OUTPUT: Final compiled XeLaTeX PDFs and verified direct PDF imports
+├── pdf/        <-- PUBLISHED OUTPUT: Final compiled XeLaTeX PDFs and verified digital PDF imports
 ├── index/      <-- CONTROL PLANE: Internal AI-only machine-readable indexation & relational graph
 │   ├── README.md              <-- Master control plane index and quick entry
 │   ├── 00_syllabus_taxonomy.md <-- Formal curriculum breakdown, sub-topic inventory & coverage matrix
@@ -65,54 +65,48 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the project roo
 
 ---
 
-## 2. Systematic Operational Protocol: Step-by-Step Order of Operations
+## 2. Systematic Order of Operations: The Complete Lifecycle
 
-When operating in this repository—whether starting a fresh session or processing new inputs—the AI agent must follow this exact sequential lifecycle:
-
-### Phase 0: Repository Discovery & Orientation (Onboarding / Entry Protocol)
-Before touching any files or executing commands:
-1. **Locate Workspace Root**: Identify the working directory containing `manage.py` and `manage.bat`.
-2. **Inspect Git Status**: Run `git status` to verify clean state, check for uncommitted changes or untracked user inputs.
-3. **Verify Prerequisites**: Confirm that Python 3.10+, Pandoc, and XeLaTeX (`xelatex`) are accessible.
-4. **Proactive Repository Audit (`manage.bat scan`)**:
-   - Run `manage.bat scan` to reconcile physical files in `txt_md/` and `pdf/` against `index/03_topic_index.md`.
-   - Identify whether any newly added notes or PDFs are awaiting ingestion.
-5. **Deduplication Audit (`manage.bat audit-duplicates`)**:
-   - Verify zero duplicate content hashes exist across the library.
-
----
-
-### Phase 1: Ingestion Lifecycles & State Machine
+When operating in this repository—whether entering a fresh turn or processing incoming documents—the AI agent must follow this exact sequential lifecycle:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> IngestionRouter
+    [*] --> Phase0_Discovery
+
+    state Phase0_Discovery {
+        [*] --> CheckRoot
+        CheckRoot --> GitStatusCheck: Verify clean workspace
+        GitStatusCheck --> RunScan: manage.bat scan (Reconcile disk vs catalog)
+        RunScan --> AuditDedup: manage.bat audit-duplicates
+    }
+
+    Phase0_Discovery --> IngestionRouter: Files pending ingestion
+    Phase0_Discovery --> SearchMode: User asks search/query
 
     state IngestionRouter {
         [*] --> CheckLocation
-        CheckLocation --> AuthenticNote: Dropped in txt_md/
-        CheckLocation --> DirectPDF: Dropped in pdf/
-        CheckLocation --> Unauthorized: In root/index/tool
+        CheckLocation --> Lifecycle1: Placed in txt_md/
+        CheckLocation --> Lifecycle2: Placed in pdf/
+        CheckLocation --> Reject: Outside authorized paths
     }
 
-    Unauthorized --> Rejected: Strict Ignore Filter
-
-    state "Lifecycle 1: Authentic Source Note" as L1 {
-        AuthenticNote --> HashCheckL1: MD5 & Text Dedup Check
-        HashCheckL1 --> TaxonomyMapL1: Map to Curriculum Section & Topic
-        TaxonomyMapL1 --> SemanticRenameL1: kebab-case Rename ([domain]-[topic])
-        SemanticRenameL1 --> CompileXeLaTeX: tool/compile.bat (XeLaTeX)
+    state "Lifecycle 1: Authentic Source Note" as Lifecycle1 {
+        [*] --> DedupL1: MD5 & Text Dedup Check
+        DedupL1 --> TaxonomyL1: Map to Virtual Section & Topic
+        TaxonomyL1 --> RenameL1: kebab-case Rename ([domain]-[topic].[ext])
+        RenameL1 --> CompileXeLaTeX: Non-interactive tool/compile.bat
         CompileXeLaTeX --> RoutePDF: Move PDF to pdf/
         RoutePDF --> CatalogL1: Register in 03_topic_index.md (Compiled from Source)
         CatalogL1 --> MindmapL1: Insert Node in 04_interconnection_mindmap.md (source_type: txt_md)
     }
 
-    state "Lifecycle 2: Direct PDF + Surrogate Extraction" as L2 {
-        DirectPDF --> TextLayerGate: Verify Text Layer (LaTeX/OCR >= 50 chars)
-        TextLayerGate --> HashCheckL2: MD5 & Text Dedup Check
-        HashCheckL2 --> TaxonomyMapL2: Map to Curriculum Section & Topic
-        TaxonomyMapL2 --> SemanticRenameL2: kebab-case Rename
-        SemanticRenameL2 --> ExtractSurrogate: pymupdf4llm Parallel Extraction
+    state "Lifecycle 2: Direct Digital PDF" as Lifecycle2 {
+        [*] --> TextLayerGate: Text Layer Gate (len >= 50 clean chars)
+        TextLayerGate --> RejectScanned: < 50 chars (Rejected Option C)
+        TextLayerGate --> DedupL2: MD5 Content Dedup Check
+        DedupL2 --> TaxonomyL2: Map to Virtual Section & Topic
+        TaxonomyL2 --> RenamePDF: kebab-case Rename ([domain]-[topic].pdf)
+        RenamePDF --> ExtractSurrogate: pymupdf4llm Parallel Extraction
         ExtractSurrogate --> ApplyBanner: Prepend DO NOT RECOMPILE Header
         ApplyBanner --> SaveSurrogate: Save to txt_md/<name>.md
         SaveSurrogate --> LockCompile: Strict Compilation Lock Activated
@@ -120,22 +114,37 @@ stateDiagram-v2
         CatalogL2 --> MindmapL2: Insert Node in 04_interconnection_mindmap.md (source_type: surrogate_md)
     }
 
-    state "Lifecycle 3: Surrogate-to-Authoritative Promotion" as L3 {
-        SaveSurrogate --> UserDropsNote: User Provides Authentic Note
+    state "Lifecycle 3: Surrogate-to-Authoritative Promotion" as Lifecycle3 {
+        SaveSurrogate --> UserDropsNote: User provides authentic note
         UserDropsNote --> DetectSurrogate: Match Base Name
-        DetectSurrogate --> RemoveSurrogate: Cleanly Remove Provisional .md
+        DetectSurrogate --> RemoveSurrogate: Cleanly remove provisional .md
         RemoveSurrogate --> ReleaseLock: Compilation Lock Released
         ReleaseLock --> CompileXeLaTeX
     }
 ```
 
+### Phase 0: Discovery & Onboarding Protocol (On Session Startup)
+Before touching any files or executing commands:
+1. **Locate Workspace Root**: Identify the directory containing `manage.py` and `manage.bat`.
+2. **Inspect Git Status**: Run `git status` to verify clean state, check for uncommitted changes or untracked user inputs.
+3. **Verify Prerequisites**: Confirm that Python 3.10+, Pandoc, and XeLaTeX (`xelatex`) are accessible.
+4. **Proactive Repository Audit (`manage.bat scan` / `python manage.py scan`)**:
+   - Reconciles physical files in `txt_md/` and `pdf/` against `index/03_topic_index.md`.
+   - Counts authentic source notes vs provisional surrogates and flags any unindexed files.
+5. **Deduplication Audit (`manage.bat audit-duplicates`)**:
+   - Verifies zero duplicate content hashes or identical body texts exist across the library.
+
+---
+
+### Phase 1: Ingestion Lifecycles & State Machine
+
 #### Lifecycle 1: Processing Authentic Source Notes (`txt_md/` -> `pdf/`)
 1. **Analyze Content**: Read the note to determine Domain, Core Concepts, Prerequisites, and dense Summary.
-2. **Deduplication Check**: Compare MD5 hash and normalized text against all files in `txt_md/`. If identical, halt and inform user.
+2. **Deduplication Check**: Compare MD5 hash and normalized body text against all files in `txt_md/`. If identical, halt and inform user.
 3. **Taxonomy Classification**: Map document to its formal curriculum section (`SEC-XX`) and sub-topic unit based on `index/00_syllabus_taxonomy.md`.
 4. **Semantic Renaming**: Rename to `kebab-case` (`[domain]-[topic].[ext]`).
 5. **Headless Compilation**:
-   - Run via `(echo Y & echo.) | tool\compile.bat txt_md\<filename>.md` with `BypassSandbox: true`.
+   - Run via `(echo Y & echo.) | tool\compile.bat txt_md\<filename>.md` (or through `manage.bat process`) with `BypassSandbox: true`.
    - Verify that `<filename>.pdf` was successfully created.
 6. **PDF Routing**: Move `<filename>.pdf` from `txt_md/` to `pdf/`.
 7. **Control Plane Registration**:
@@ -185,37 +194,104 @@ stateDiagram-v2
 2. **Virtual Control Plane Mapping**:
    - All hierarchical taxonomy (Sections, Topics, Units) is maintained virtually inside the `index/` control plane:
      - `index/00_syllabus_taxonomy.md`: Defines curriculum sections, lists all sub-topic units, and tracks coverage percentages.
-     - `index/03_topic_index.md`: Master table columns `Section` (`SEC-01` to `SEC-11`) and `Syllabus Topic`, plus detail blocks.
+     - `index/03_topic_index.md`: Master table columns `Section` (`SEC-01` to `SEC-XX`) and `Syllabus Topic`, plus detail blocks.
      - `index/04_interconnection_mindmap.md`: YAML node fields `section:` and `syllabus_topic:`.
 3. **Real-Time Coverage Auditing**:
    - Run `cmd /c "manage.bat coverage"` (or `python manage.py coverage`) to generate a complete syllabus coverage audit, note counts, and curriculum gap alerts.
 
 ---
 
-## 4. Automation Engine Scope & Boundaries (`manage.py` / `manage.bat`)
+## 4. Automation Engine CLI Reference & Zero-Permission Pipeline
 
-### ✅ Permitted Mechanical Engine Capabilities:
-1. **Mechanical File Operations**: Renaming, moving compiled PDFs to `pdf/`, cleaning provisional surrogates upon replacement.
-2. **Headless Compilation Driver**: Running `tool/compile.bat` non-interactively with piped stdin.
-3. **Compilation Interlock**: Rejecting compilation for any file containing `DO NOT RECOMPILE` / `AUTO-GENERATED SURROGATE`.
-4. **Atomic Control Plane Updates**: Appending/updating rows and detail blocks in `03_topic_index.md` and nodes/edges in `04_interconnection_mindmap.md`.
-5. **Deduplication & Coverage Audits**:
-   - `manage.bat scan`: Verifying unindexed files and counting authentic source notes vs provisional surrogates.
-   - `manage.bat audit-duplicates`: Checking whole-repository MD5 hashes and normalized body text similarity.
-   - `manage.bat remove-doc`: Consolidating and removing duplicate documents atomically.
-   - `manage.bat coverage`: Computing real-time curriculum coverage metrics and gap alerts.
-6. **Zero-Permission Execution**: Staging instructions in `.pending.json` and invoking static `cmd /c "manage.bat process"`.
+### 4.1 CLI Command Reference
+The automation script (`manage.bat` on Windows, or `python manage.py` universally) provides the mechanical execution engine:
 
-### ❌ Strictly Prohibited Engine Actions:
-1. **NEVER modify or touch `tool/`**.
-2. **NEVER alter substantive text inside `txt_md/`**.
-3. **NEVER use regex/heuristics to invent titles or topic relationships** (the AI must always read and analyze first).
-4. **NEVER touch files outside `txt_md/` and `pdf/`**.
-5. **NEVER USE `manage.py` FOR SEARCHING OR USER QUERIES**.
+| Command | Arguments / Flags | Core Responsibility |
+|---|---|---|
+| `scan` | *(none)* | Audits physical files vs index, counts authentic notes vs surrogates, reports uncataloged files. |
+| `process` | *(reads `.pending.json`)* | Executes staged ingestion without interactive permission prompts. |
+| `ingest-note` | `--file <path> --name <kebab> --domain <str> --concepts <csv> --summary <str> [--prerequisites <csv>]` | Renames note, compiles XeLaTeX PDF, routes PDF to `pdf/`, and registers in catalog & mindmap. |
+| `ingest-pdf` | `--file <path> --name <kebab> --domain <str> --concepts <csv> --summary <str>` | Verifies text layer ($\ge 50$ chars), extracts surrogate `.md`, locks compilation, and catalogs. |
+| `audit-duplicates`| *(none)* | Detects exact MD5 hash collisions and normalized body text duplicates across the repository. |
+| `remove-doc` | `--doc-id <DOC-XXX> [--consolidate-into <DOC-YYY>]` | Atomically deletes files, cleans catalog row, removes detail block, and strips mindmap node/edges. |
+| `coverage` | *(none)* | Displays curriculum coverage audit dashboard across all sections and sub-topic units. |
+
+### 4.2 Zero-Permission Protocol (`.pending.json` Schema)
+To prevent agent environments from prompting for permissions on every dynamic command invocation, the AI stages instructions into `.pending.json` in the workspace root, then invokes the static command:
+```cmd
+cmd /c "manage.bat process"
+```
+*(or `python manage.py process`).*
+
+**`.pending.json` Schema**:
+```json
+{
+  "action": "ingest-note",
+  "file": "txt_md/raw_input.txt",
+  "name": "ssp-bloch-wavefunction-and-theorem",
+  "domain": "Solid State Physics",
+  "concepts": "Bloch Theorem, Periodic Potential, Crystal Momentum",
+  "summary": "Detailed derivation of Bloch theorem and periodic wavefunctions in periodic lattices.",
+  "prerequisites": "DOC-001, DOC-018"
+}
+```
+*(For direct PDF ingestion, set `"action": "ingest-pdf"` and point `"file"` to the PDF in `pdf/`).*
 
 ---
 
-## 5. Three-Stage Search & Retrieval Protocol (AI Execution Only)
+## 5. Control Plane Data Formats & Schemas
+
+### 5.1 Catalog Schema (`index/03_topic_index.md`)
+1. **Master Table Layout (8 Columns)**:
+   ```markdown
+   | ID | Section | Syllabus Topic | Semantic Filename | Original Filename | Generated PDF | Status | Last Updated |
+   |---|---|---|---|---|---|---|---|
+   | DOC-001 | **SEC-07** | `7.2` Schrödinger Dynamics | `qm-two-state.pdf` | `QM.pdf` | [qm-two-state.pdf](file:///.../pdf/qm-two-state.pdf) | Provisional Source (Auto-extracted) | 2026-11-15 |
+   ```
+2. **Document Detail Block Layout**:
+   ```markdown
+   ### [DOC-001] qm-two-state.pdf
+   - **Source File**: [qm-two-state.md](file:///.../txt_md/qm-two-state.md) (Provisional Surrogate)
+   - **Compiled PDF**: [qm-two-state.pdf](file:///.../pdf/qm-two-state.pdf)
+   - **Original Filename**: `QM.pdf`
+   - **GATE Section**: `SEC-07` (Quantum Mechanics)
+   - **Syllabus Topic**: `7.2: Time-Independent & Time-Dependent Schrödinger Dynamics`
+   - **Domain**: `Quantum Mechanics`
+   - **Core Concepts**:
+     - Wavefunction
+     - Eigenstates
+   - **Text Layer Quality**: Verified (LaTeX Typeset)
+   - **Summary**: Concise technical summary...
+   - **Processing Log**:
+     - `2026-11-15`: Initial ingestion...
+   ```
+
+### 5.2 Mindmap YAML Knowledge Graph Schema (`index/04_interconnection_mindmap.md`)
+```yaml
+version: '1.3'
+total_nodes: 131
+total_edges: 150
+nodes:
+  - id: DOC-001
+    file: qm-two-state.pdf
+    source_type: surrogate_md # or txt_md, pdf_direct
+    domain: Quantum Mechanics
+    core_concepts:
+      - Wavefunction
+      - Eigenstates
+    summary: Concise technical summary...
+    source_note: qm-two-state.md
+    section: SEC-07
+    syllabus_topic: '`7.2` Schrödinger Dynamics'
+edges:
+  - from: DOC-001
+    to: DOC-007
+    relation: shares Eigenstates
+```
+
+---
+
+## 6. Three-Stage Search & Retrieval Protocol (AI Execution Only)
 
 When the user asks to search, find topics, explore conceptual connections, or review notes:
 1. **Never Invoke `manage.py` for Search**: Searching is purely an AI reading, reasoning, and synthesis task.
@@ -226,10 +302,10 @@ When the user asks to search, find topics, explore conceptual connections, or re
 
 ---
 
-## 6. Proactive Maintenance, Git Standards & 8-Document Audit Checklist
+## 7. Proactive Maintenance, Git Standards & 8-Document Audit Checklist
 
 1. **Session Entry Check**: Proactively run `manage.bat scan` on session startup.
-2. **Zero Redundancy**: If duplicates are detected, consolidate into a single document ID immediately.
+2. **Zero Redundancy**: If duplicates are detected, consolidate into a single document ID immediately via `manage.bat remove-doc`.
 3. **Git Hygiene**:
    - `.gitignore` must ignore `pdf/*` (except `pdf/.gitkeep`). Binary PDFs are never pushed.
    - All note text in `txt_md/` (authentic + surrogate) and index files in `index/` are tracked and pushed.
@@ -247,14 +323,14 @@ When the user asks to search, find topics, explore conceptual connections, or re
 
 ---
 
-## 7. Portable Bootstrapping Guide: Deploying in a Fresh Directory
+## 8. Portable Bootstrapping Guide: Deploying in a Fresh Directory
 
 If this skill is introduced into a new, uninitialized folder:
 1. **Initialize Directory Skeleton**: Create `txt_md/`, `pdf/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in the root.
-2. **Install Skills**: Run `md_skill/install.bat` to deploy blueprints into `.agent/skills/`.
+2. **Install Skills**: Run `md_skill/install.bat` (or manually copy blueprints) to deploy into `.agent/skills/`.
 3. **Link Compiler Tool**: Ensure `tool/` is present as an immutable submodule or standalone directory.
 4. **Initialize Control Plane**:
-   - Create `index/00_syllabus_taxonomy.md` defining the subject curriculum.
-   - Create `index/03_topic_index.md` with the Master Table header.
+   - Create `index/00_syllabus_taxonomy.md` defining the subject curriculum sections and sub-topics.
+   - Create `index/03_topic_index.md` with the 8-column Master Table header.
    - Create `index/04_interconnection_mindmap.md` with baseline YAML header (`total_nodes: 0`, `total_edges: 0`).
-5. **Run Baseline Scan**: Execute `manage.bat scan` to verify clean initialization.
+5. **Run Baseline Scan**: Execute `manage.bat scan` (or `python manage.py scan`) to verify clean initialization.
