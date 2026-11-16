@@ -432,31 +432,29 @@ When entering or initializing any repository, the AI must execute these steps in
 
 ```mermaid
 flowchart TD
-    Step1["Step 1: Pre-Flight Gate (Check 00, 03, 04)"] --> Check{"Do 00, 03, and 04 exist?"}
-    Check -->|All 3 Exist| Existing["Existing Repository: PRESERVE txt_md/ (Skip Sanitation)"]
-    Check -->|None Exist| Fresh["Fresh Start Trigger: SANITIZE"]
-    Fresh --> Action1["a) Delete & recreate txt_md/ as clean empty folder"]
-    Fresh --> Action2["b) Edit manage.bat Python path & verify manage.py dynamic root"]
-    Action1 & Action2 --> Step2["Step 2: Initialize Directory Skeleton (pdf/, scrap/, index/, md_skill/)"]
-    Existing --> Step2
-    Step2 --> Step3["Step 3: Acquire Compiler Tool (clone tool/) & Deploy Skills (install.bat)"]
-    Step3 --> Step4["Step 4: Initialize Control Plane (ONLY NOW generate 00, 03, and 04 freshly)"]
+    Step1["Step 1: Environment & Path Gate"] --> Path["Configure manage.bat local Python path & verify manage.py dynamic root"]
+    Path --> Invariant["Non-Destructive Invariant: NEVER delete txt_md/ automatically (even if index files are missing)"]
+    Invariant --> Step2["Step 2: Initialize Directory Skeleton (txt_md/, pdf/, scrap/, index/, md_skill/)"]
+    Step2 --> Step3["Step 3: Acquire Tool (clone tool/) & Deploy Skills (install.bat)"]
+    Step3 --> Step4["Step 4: Control Plane Generation (Generate missing 00, 03, 04 without deleting notes)"]
     Step4 --> Step5["Step 5: Run Baseline Scan (manage.bat scan)"]
+    
+    UserReset["User asks: 'I want a fresh start'"] --> PassphraseGate["Mandatory Security Gate: Require exact phrase 'FRESH_START'"]
+    PassphraseGate --> CheckPhrase{"Exact phrase 'FRESH_START' provided?"}
+    CheckPhrase -->|No / Anything else| Abort["ABORT RESET: Zero files deleted. 100% data preserved."]
+    CheckPhrase -->|Yes ('FRESH_START')| Wipe["Execute Section 9.3 Reset: Purge txt_md/, reset 03 & 04 to zero"]
 ```
 
-#### Step 1: Pre-Flight Detection & Fresh-Start Sanitation Gate
-*Before creating or modifying any control plane files*, the AI checks for the existence of:
-1. `index/00_syllabus_taxonomy.md`
-2. `index/03_topic_index.md`
-3. `index/04_interconnection_mindmap.md`
-
-- **Condition A (Existing Repository)**: If these files exist, the workspace is an active knowledge base. **NEVER delete or purge `txt_md/`**. Proceed to normal operations.
-- **Condition B (Fresh Start Detected)**: If **none** of these three files exist, this is a first-time fresh deployment:
-  1. **Purge & Reset `txt_md/`**: Delete and cleanly recreate `txt_md/` as an empty folder to guarantee no residual notes or stale surrogates from prior templates survive. Ensure `pdf/` and `scrap/` are likewise clean.
-  2. **Environment Path Editing for `manage.bat` and `manage.py`**:
-     - Inspect `manage.bat` and edit its Python interpreter path to match the current machine's environment (e.g. replacing any foreign `C:\Users\<old-user>\...` path with the active local Python executable path or `%LOCALAPPDATA%\Programs\Python\...`).
-     - Confirm that `manage.py` dynamically resolves its root relative to its location (`WORKSPACE = os.path.abspath(os.path.dirname(__file__))`) with zero hardcoded machine drives.
-- **Condition C (User Requests Fresh Start on Cloned Repo)**: If the repository was cloned with existing notes and the user explicitly requests a fresh start in chat (e.g. *"I want a fresh start"*), the AI must strictly require explicit confirmation before executing the **Section 9.3 User-Requested Fresh Start Protocol**.
+#### Step 1: Pre-Flight Environment & Path Configuration Gate
+*Before creating or modifying any control plane files*, the AI performs environment inspection:
+1. **Dynamic Python Path Configuration**:
+   - Inspect `manage.bat` and edit its Python interpreter path to match the current machine's environment (e.g. replacing any foreign `C:\Users\<old-user>\...` path with the active local Python executable path or `%LOCALAPPDATA%\Programs\Python\...`).
+   - Confirm that `manage.py` dynamically resolves its root relative to its location (`WORKSPACE = os.path.abspath(os.path.dirname(__file__))`) with zero hardcoded machine drives.
+2. **Absolute Non-Destructive Invariant**:
+   - The absence of index files (`00_syllabus_taxonomy.md`, `03_topic_index.md`, `04_interconnection_mindmap.md`) must **NEVER trigger automatic deletion of `txt_md/`, `pdf/`, or `scrap/` under any circumstance**.
+   - If index files are missing, the AI simply creates/regenerates them in Step 4. Existing notes are **100% sacred and preserved**.
+3. **The Sole Deletion Exception**:
+   - Files in `txt_md/` or `pdf/` may **ONLY** be deleted if the user explicitly asks for a fresh start AND confirms with the exact security passphrase **`FRESH_START`** under Section 9.3.
 
 #### Step 2: Initialize Directory Skeleton
 Ensure all required directories exist: `txt_md/`, `pdf/`, `scrap/`, `index/`, `md_skill/`, and place `manage.py` and `manage.bat` in `<WORKSPACE_ROOT>`.
@@ -466,39 +464,46 @@ Ensure all required directories exist: `txt_md/`, `pdf/`, `scrap/`, `index/`, `m
 2. **Deploy Skills**: Run `md_skill/install.bat` to deploy blueprints into `.agent/skills/`.
 
 #### Step 4: Control Plane Fresh Generation
-*Only after Step 1 has sanitized the workspace, the AI creates the dynamic index files for the first time*:
+*The AI creates any missing dynamic index files without ever touching or deleting notes in `txt_md/`*:
 1. **Syllabus Acquisition Protocol**: Check if `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` exists. If missing, ask the user to provide their syllabus. If not provided immediately, use autonomous AI academic reasoning to synthesize a complete curriculum breakdown (`SEC-01` to `SEC-XX`) and generate `index/00_syllabus_taxonomy.md`.
-2. **Initialize Master Catalog**: Create `index/03_topic_index.md` with the 8-column Master Table header.
-3. **Initialize Mindmap**: Create `index/04_interconnection_mindmap.md` with baseline YAML header (`total_nodes: 0`, `total_edges: 0`).
+2. **Initialize Master Catalog**: If missing, create `index/03_topic_index.md` with the 8-column Master Table header and index all existing files in `txt_md/` and `pdf/`.
+3. **Initialize Mindmap**: If missing, create `index/04_interconnection_mindmap.md` with baseline YAML header (`total_nodes: 0`, `total_edges: 0`) and populate from notes.
 4. **Scaffold Governance**: Initialize `index/05_contributing_and_versioning.md`, `index/README.md`, `README.md`, `01_tool_usage.md`, and `02_directory_management.md` from blueprints, to be maintained and edited over time.
 
 #### Step 5: Run Baseline Scan
-Execute `manage.bat scan` (or `python manage.py scan`) to verify clean 0/0 initialization.
+Execute `manage.bat scan` (or `python manage.py scan`) to verify clean initialization.
 
 ---
 
-### 9.3 User-Requested Fresh Start & Repository Reset Protocol (Explicit Confirmation Gate)
+### 9.3 User-Requested Fresh Start & Repository Reset Protocol (Explicit `FRESH_START` Passphrase Gate)
 
-When a user clones this repository (which already contains existing notes, PDFs, and catalog files) and says:
+When a user clones this repository (which already contains existing notes, PDFs, and catalog files) or wishes to completely wipe and repurpose the repository for a new subject, and says:
 > *"I want a fresh start"* / *"Reset this repo for a new subject"* / *"Clear everything and start fresh"*
 
-The AI must strictly execute this protocol:
+The AI must strictly adhere to the **`FRESH_START` Security Passphrase Invariant**:
 
-#### 1. Mandatory Explicit Confirmation Gate ("Super Sure" Verification)
-Because resetting a cloned repository permanently deletes existing study material, **the AI must NEVER execute a wipe silently or on a single ambiguous prompt**.
-The AI must halt and ask for explicit confirmation:
-> ⚠️ **CRITICAL WARNING**: A fresh start will permanently:
+#### 1. Mandatory Security Passphrase Confirmation Gate ("Super Sure" Verification)
+Because resetting a repository permanently deletes existing study material, **the AI is STRICTLY FORBIDDEN from deleting anything based on heuristics, missing index files, or simple conversational confirmations (such as 'yes', 'ok', or 'sure')**.
+
+The AI must halt immediately and present this exact security prompt:
+> ⚠️ **CRITICAL WARNING: DESTRUCTIVE ACTION REQUESTED**
+> A fresh start will permanently:
 > 1. Delete all existing notes in `txt_md/`.
 > 2. Delete all compiled PDFs in `pdf/`.
 > 3. Clean out `scrap/`.
 > 4. Reset `index/03_topic_index.md` and `index/04_interconnection_mindmap.md` to baseline zero.
 > 5. Prompt for a new syllabus to regenerate `index/00_syllabus_taxonomy.md`.
 > 
-> **Are you completely sure you want to wipe all existing data and reset this repository for a fresh start?**
-> Please reply with **"CONFIRM FRESH START"** or **"YES"** to proceed.
+> **To confirm this permanent reset, you must explicitly reply with the exact phrase:**
+> `FRESH_START`
+> *(Until and unless you reply with `FRESH_START`, no files will be deleted or modified in any case).*
 
-#### 2. Automated Clean Reset Execution (Only Upon Confirmation)
-Once the user explicitly confirms, the AI autonomously executes the complete reset:
+#### 2. Strict Passphrase Enforcement Rule
+- If the user replies with anything other than **`FRESH_START`** (e.g. "yes", "proceed", "do it", or any conversational text), the AI **MUST NOT DELETE ANYTHING**. The reset operation is immediately aborted, and all existing files are 100% preserved.
+- **ONLY** when the user's message explicitly contains the exact phrase **`FRESH_START`** may the AI proceed to execute the reset.
+
+#### 3. Automated Clean Reset Execution (Only Upon `FRESH_START` Passphrase)
+Once the exact passphrase `FRESH_START` is received, the AI autonomously executes the complete reset:
 1. **Purge Data Directories**:
    - Delete all files inside `txt_md/` (preserving the empty folder).
    - Delete all PDF files inside `pdf/` (preserving only `pdf/.gitkeep`).

@@ -134,14 +134,15 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 - **Interactive Prompt**: If `index/00_syllabus_taxonomy.md` or `index/syllabus.txt` is absent, the AI must first prompt the user to provide their syllabus or exam curriculum.
 - **Autonomous Cognitive Fallback**: If the user does not supply a syllabus or asks the AI to proceed without one, the AI must immediately use its own internal academic reasoning and domain knowledge to infer the domain structure from existing notes or academic standards, generate `index/00_syllabus_taxonomy.md` with sections (`SEC-01` to `SEC-XX`) and sub-topics, and continue with cataloging.
 
-### Rule 13: First-Time Fresh Start Detection & Sanitation Protocol
-- **Trigger**: Absence of `index/00_syllabus_taxonomy.md`, `index/03_topic_index.md`, and `index/04_interconnection_mindmap.md`.
-- **Sanitation Action**: Delete and recreate `txt_md/` as a clean, empty folder to clear residual template notes. Ensure `pdf/` and `scrap/` are clean.
-- **Path Configuration**: Inspect and edit `manage.bat` to ensure the Python interpreter path matches the local machine environment, and verify dynamic root resolution in `manage.py`.
+### Rule 13: Non-Destructive Invariant & Dynamic Path Configuration
+- **Absolute Preservation Rule**: The absence of index files (`00_syllabus_taxonomy.md`, `03_topic_index.md`, `04_interconnection_mindmap.md`) must **NEVER trigger automatic deletion of `txt_md/`, `pdf/`, or `scrap/` under any circumstance**. Missing index files are regenerated non-destructively while preserving all existing notes.
+- **Path Configuration**: In any environment, inspect and edit `manage.bat` to ensure the Python interpreter path matches the local machine environment, and verify dynamic root resolution in `manage.py`.
 
-### Rule 14: User-Requested Fresh Start & Repository Reset Protocol
-- **Explicit Confirmation Gate**: When a user explicitly requests a fresh start (`"I want a fresh start"`), the AI must **NEVER** wipe files silently. It must issue a high-visibility warning and demand explicit user confirmation (`"CONFIRM FRESH START"` or `"YES"`).
-- **Autonomous Reset Execution**: Once confirmed, delete all notes in `txt_md/`, delete PDFs in `pdf/`, clear `scrap/`, edit `manage.bat` Python path for the local machine, reset `03_topic_index.md` and `04_interconnection_mindmap.md` to baseline zero, re-deploy skills via `md_skill/install.bat`, and prompt for the new syllabus.
+### Rule 14: User-Requested Fresh Start & Exact Passphrase Gate (`FRESH_START`)
+- **Strict Security Gate**: The AI is strictly forbidden from deleting files in `txt_md/` or `pdf/` unless the user explicitly requests a fresh start AND confirms by typing the exact passphrase:
+  `FRESH_START`
+- **Zero-Tolerance on Ambiguity**: Conversational affirmations (like "yes", "ok", "do it") are **strictly rejected**. Until and unless the user replies with the exact phrase `FRESH_START`, no files will be deleted or modified in any case.
+- **Autonomous Reset Execution**: Once `FRESH_START` is received, delete all notes in `txt_md/`, delete PDFs in `pdf/`, clear `scrap/`, edit `manage.bat` Python path for the local machine, reset `03_topic_index.md` and `04_interconnection_mindmap.md` to baseline zero, re-deploy skills via `md_skill/install.bat`, and prompt for the new syllabus.
 
 ---
 
