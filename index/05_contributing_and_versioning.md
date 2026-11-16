@@ -383,7 +383,8 @@ Cycle Date: 2026-11-17
 * `2026-11-17` | Skills | Codified Section 7: "AI Cognitive Architecture & Token-Conservation Governance" in `md_skill/management_skill.md`, establishing the 5 Token-Conservation Laws and affirming AI as the sole brain | `system +62 / -2` | `62 / 500`
 * `2026-11-17` | Deployment | Deployed updated management skill blueprint to `.agent/skills/repository-management/SKILL.md` via `md_skill/install.bat` and verified SHA256 integrity | `system +62 / -2` | `62 / 500`
 * `2026-11-17` | Governance | Synchronized AI cognitive primacy and token-conservation directives across `index/README.md` (Rule 11) and `index/02_directory_management.md` (Rule 11) | `system +24 / -0` | `86 / 500`
-* `2026-11-17` | Release | **Versioned AI cognitive architecture and token-conservation governance as 1.5.1 (PATCH)**
+* `2026-11-17` | Documentation | Expanded root `README.md` with exhaustive, 7-category Master Chat Commands Directory covering dropzone sweeping, academic derivations, PYQ solving, and token efficiency | `user +76 / -22` | `140 / 500`
+* `2026-11-17` | Release | **Versioned AI cognitive architecture, token-conservation governance, and master chat commands as 1.5.1 (PATCH)**
 
 ---
 

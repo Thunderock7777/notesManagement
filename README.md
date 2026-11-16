@@ -92,23 +92,82 @@ The AI queries the mindmap graph and provides instant, contextual answers with d
 - **How to check preparation metrics**:
   - Run `cmd /c "D:\STUDY\manage.bat coverage"` in the terminal or ask in chat: *"Check syllabus coverage"* or *"Show GATE preparation gaps"*.
 
+### 4. Architecture, Contributing & Version Ledger ([index/05_contributing_and_versioning.md](file:///D:/STUDY/index/05_contributing_and_versioning.md))
+- **What it is**: Complete developer and system documentation tracking repository working rules, lifecycle specifications, cumulative line-budget versioning, and change ledgers.
+
 ---
 
-## ⚡ Useful Chat Commands
+## ⚡ Master Chat Commands Directory
 
-Here are quick prompts you can give the AI at any time:
+Because the AI is the cognitive brain of this repository, you do not need to memorize rigid CLI arguments or manual batch syntax. You can command the entire repository through natural conversation.
 
-| What you want to do | What to say in chat |
-|---|---|
-| Ingest new notes in `txt_md/` | `"Scan and process new notes"` |
-| Check for any new PDFs or changes | `"Scan directory for any changes"` |
-| Query a topic | `"What notes do I have on <topic>?"` |
-| Explore connections | `"How do my notes on <Topic A> connect to <Topic B>?"` |
-| Find prerequisites | `"What do I need to know before reading DOC-023?"` |
-| Inspect a specific PDF | `"Read DOC-015 and summarize its key equations"` |
-| Audit duplicate notes | `"Check if there are any duplicate notes"` |
-| Audit syllabus coverage & gaps | `"Check syllabus coverage"` / `"Show curriculum gaps"` |
-| Sweep misplaced files & dropzone | `"Sweep repository"` / `"Collect misplaced notes and PDFs"` |
+Here is the exhaustive, categorized master list of chat prompts for every operational possibility:
+
+### 1. 📥 Dropzone & Universal Ingestion (`scrap/` & `txt_md/`)
+
+| Goal / Operational Task | What to say in chat | What the AI does automatically |
+|---|---|---|
+| **Process Universal Dropzone** | `"Check the scrap and do the rest"`<br>`"Sweep scrap and process everything"` | Runs `manage.bat sweep`, routes `.txt`/`.md` to `txt_md/`, routes valid digital PDFs to `pdf/`, isolates non-text PDFs in `scrap/`, extracts surrogates, and updates indexes. |
+| **Ingest Raw Notes (Markdown & Text)** | `"Scan and process new notes in txt_md"`<br>`"Compile my new note on Debye Model"` | Analyzes technical content, deduplicates via MD5, renames to semantic `kebab-case`, compiles via XeLaTeX to `pdf/`, and catalogs in `03_topic_index.md`. |
+| **Import Direct Digital PDFs** | `"Scan pdf/ and index new textbooks"`<br>`"Process the new PDF in pdf/"` | Verifies digital text layer ($\ge 50$ chars), extracts companion surrogate markdown via `pymupdf4llm` to `txt_md/` with `DO NOT RECOMPILE` lock, and maps in mindmap. |
+| **Promote Note to Authoritative (Lifecycle 3)** | `"I wrote an authentic note for DOC-070 to replace the surrogate"` | Detects matching base name, deletes provisional surrogate markdown, releases compilation lock, compiles definitive XeLaTeX PDF, and promotes status to `Compiled from Source`. |
+| **Inspect Quarantined Files** | `"Check quarantined files in scrap"`<br>`"Why was this PDF quarantined in scrap?"` | Audits files in `scrap/`, inspects font encoding and text layer density, reports why they were quarantined (< 50 chars / scanned image), preserving files indefinitely. |
+| **Clean Up Misplaced Files** | `"Sweep repository and collect misplaced files"` | Searches root, `index/`, and extraneous paths for misplaced `.txt`, `.md`, or `.pdf` files and moves them to their authoritative directories. |
+
+### 2. 🔍 Topic Search, Deep Derivations & Academic Problem Solving
+
+| Goal / Operational Task | What to say in chat | What the AI does automatically |
+|---|---|---|
+| **Search by Concept or Topic** | `"What notes do I have on Debye Model?"`<br>`"Do I have any notes on Perturbation Theory?"` | Performs Stage 1 control plane lookup in `00_syllabus_taxonomy.md` and `03_topic_index.md`, locates matching `DOC-XXX` records, and presents dense summaries with clickable PDF links. |
+| **Detailed Proof & Derivation Walkthrough** | `"Explain the derivation of Bloch's Theorem from my notes"`<br>`"Derive the Debye $T^3$ law using DOC-070"` | Performs line-sliced reading of the focal note in `txt_md/`, extracts exact mathematical steps, and delivers a rigorous derivation rendered in LaTeX / KaTeX. |
+| **Comparative Concept Analysis** | `"Compare the Einstein and Debye heat capacity models using my notes"` | Slices relevant sections across multiple notes (e.g. DOC-070 and DOC-139), contrasting physical assumptions, high/low-temperature limits, and formulas. |
+| **Inspect Equations & Formulations** | `"Read DOC-015 and summarize its key equations"`<br>`"What are the boundary conditions in DOC-042?"` | Directly inspects the note, extracts foundational mathematical identities, Hamiltonian expressions, and boundary equations without full-book context dumps. |
+| **Solve PYQs & Exercises** | `"How many questions in quantum mechanics PYQ are left to solve?"`<br>`"Solve question 14 from DOC-002"` | Evaluates unsolved problem blocks inside indexed notes, provides step-by-step mathematical solutions, and verifies units and dimensional consistency. |
+| **Generate Study Practice Questions** | `"Generate 5 GATE practice problems on Solid State Physics from my notes"` | Synthesizes custom practice questions adhering to GATE standards directly derived from the equations and concepts in your cataloged notes. |
+
+### 3. 🧠 Knowledge Graph, Mindmap & Relational Reasoning
+
+| Goal / Operational Task | What to say in chat | What the AI does automatically |
+|---|---|---|
+| **Trace Prerequisites** | `"What do I need to know before reading DOC-023?"`<br>`"What are the prerequisites for Superconductivity?"` | Queries incoming edges and `prerequisites` in `index/04_interconnection_mindmap.md` and returns a prerequisite tree with direct links to foundational notes. |
+| **Explore Conceptual Bridges** | `"How do my notes on <Topic A> connect to <Topic B>?"`<br>`"How does DOC-001 connect to DOC-007?"` | Traverses relational triples (`shares Hamiltonian`, `prerequisite for`, `analogous to`) to explain the exact mathematical and physical bridge between documents. |
+| **Domain-Wide Knowledge Exploration** | `"Show all notes related to Hamiltonian dynamics"`<br>`"Find all documents discussing Brillouin zones"` | Traverses YAML nodes sharing specific concept tags in `04_interconnection_mindmap.md` and generates an interconnected cluster summary. |
+| **Sequential Reading Roadmaps** | `"Give me a recommended reading roadmap for Quantum Mechanics based on my notes"` | Analyzes prerequisite chains and syllabus sequence in `00_syllabus_taxonomy.md` to construct an optimal step-by-step curriculum reading path. |
+
+### 4. 📊 GATE 2027 Syllabus & Curriculum Gap Auditing
+
+| Goal / Operational Task | What to say in chat | What the AI does automatically |
+|---|---|---|
+| **Comprehensive Syllabus Audit** | `"Check syllabus coverage"`<br>`"Show GATE 2027 preparation metrics"` | Queries `index/00_syllabus_taxonomy.md` (or runs `manage.bat coverage`) and reports active sections, total notes, sub-topic coverage percentages, and active document IDs. |
+| **Curriculum Blind-Spot Detection** | `"Show curriculum gaps"`<br>`"Which GATE physics sections need more notes?"` | Identifies sections or sub-topics with 0 active notes, alerting you to unrepresented areas so you can source or author missing material. |
+| **Section Deep Dive** | `"Show all notes under SEC-07 (Quantum Mechanics)"`<br>`"List all sub-topics under SEC-09 (Solid State Physics)"` | Filters `00_syllabus_taxonomy.md` and `03_topic_index.md` for specific GATE sections, listing all covered and pending syllabus units. |
+
+### 5. 🛡️ Repository Health, Deduplication & Maintenance
+
+| Goal / Operational Task | What to say in chat | What the AI does automatically |
+|---|---|---|
+| **Proactive Repository Audit** | `"Scan directory for any changes"`<br>`"Reconcile disk files against catalog"` | Executes `manage.bat scan`, comparing physical files in `txt_md/` and `pdf/` against `03_topic_index.md`, reporting any untracked or orphaned files. |
+| **Detect Exact & Semantic Duplicates** | `"Check if there are any duplicate notes"`<br>`"Audit duplicates by MD5 hash"` | Executes `manage.bat audit-duplicates` to detect exact hash collisions and normalized text overlap across `txt_md/` and `pdf/`. |
+| **Remove or Consolidate Notes** | `"Remove DOC-045 and clean up catalog and mindmap"`<br>`"Consolidate duplicate DOC-110 into DOC-002"` | Atomically removes specified files, strips the table row and detail block from `03_topic_index.md`, and prunes nodes and edges from `04_interconnection_mindmap.md`. |
+| **Verify Toolchain & Compiler Status** | `"Check if LaTeX compiler and tools are working"` | Verifies environment prerequisites (Python 3.10+, Pandoc, XeLaTeX) and checks `tool/compile.bat` responsiveness. |
+
+### 6. ⚡ Token Efficiency, Context Hygiene & Slash Commands
+
+| Goal / Operational Task | What to say in chat | What the AI does automatically |
+|---|---|---|
+| **Compact Conversation Context** | `"/compact"` or `"Compact our context to save tokens"` | Condenses long turn history, prunes ephemeral compiler output logs, and frees 80–90% of active tokens while keeping all repository state safe in `index/`. |
+| **Audit Session Token Burn** | `"Is my workflow token efficient?"`<br>`"What is burning tokens in our current session?"` | Analyzes conversation logs and prompt patterns against the 5 Token-Conservation Laws, pointing out large reads vs surgical practices. |
+| **CPU-Local Scratch Data Analysis** | `"Run a scratch filter to find all mentions of <concept> across all 140 notes"` | Authors an ephemeral Python script in `<scratch>`, runs it locally on CPU, and prints a compact 10-line summary into context (saving ~50,000 tokens). |
+| **Long-Running Autonomous Goal** | `"/goal"` | Runs an extensive multi-step workflow (e.g. processing large batches or deep audits) thoroughly until completion without stopping early. |
+| **Interactive Step-by-Step Planning** | `"/plan"` or `"/grill-me"` | Engages in strategic alignment before large repository refactorings or curriculum reorganizations. |
+
+### 7. ⚙️ Portable Skills Deployment & Administration
+
+| Goal / Operational Task | What to say in chat | What the AI does automatically |
+|---|---|---|
+| **Deploy Agent Skills** | `"Deploy skills from md_skill/"`<br>`"Install repository management skill"` | Runs `md_skill/install.bat` to deploy `karpathy-guidelines` and `repository-management` blueprints into `.agent/skills/`. |
+| **Verify Skill Integrity** | `"Verify SHA256 checksums of installed skills"` | Computes and compares SHA256 hashes of `md_skill/` blueprints against `.agent/skills/` to guarantee synchronization. |
+| **Inspect Release History & Ledger** | `"Show recent entries in the version ledger"`<br>`"What was added in Version 1.5.1?"` | Queries `index/05_contributing_and_versioning.md` and displays cycle dates, line budgets, and architectural change entries. |
 
 ---
 
@@ -131,11 +190,6 @@ New-Item -ItemType Directory -Force -Path ".agent\skills\karpathy-guidelines", "
 Copy-Item "md_skill\SKILL.md" ".agent\skills\karpathy-guidelines\SKILL.md" -Force; `
 Copy-Item "md_skill\management_skill.md" ".agent\skills\repository-management\SKILL.md" -Force
 ```
-
----
-
-### 3. Architecture, Contributing & Version Ledger ([index/05_contributing_and_versioning.md](file:///D:/STUDY/index/05_contributing_and_versioning.md))
-- **What it is**: Complete developer and system documentation tracking repository working rules, lifecycle specifications, cumulative line-budget versioning, and change ledgers.
 
 ---
 
