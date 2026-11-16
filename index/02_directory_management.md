@@ -25,8 +25,8 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 ## Strict Scope & Ingestion Boundaries
 
 ### Rule 1: Ingestion Sources & Boundaries
-- **Source Notes**: ONLY files placed inside `D:\STUDY\txt_md/` are eligible for note ingestion, renaming, and compilation.
-- **Direct PDF Imports**: Pre-compiled PDFs placed directly into `D:\STUDY\pdf/` (without a source note in `txt_md/`) **ARE eligible for indexing and inclusion in the mindmap**, provided they meet the **Text-Layer Quality Gate**:
+- **Source Notes**: ONLY files placed inside `txt_md/` are eligible for note ingestion, renaming, and compilation. Notes can be **either Markdown (`.md`) or raw plaintext (`.txt`)**; both extensions are first-class formats and their original extension is strictly preserved throughout compilation and cataloging.
+- **Direct PDF Imports**: Pre-compiled PDFs placed directly into `pdf/` (without a source note in `txt_md/`) **ARE eligible for indexing and inclusion in the mindmap**, provided they meet the **Text-Layer Quality Gate**:
   - The PDF must be a well-made LaTeX-compiled document or possess a **clear, extractable text layer**.
   - Scanned images, bitmap PDFs, or unreadable documents without clean text layers must be rejected and flagged to the user.
 - **Strict Ignore Filter**: If a `.txt` or `.md` file is found outside `D:\STUDY\txt_md/`, or an unreadable/scanned PDF is found, **DO NOT index it, DO NOT rename it, and DO NOT compile it**. Never pollute the index with files from unauthorized locations.
@@ -118,6 +118,8 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
   - Automatically isolates non-text or scanned PDFs into `scrap/`.
 - **Quarantine Preservation (Zero Destruction)**:
   - Scanned/non-text PDFs placed in `scrap/` are preserved indefinitely and **will never be deleted unless explicitly requested by the user**.
+- **Dual Format Support (`.md` and `.txt`)**:
+  - Raw notes deposited in `scrap/` or `txt_md/` can freely be **either Markdown (`.md`) or raw plaintext (`.txt`)**; both extensions are first-class formats throughout ingestion, renaming, and compilation.
 
 ---
 

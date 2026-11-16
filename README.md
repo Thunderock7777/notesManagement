@@ -8,9 +8,9 @@ Welcome to your study repository! This directory is an automated knowledge base 
 
 ```text
 D:\STUDY\
-├── txt_md/     <-- INPUT & SURROGATES: Authoritative notes & provisional search surrogates
+├── txt_md/     <-- INPUT & SURROGATES: Authoritative notes & search surrogates (both .md & .txt supported)
 ├── pdf/        <-- OUTPUT & STORAGE: All compiled and imported PDFs live here
-├── scrap/      <-- UNIVERSAL DROPZONE & QUARANTINE: Drop raw files here; quarantines non-text PDFs
+├── scrap/      <-- UNIVERSAL DROPZONE: Drop raw notes (both .md & .txt) & PDFs here; isolates non-text PDFs
 ├── index/      <-- CONTROL PLANE: Master topic catalog, mindmap, governance & version ledger
 │   ├── 00_syllabus_taxonomy.md <-- GATE 2027 PH Physics curriculum & coverage matrix
 │   ├── 01_tool_usage.md       <-- Compiler usage & CLI automation
@@ -33,8 +33,9 @@ D:\STUDY\
 
 You don't need to manually rename files or run complex command-line scripts. The AI acts as your directory manager.
 
-#### Step 1: Drop Raw Notes in `txt_md/`
-- Paste any copied response from ChatGPT, Gemini, Claude, NotebookLM, or your own raw `.txt` / `.md` notes directly into [txt_md/](file:///D:/STUDY/txt_md/).
+#### Step 1: Drop Raw Notes in `txt_md/` or `scrap/`
+- Paste any copied response from ChatGPT, Gemini, Claude, NotebookLM, or your own raw `.txt` / `.md` notes directly into [txt_md/](file:///D:/STUDY/txt_md/) or [scrap/](file:///D:/STUDY/scrap/).
+- **Both `.md` and `.txt` files are fully supported**: Notes can use either `.md` or `.txt` extension seamlessly.
 - Don't worry about the filename (e.g. `notes.txt`, `chat.md`, `download.txt` is fine).
 
 #### Step 2: Tell the AI to Process

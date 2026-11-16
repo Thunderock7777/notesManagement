@@ -345,6 +345,7 @@ Cycle Date: 2026-11-16
 * `2026-11-16` | Engine | Implemented `cmd_sweep()` (`manage.bat sweep`) in `manage.py` auto-routing notes to `txt_md/`, digital PDFs to `pdf/`, and non-text PDFs to `scrap/` | `system +135 / -8` | `142 / 500`
 * `2026-11-16` | Engine | Updated `cmd_ingest_pdf()` and `cmd_scan()` to gracefully isolate and report non-text PDFs into `scrap/` without deletion | `system +24 / -6` | `160 / 500`
 * `2026-11-16` | Governance | Codified Rule 10 across `index/README.md`, `01_tool_usage.md`, `02_directory_management.md`, root `README.md`, and `md_skill/management_skill.md` | `system +68 / -4` | `224 / 500`
+* `2026-11-16` | Governance | Codified explicit dual-format invariant (`.md` and `.txt`) across `scrap/`, `txt_md/`, and compiler normalizers | `system +18 / -2` | `240 / 500`
 * `2026-11-16` | Release | **Versioned universal dropzone, file sweeper, and scrap quarantine as 1.4.0 (MINOR)**
 
 ---

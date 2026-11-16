@@ -39,9 +39,9 @@ D:\STUDY\
 │   ├── config/                <-- LaTeX templates and Lua filters
 │   └── documentation/         <-- Architecture and rendering specifications
 │
-├── txt_md/                    <-- EXCLUSIVE INGESTION SOURCE (User puts raw files here)
+├── txt_md/                    <-- EXCLUSIVE INGESTION SOURCE (User puts raw files here; both .md and .txt supported)
 ├── pdf/                       <-- FINAL PUBLISHED PDFS (Compiled outputs saved here)
-├── scrap/                     <-- UNIVERSAL DROPZONE & QUARANTINE (Dropzone & non-text PDF quarantine)
+├── scrap/                     <-- UNIVERSAL DROPZONE & QUARANTINE (Accepts both .md and .txt notes, and PDFs; isolates non-text PDFs)
 ├── manage.bat                 <-- One-click automation runner (scan, process, sweep, coverage)
 └── manage.py                  <-- Master automation engine (renaming, compiling, indexing)
 ```
@@ -54,7 +54,8 @@ D:\STUDY\
    - **Authentic Source Notes**: ONLY authentic source files placed directly inside `D:\STUDY\txt_md\` are eligible to be compiled from source into `pdf/`.
    - **Direct PDF Imports & Provisional Surrogates**: Pre-compiled PDFs placed directly into `D:\STUDY\pdf\` without source notes are indexed and companion surrogate Markdown files are extracted via `pymupdf4llm` into `txt_md/<basename>.md` carrying the `DO NOT RECOMPILE` safeguard banner. This enables instant full-text search, token-efficient context retrieval, and Git backup without compiling.
    - **Authoritative Replacement**: When the user provides an authentic `.txt` or `.md` note, it automatically supersedes and deletes the provisional surrogate, unlocks compilation, and compiles the definitive XeLaTeX PDF into `pdf/`.
-   - If a `.txt` or `.md` file exists anywhere else (e.g. mistakenly placed in `index/`, `tool/`, or workspace root), **DO NOT index it**.
+   - **Dual Format Support (`.md` and `.txt`)**: Files placed in `txt_md/` or `scrap/` can freely be formatted as **either Markdown (`.md`) or raw plaintext (`.txt`)**; both extensions are first-class formats natively compiled and cataloged with their original extensions preserved.
+   - If a `.txt` or `.md` file exists anywhere else (e.g. mistakenly placed in `index/`, `tool/`, or workspace root), **DO NOT index it** (run `manage.bat sweep` to auto-collect it).
 2. **`tool/` is Strictly Immutable & Non-Recreatable**:
    - No AI model may edit, modify, overwrite, or delete files inside `tool/`.
    - If `tool/` is missing, **DO NOT recreate it**. Automatically acquire it from its official public repository: [https://github.com/Thunderock7777/ai-ready-markdown-to-pdf](https://github.com/Thunderock7777/ai-ready-markdown-to-pdf) (`git clone https://github.com/Thunderock7777/ai-ready-markdown-to-pdf tool` or `git submodule update --init --recursive`).

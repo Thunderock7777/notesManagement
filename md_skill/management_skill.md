@@ -19,9 +19,9 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory w
 ### 1.2 Universal Directory Roles
 ```text
 <WORKSPACE_ROOT>/
-├── txt_md/     <-- INGESTION & TEXT: Authentic source notes & provisional search surrogates ONLY
+├── txt_md/     <-- INGESTION & TEXT: Authentic source notes & provisional search surrogates (both .md and .txt supported)
 ├── pdf/        <-- PUBLISHED OUTPUT: Final compiled XeLaTeX PDFs and verified digital PDF imports
-├── scrap/      <-- UNIVERSAL DROPZONE & QUARANTINE: Dropzone for incoming files; quarantines non-text PDFs
+├── scrap/      <-- UNIVERSAL DROPZONE & QUARANTINE: Dropzone for incoming notes (both .md and .txt) and PDFs; isolates non-text PDFs
 ├── index/      <-- CONTROL PLANE: Internal AI-only machine-readable indexation & relational graph
 │   ├── README.md              <-- Master control plane index and quick entry
 │   ├── 00_syllabus_taxonomy.md <-- Formal curriculum breakdown, sub-topic inventory & coverage matrix
@@ -80,6 +80,10 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the directory w
 3. **Quarantine Safety Policy (Zero Destruction)**:
    - Scanned, handwritten, or image-only PDFs quarantined in `scrap/` are preserved indefinitely.
    - The system **will never delete files in `scrap/` unless explicitly instructed by the user**.
+4. **Dual Format Invariant (Both `.md` and `.txt` Supported)**:
+   - Note files inside `txt_md/` and `scrap/` can freely be **both Markdown (`.md`) or raw plaintext (`.txt`)**.
+   - Both formats are treated as first-class citizens throughout the entire pipeline.
+   - The original extension (`.md` or `.txt`) is strictly preserved during semantic renaming and cataloging. Pandoc and Lua normalizers compile both seamlessly into XeLaTeX PDFs.
 
 ---
 
@@ -160,7 +164,7 @@ Before touching any files or executing commands:
 1. **Analyze Content**: Read the note to determine Domain, Core Concepts, Prerequisites, and dense Summary.
 2. **Deduplication Check**: Compare MD5 hash and normalized body text against all files in `txt_md/`. If identical, halt and inform user.
 3. **Taxonomy Classification**: Map document to its formal curriculum section (`SEC-XX`) and sub-topic unit based on `index/00_syllabus_taxonomy.md`.
-4. **Semantic Renaming**: Rename to `kebab-case` (`[domain]-[topic].[ext]`).
+4. **Semantic Renaming**: Rename to `kebab-case` (`[domain]-[topic].[ext]`). Notes can be **either `.md` or `.txt`**, and the original extension is strictly preserved throughout compilation.
 5. **Headless Compilation**:
    - Run via `(echo Y & echo.) | tool\compile.bat txt_md\<filename>.md` (or through `manage.bat process`) with `BypassSandbox: true`.
    - Verify that `<filename>.pdf` was successfully created.
