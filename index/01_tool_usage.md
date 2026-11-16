@@ -76,6 +76,9 @@ cmd /c "D:\STUDY\manage.bat process"
 5. **Syllabus Coverage Auditing & Automatic Classification**:
    - Running `manage.bat coverage` to audit preparation progress across all 11 sections of the GATE 2027 PH Physics curriculum.
    - Automatically assigning GATE section (`SEC-01` to `SEC-11`) and syllabus sub-topics when generating new index entries in `03_topic_index.md` and `04_interconnection_mindmap.md`.
+6. **Enforcing Strict Text-Layer Quality Gate (Option C)**:
+   - In `manage.py ingest-pdf`: Verifying that incoming PDFs possess $\ge 50$ characters of extractable digital text.
+   - Halting immediately with error code 1 (`[ERROR] PDF has no extractable text layer (scanned/bitmap). Rejected.`) when an image-only, scanned, or non-digital PDF is supplied.
 
 ---
 

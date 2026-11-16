@@ -37,6 +37,9 @@ These rules govern anyone (human contributor or AI agent) modifying this reposit
 4. **Strict Isolation of Search from Script**:
    - `manage.py` is a mechanical executor, NOT a query engine.
    - When the user asks to search, find topics, or trace relationships, **`manage.py` must NEVER be used**. The AI agent performs all searching directly using native reading tools.
+5. **Digital Text-Layer Invariant (Option C Quality Gate)**:
+   - All pre-compiled PDFs imported into `pdf/` must possess a native digital text layer ($\ge 50$ clean characters, LaTeX-typeset or digital publication).
+   - Scanned image PDFs, photocopies, handwritten camera snapshots, and files with corrupted font encodings are strictly rejected by design. Non-digital material must be authored as text notes in `txt_md/` (Lifecycle 1) to be compiled by XeLaTeX.
 
 ---
 
@@ -294,6 +297,22 @@ Cycle Date: 2026-11-16
 * `2026-11-16` | Skills | Refactored `md_skill/management_skill.md` and `.agent/skills/repository-management/SKILL.md` to Universal & Portable Edition, replacing machine-specific paths with dynamic `<WORKSPACE_ROOT>` resolution | `system +85 / -35` | `85 / 500`
 * `2026-11-16` | Skills | Codified 7-phase systematic order of operations (Phase 0 Discovery to Phase 6 Fresh Bootstrapping) for complete portability | `system +45 / -10` | `120 / 500`
 * `2026-11-16` | Release | **Versioned universal skill portability and dynamic workspace resolution as 1.3.1 (PATCH)**
+
+---
+
+```text
+===============================================================================
+VERSION 1.3.2 CYCLE
+===============================================================================
+Cycle: Digital Text-Layer Quality Mandate & Prerequisite Codification (Option C)
+Starting Count: 0 / 500
+Cycle Date: 2026-11-16
+```
+
+### Version 1.3.2 Cycle Ledger
+* `2026-11-16` | Governance | Codified fundamental architectural prerequisite in `index/README.md` (Rule 9), `01_tool_usage.md`, and `02_directory_management.md` (Rule 9) mandating native digital text layers for all PDFs | `system +35 / -0` | `35 / 500`
+* `2026-11-16` | Skills | Updated `md_skill/management_skill.md` and `.agent/skills/repository-management/SKILL.md` with explicit Digital Text-Layer Mandate (Option C) and prohibited file specifications | `system +42 / -4` | `77 / 500`
+* `2026-11-16` | Release | **Versioned digital text-layer quality mandate as 1.3.2 (PATCH)**
 
 ---
 

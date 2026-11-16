@@ -58,6 +58,10 @@ The workspace root is defined dynamically as `<WORKSPACE_ROOT>` (the project roo
    - The entire `index/` directory is an internal AI control plane designed for machine parsing, retrieval, and relational reasoning (not human visual presentation). Do not insert human diagrams or decorative charts into `03_topic_index.md` or `04_interconnection_mindmap.md`. When the user asks for relationships or summaries, query the control plane and respond in conversational markdown.
 5. **Search Isolation Mandate**:
    - `manage.py` is a mechanical executor, NOT a search engine. When the user asks to search, find topics, or trace relationships, **`manage.py` must NEVER be used**. The AI agent performs all searching directly using native reading tools.
+6. **Fundamental Architectural Prerequisite: Digital Text-Layer Mandate (Option C Gate)**:
+   - The entire surrogate extraction pipeline (`pymupdf4llm`), full-text search across `txt_md/`, and relational mindmap strictly operate under the foundational requirement that **all imported PDFs must possess a clean, extractable digital text layer** (LaTeX-typeset or digital print).
+   - Scanned image PDFs, photocopies, handwritten notebook pictures converted to PDF, camera snapshots, and files with missing or corrupted font encodings (`< 50` characters of extractable text) are **strictly prohibited and rejected at the ingestion gate**.
+   - Non-digital, scanned, or handwritten study material must NEVER be dropped into `pdf/`. Users must author an authentic text/markdown note in `txt_md/` (Lifecycle 1) to be compiled cleanly by XeLaTeX.
 
 ---
 
@@ -139,7 +143,9 @@ stateDiagram-v2
    - In `index/04_interconnection_mindmap.md`: Insert node with `section:`, `syllabus_topic:`, `source_type: txt_md`, `source_note: <filename>.<ext>`, and connect relational edges.
 
 #### Lifecycle 2: Ingesting Direct Pre-Compiled PDFs (`pdf/` -> `txt_md/`)
-1. **Text Layer Quality Gate**: Verify digital text layer density ($\ge 50$ clean characters). Reject scanned bitmap PDFs without OCR.
+1. **Text Layer Quality Gate (Strict Rejection)**:
+   - Verify digital text layer density ($\ge 50$ clean characters) via PyMuPDF.
+   - Halt with exit code 1 if the PDF is an image-only scan, bitmap photocopy, or corrupted stream. Strictly reject non-digital PDFs.
 2. **Deduplication Check**: Compare MD5 hash against existing PDFs in `pdf/`.
 3. **Taxonomy Classification**: Determine primary curriculum section and sub-topic unit.
 4. **Semantic Renaming**: Rename PDF in `pdf/` to semantic `kebab-case`.

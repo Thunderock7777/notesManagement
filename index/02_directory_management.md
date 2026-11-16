@@ -98,6 +98,13 @@ The entire `index/` folder is an **internal AI control plane**. It is formatted 
 - **Curriculum Auditing**:
   - Run `cmd /c "D:\STUDY\manage.bat coverage"` or `python manage.py coverage` to inspect real-time preparation metrics and curriculum gaps across all 11 sections.
 
+### Rule 9: Fundamental Prerequisite Assumption & Text-Layer Mandate (Option C Gate)
+- **Core Structural Invariant**: The repository's entire automated control plane, surrogate markdown generation (`pymupdf4llm`), full-text search across `txt_md/`, semantic graph edges, and deduplication logic operate on the strict assumption that **all PDFs in `pdf/` have a clean, digital, extractable text layer** (LaTeX-typeset or native digital publication).
+- **Prohibited File Types**:
+  - Scanned image PDFs, photocopies, handwritten notebook pictures converted to PDF, camera snapshots, and PDFs with missing or corrupted `ToUnicode` font encodings (`< 50` characters of extractable text) are **strictly rejected**.
+  - `manage.py ingest-pdf` halts immediately with exit code 1 (`[ERROR] PDF has no extractable text layer (scanned/bitmap). Rejected.`).
+- **Handling Non-Digital / Scanned Notes**: If the user possesses handwritten or scanned study material, they must NOT place the image PDF directly into `pdf/`. Instead, they must transcribe or author an authentic `.txt` or `.md` note in `txt_md/` (Lifecycle 1), which `tool/compile.bat` will compile cleanly into a publication-grade XeLaTeX digital PDF.
+
 ---
 
 ## Direct PDF Ingestion Protocol (`pdf/` Only)

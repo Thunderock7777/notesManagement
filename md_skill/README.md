@@ -9,7 +9,7 @@ This directory serves as the **master reusable skill vault** for the Study Knowl
 | Skill Name | Blueprint Source | Installed Location | Core Purpose |
 |---|---|---|---|
 | **`karpathy-guidelines`** | [`SKILL.md`](SKILL.md) | `.agent/skills/karpathy-guidelines/SKILL.md` | Behavioral guidelines reducing common LLM coding pitfalls, forcing surgical changes, eliminating speculative code, and establishing verifiable completion criteria. |
-| **`repository-management`** | [`management_skill.md`](management_skill.md) | `.agent/skills/repository-management/SKILL.md` | Master operational management skill governing three-tier note ingestion lifecycles (authentic notes, direct PDFs, and surrogate Markdown), compilation locks, tool immutability, and search isolation. |
+| **`repository-management`** | [`management_skill.md`](management_skill.md) | `.agent/skills/repository-management/SKILL.md` | Master operational management skill governing three-tier note ingestion lifecycles (authentic notes, digital PDFs, and surrogate Markdown), digital text-layer quality gates, compilation locks, tool immutability, and search isolation. |
 
 ---
 
