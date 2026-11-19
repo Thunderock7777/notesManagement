@@ -22,6 +22,7 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 | **TOTAL** | **11 GATE Sections** | **140 notes** | **35.9% Overall (28 / 78 Sub-Topics)** |
 *For complete sub-topic mappings and curriculum gaps, see [00_syllabus_taxonomy.md](file:///D:/STUDY/index/00_syllabus_taxonomy.md).*
 
+| DOC-142 | **SEC-09** | `9.1` Crystallography, Bravais  | `ssp-crystallography-bravais-lattices-unit-cells.pdf` | `ssp1.txt` | [ssp-crystallography-bravais-lattices-unit-cells.pdf](file:///D:/STUDY/pdf/ssp-crystallography-bravais-lattices-unit-cells.pdf) | Compiled from Source | 2026-11-15 |
 ---
 
 ## Document Catalog
@@ -2428,3 +2429,34 @@ This registry tracks every text/markdown document and pre-compiled PDF in `D:\ST
 - **Summary**: Detailed study notes on semiconductor physics, p-n junction diode mechanics, carrier diffusion, BJTs, and field-effect transistors (JFET/MOSFET).
 - **Processing Log**:
   - `2026-11-16`: Ingested from `scrap/Electronics.pdf`, swept to `pdf/`, semantically renamed to `elec-semiconductor-devices-pn-junctions-transistors.pdf`, extracted companion surrogate markdown via pymupdf4llm, and fully indexed in control plane.
+
+### [DOC-142] ssp-crystallography-bravais-lattices-unit-cells.pdf
+- **Source File**: [ssp-crystallography-bravais-lattices-unit-cells.txt](file:///D:/STUDY/txt_md/ssp-crystallography-bravais-lattices-unit-cells.txt)
+- **Compiled PDF**: [ssp-crystallography-bravais-lattices-unit-cells.pdf](file:///D:/STUDY/pdf/ssp-crystallography-bravais-lattices-unit-cells.pdf)
+- **Original Filename**: `ssp1.txt`
+- **GATE Section**: `SEC-09` (Solid State Physics)
+- **Syllabus Topic**: `9.1: Crystallography, Bravais Lattices, Miller Indices & Unit Cells`
+- **Domain**: `Solid State Physics`
+- **Core Concepts**:
+  - Space Lattice
+  - Basis
+  - Primitive Cell
+  - Conventional Cell
+  - Wigner-Seitz Cell
+  - 7 Crystal Systems
+  - 14 Bravais Lattices
+  - Crystallographic Directions
+  - Miller Indices
+  - Interplanar Spacing
+  - Packing Metrics
+  - SC
+  - BCC
+  - FCC
+  - HCP
+  - Ideal c/a Ratio
+  - Diamond Structure
+  - Zincblende Structure
+- **Text Layer Quality**: Verified
+- **Summary**: 14 comprehensive GATE exam-grade questions with step-by-step mathematical derivations covering 3D space lattices, unit cells, Wigner-Seitz cell construction protocol, 7 crystal systems, 14 Bravais lattices, direction indices [uvw], Miller indices (hkl), interplanar spacing dhkl derivation, atomic packing factors (APF), coordination numbers, and nearest-neighbor distances for SC, BCC, FCC, HCP with ideal c/a ratio derivation, diamond cubic structure, and zincblende inversion symmetry.
+- **Processing Log**:
+  - `2026-11-15`: Compiled from source note ssp-crystallography-bravais-lattices-unit-cells.txt

@@ -19,10 +19,10 @@
 | **SEC-06** | Optical Physics | **1 note** | 6 | 1 | 🟡 Moderate (17% Covered) |
 | **SEC-07** | Quantum Mechanics | **79 notes** | 10 | 8 | 🟢 High (80% Covered) |
 | **SEC-08** | Atomic and Molecular Physics | **10 notes** | 9 | 3 | 🟡 Moderate (33% Covered) |
-| **SEC-09** | Solid State Physics | **34 notes** | 10 | 5 | 🟢 High (50% Covered) |
+| **SEC-09** | Solid State Physics | **35 notes** | 10 | 5 | 🟢 High (50% Covered) |
 | **SEC-10** | Nuclear and Particle Physics | **6 notes** | 10 | 4 | 🟡 Moderate (40% Covered) |
 | **SEC-11** | Electronics | **1 note** | 7 | 1 | 🟡 Moderate (14% Covered) |
-| **TOTAL** | **11 Sections** | **140 notes** | **78 Sub-Topics** | **28 Covered** | **35.9% Overall (ZERO Gaps)** |
+| **TOTAL** | **11 Sections** | **141 notes** | **78 Sub-Topics** | **28 Covered** | **35.9% Overall (ZERO Gaps)** |
 
 ---
 
@@ -137,12 +137,12 @@
 | `8.8` | Raman Effect & Spectroscopy | ⚪ *Pending Notes* | `None` |
 | `8.9` | Magnetic Resonance & Modern Spectroscopies (NMR, ESR, X-ray & Mössbauer) | ⚪ *Pending Notes* | `None` |
 
-### SEC-09: Solid State Physics (34 notes)
+### SEC-09: Solid State Physics (35 notes)
 *Crystallography; diffraction methods; bonding; lattice vibrations, thermal properties; free electron theory; band theory, Bloch's theorem, effective mass; semiconductors, junctions, contacts; dielectrics, ferroelectricity; magnetism; superconductivity.*
 
 | Unit Code | Syllabus Topic Unit | Status | Notes Assigned |
 |---|---|---|---|
-| `9.1` | **Elements of Crystallography, Bravais Lattices, Miller Indices & Unit Cells** | 🟢 Covered (22) | [DOC-014](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations.pdf), [DOC-018](file:///D:/STUDY/pdf/ssp-the-core-concept-in-classical-c.pdf), [DOC-019](file:///D:/STUDY/pdf/ssp-python-code-import-os-import-ma.pdf), [DOC-030](file:///D:/STUDY/pdf/ssp-lattice-basis.pdf), [DOC-031](file:///D:/STUDY/pdf/ssp-condition-for-the-crest-a-crest.pdf), [DOC-032](file:///D:/STUDY/pdf/ssp-the-phase-shift-in-space.pdf), [DOC-034](file:///D:/STUDY/pdf/ssp-miller-indices.pdf), [DOC-052](file:///D:/STUDY/pdf/ssp-a-bravais-lattice-is-purely-an.pdf), [DOC-066](file:///D:/STUDY/pdf/ssp-the-rule-for-a-bravais-lattice.pdf), [DOC-069](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell.pdf), [DOC-070](file:///D:/STUDY/pdf/ssp-ssp35.pdf), [DOC-083](file:///D:/STUDY/pdf/ssp-miller-indices1.pdf), [DOC-089](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell-2.pdf), [DOC-091](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations-2.pdf), [DOC-094](file:///D:/STUDY/pdf/ssp-made-represents-number.pdf), [DOC-096](file:///D:/STUDY/pdf/ssp-definitions-of-the-two-operator.pdf), [DOC-098](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties.pdf), [DOC-105](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties-2.pdf), [DOC-110](file:///D:/STUDY/pdf/ssp-python-visualization-code-impor.pdf), [DOC-127](file:///D:/STUDY/pdf/ssp-the-golden-rule-of-the-translat.pdf), [DOC-132](file:///D:/STUDY/pdf/ssp-graphene-two-atom-basis-crystal-structure.pdf), [DOC-139](file:///D:/STUDY/pdf/ssp-crystallography-diffraction-bonding-phonons.pdf) |
+| `9.1` | **Elements of Crystallography, Bravais Lattices, Miller Indices & Unit Cells** | 🟢 Covered (23) | [DOC-014](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations.pdf), [DOC-018](file:///D:/STUDY/pdf/ssp-the-core-concept-in-classical-c.pdf), [DOC-019](file:///D:/STUDY/pdf/ssp-python-code-import-os-import-ma.pdf), [DOC-030](file:///D:/STUDY/pdf/ssp-lattice-basis.pdf), [DOC-031](file:///D:/STUDY/pdf/ssp-condition-for-the-crest-a-crest.pdf), [DOC-032](file:///D:/STUDY/pdf/ssp-the-phase-shift-in-space.pdf), [DOC-034](file:///D:/STUDY/pdf/ssp-miller-indices.pdf), [DOC-052](file:///D:/STUDY/pdf/ssp-a-bravais-lattice-is-purely-an.pdf), [DOC-066](file:///D:/STUDY/pdf/ssp-the-rule-for-a-bravais-lattice.pdf), [DOC-069](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell.pdf), [DOC-070](file:///D:/STUDY/pdf/ssp-ssp35.pdf), [DOC-083](file:///D:/STUDY/pdf/ssp-miller-indices1.pdf), [DOC-089](file:///D:/STUDY/pdf/ssp-wigner-seitz-primitive-cell-2.pdf), [DOC-091](file:///D:/STUDY/pdf/ssp-einstein-temperature-lattice-oscillations-2.pdf), [DOC-094](file:///D:/STUDY/pdf/ssp-made-represents-number.pdf), [DOC-096](file:///D:/STUDY/pdf/ssp-definitions-of-the-two-operator.pdf), [DOC-098](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties.pdf), [DOC-105](file:///D:/STUDY/pdf/ssp-reciprocal-lattice-vectors-properties-2.pdf), [DOC-110](file:///D:/STUDY/pdf/ssp-python-visualization-code-impor.pdf), [DOC-127](file:///D:/STUDY/pdf/ssp-the-golden-rule-of-the-translat.pdf), [DOC-132](file:///D:/STUDY/pdf/ssp-graphene-two-atom-basis-crystal-structure.pdf), [DOC-139](file:///D:/STUDY/pdf/ssp-crystallography-diffraction-bonding-phonons.pdf), [DOC-142](file:///D:/STUDY/pdf/ssp-crystallography-bravais-lattices-unit-cells.pdf) |
 | `9.2` | **Diffraction Methods, Reciprocal Lattice, Ewald Sphere & Laue Condition** | 🟢 Covered (5) | [DOC-022](file:///D:/STUDY/pdf/ssp-ewald-brillouin.pdf), [DOC-035](file:///D:/STUDY/pdf/ssp-lau-condition.pdf), [DOC-075](file:///D:/STUDY/pdf/ssp-first-brillouin-zone-construction.pdf), [DOC-120](file:///D:/STUDY/pdf/ssp-g-hkl-dbt.pdf), [DOC-131](file:///D:/STUDY/pdf/ssp-first-brillouin-zone-construction-2.pdf) |
 | `9.3` | Chemical Bonding in Solids | ⚪ *Pending Notes* | `None` |
 | `9.4` | Lattice Vibrations, Phonons & Thermal Properties (Einstein & Debye Models) | ⚪ *Pending Notes* | `None` |

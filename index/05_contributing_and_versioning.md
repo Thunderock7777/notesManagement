@@ -402,7 +402,7 @@ Cycle Date: 2026-11-17
 ```
 
 ### Version 1.6.1 Cycle Ledger
-*(Active cycle open - awaiting subsequent operations).*
+* `2026-11-20` | Ingestion | Routed `prompt.txt` to `scrap/` dropzone; ingested authentic source note `ssp1.txt` -> `ssp-crystallography-bravais-lattices-unit-cells.txt`, compiled via Pandoc/XeLaTeX into `pdf/`, and cataloged as `DOC-142` under SEC-09 (Topic `9.1`) across `00_syllabus_taxonomy.md`, `03_topic_index.md`, and `04_interconnection_mindmap.md` | `user +1 / -0` | `1 / 500`
 
 ---
 

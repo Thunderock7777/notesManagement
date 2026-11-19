@@ -1607,6 +1607,43 @@ nodes:
   source_note: elec-semiconductor-devices-pn-junctions-transistors.md
   section: SEC-11
   syllabus_topic: '`11.1` Semiconductor Devices (Carri'
+- id: DOC-142
+  file: ssp-crystallography-bravais-lattices-unit-cells.pdf
+  source_type: txt_md
+  domain: Solid State Physics
+  core_concepts:
+  - Space Lattice
+  - Basis
+  - Primitive Cell
+  - Conventional Cell
+  - Wigner-Seitz Cell
+  - 7 Crystal Systems
+  - 14 Bravais Lattices
+  - Crystallographic Directions
+  - Miller Indices
+  - Interplanar Spacing
+  - Packing Metrics
+  - SC
+  - BCC
+  - FCC
+  - HCP
+  - Ideal c/a Ratio
+  - Diamond Structure
+  - Zincblende Structure
+  summary: 14 comprehensive GATE exam-grade questions with step-by-step mathematical
+    derivations covering 3D space lattices, unit cells, Wigner-Seitz cell construction
+    protocol, 7 crystal systems, 14 Bravais lattices, direction indices [uvw], Miller
+    indices (hkl), interplanar spacing dhkl derivation, atomic packing factors (APF),
+    coordination numbers, and nearest-neighbor distances for SC, BCC, FCC, HCP with
+    ideal c/a ratio derivation, diamond cubic structure, and zincblende inversion
+    symmetry.
+  section: SEC-09
+  syllabus_topic: '9.1: Crystallography, Bravais Lattices, Miller Indices & Unit Cells'
+  source_note: ssp-crystallography-bravais-lattices-unit-cells.txt
+  prerequisites:
+  - Coordinate Geometry
+  - 3D Vectors
+
 edges:
 - from: DOC-001
   to: DOC-007

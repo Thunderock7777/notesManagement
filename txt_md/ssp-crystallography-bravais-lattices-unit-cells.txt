@@ -1,0 +1,341 @@
+```yaml
+title: "Solid State Physics"
+author: "Abhik Biswas"
+date: "2026-11-19"
+header-left: "AI-Generated"
+page-layout: presentation
+title-rule: true
+```
+The 7 requested topics form an extensive, foundational syllabus in solid state physics for GATE. To give each topic the mathematical rigor, visual clarity, step-by-step algebra, and beginner-friendly depth required, we will invoke the **Auto-Split Two-Run Rule**:
+
+* **Run 1 (This Response):** Topics 1, 2, 3, and 4 (Foundations of Lattices, Basis, Primitive & Conventional Cells, Wigner-Seitz Construction, 14 Bravais Lattices across 7 Crystal Systems, Directions \\([uvw]\\), and Miller Indices \\((hkl)\\)).
+* **Run 2 (Next Response):** Topics 5, 6, and 7 (Interplanar Spacing \\(d_{hkl}\\) derivations, APF / CN / Nearest-Neighbor metrics for SC, BCC, FCC, HCP, and Diamond & Zincblende structures).
+
+---
+
+### **Q1 (2–3 Marks): Mathematical Definition of Space Lattice, Basis, and Crystal Structure**
+
+* **Exam-Ready Answer:**  
+  A **space lattice** is an infinite, periodic array of mathematical points in three dimensions defined by the translation vector \\(\vec{T} = u_1 \vec{a}_1 + u_2 \vec{a}_2 + u_3 \vec{a}_3\\) (\\(u_1, u_2, u_3 \in \mathbb{Z}\\)), where the atomic environment looks identical when viewed from any point \\(\vec{r}\\) or translated point \\(\vec{r}' = \vec{r} + \vec{T}\\). A **basis (motif)** is a unit assembly of one or more physical atoms identical in composition, arrangement, and orientation, with atomic coordinates \\(\vec{r}_j = x_j \vec{a}_1 + y_j \vec{a}_2 + z_j \vec{a}_3\\) (\\(0 \le x_j, y_j, z_j < 1\\)).  
+  The physical **crystal structure** is formed by placing an identical basis at every lattice point:
+  \\[\text{Crystal Structure} = \text{Lattice} + \text{Basis}\\]
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Lattice (Pure Geometry):** Think of a lattice as an imaginary coordinate grid. It has zero mass, zero charge, and no atoms. The vectors \\(\vec{a}_1, \vec{a}_2, \vec{a}_3\\) are called the **crystal axes** or **translation vectors**. If every equivalent point can be reached using integers \\(u_1, u_2, u_3\\), these vectors are **primitive translation vectors**.
+  * **Basis (Physical Matter):** Real crystals contain atoms. A basis can be a single atom (e.g., Al, Na) or a group of atoms (e.g., diatomic in NaCl, triatomic in \\(\text{CaF}_2\\)). The coordinates \\(x_j, y_j, z_j\\) are **fractional coordinates**. For instance, \\((0,0,0)\\) means the atom sits directly on the lattice point, while \\((1/2, 1/2, 1/2)\\) means it sits at the center of the cell.
+  * **Convolution into a Crystal:** The crystal structure is the physical reality. When you place the basis on every single lattice point with the exact same spatial orientation, the infinite crystal is formed.
+
+---
+
+### **Q2 (2–3 Marks): Primitive vs. Conventional Unit Cells and Point Counting**
+
+* **Exam-Ready Answer:**  
+  A **primitive unit cell** is a minimum-volume space-filling cell that contains exactly **one lattice point** (\\(N_{\text{eff}} = 1\\)) and is spanned by primitive axes \\(\vec{a}_1, \vec{a}_2, \vec{a}_3\\) with volume \\(V_c = |\vec{a}_1 \cdot (\vec{a}_2 \times \vec{a}_3)|\\). A **conventional unit cell** is a larger repeating cell (\\(N_{\text{eff}} > 1\\)) chosen so that its axes directly reflect the orthogonal and rotational symmetries of the lattice.  
+  For cubic lattices of lattice constant \\(a\\):
+  * **Simple Cubic (SC):** \\(N_{\text{eff}} = 8 \times \frac{1}{8} = 1 \implies V_c = a^3\\)
+  * **Body-Centered Cubic (BCC):** \\(N_{\text{eff}} = 8 \times \frac{1}{8} + 1 = 2 \implies V_c = \frac{1}{2}a^3\\)
+  * **Face-Centered Cubic (FCC):** \\(N_{\text{eff}} = 8 \times \frac{1}{8} + 6 \times \frac{1}{2} = 4 \implies V_c = \frac{1}{4}a^3\\)
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Why Non-Primitive Cells Exist:** If we force an FCC lattice into a primitive cell, the resulting cell is an oblique rhombohedron with an interaxial angle of \\(60^\circ\\). This makes spatial calculations awkward. Crystallographers prefer a conventional cube with \\(90^\circ\\) angles, even though it contains multiple lattice points.
+  * **Sharing Fractions:**
+    * A corner point is shared by \\(8\\) touching cubes \\(\implies\\) each cube gets \\(\frac{1}{8}\\) of that point. With 8 corners: \\(8 \times \frac{1}{8} = 1\\).
+    * A face point is shared by \\(2\\) cubes sharing that face \\(\implies\\) each gets \\(\frac{1}{2}\\). With 6 faces: \\(6 \times \frac{1}{2} = 3\\).
+    * A body-center point is entirely inside that single cube \\(\implies 1\\).
+  * **Volume Relation:** The conventional volume is scaled by the number of lattice points:
+    \\[V_{\text{conv}} = N_{\text{eff}} \cdot V_{\text{prim}} \implies V_{\text{prim}} = \frac{V_{\text{conv}}}{N_{\text{eff}}}\\]
+    For BCC (\\(N_{\text{eff}} = 2\\)), \\(V_c = a^3 / 2\\). For FCC (\\(N_{\text{eff}} = 4\\)), \\(V_c = a^3 / 4\\).
+
+---
+
+### **Q3 (2–3 Marks): The Wigner-Seitz Primitive Cell Construction Protocol**
+
+* **Exam-Ready Answer:**  
+  The **Wigner-Seitz cell** is a geometric primitive cell that exhibits the full point-group symmetry of the Bravais lattice. It is constructed around a chosen lattice point by:
+  1. Drawing translation lines from the chosen point to all nearby neighboring lattice points.
+  2. Constructing perpendicular bisecting planes at the midpoints of these lines.
+  3. Finding the smallest polyhedral volume enclosed by these intersecting planes.  
+  Mathematically, it is the set of all points \\(\vec{r}\\) satisfying:
+  \\[\vec{r} \cdot \hat{T} \le \frac{1}{2}|\vec{T}| \quad \forall \, \vec{T} \neq \vec{0}\\]
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Why It Is Unique:** Unlike parallelepiped primitive cells whose shape depends on which translation vectors you pick, the Wigner-Seitz construction is completely independent of arbitrary vector choices. It encloses the exact volume of space that is closer to the chosen lattice point than to any other lattice point in the entire crystal.
+  * **Key 3D Results for GATE:**
+    * **BCC Lattice:** The 8 nearest neighbors (along \\(\langle 111 \rangle\\)) form 8 hexagonal faces, while the 6 second-nearest neighbors (along \\(\langle 100 \rangle\\)) truncate the corners to form 6 square faces. The resulting Wigner-Seitz cell is a **truncated octahedron** (\\(14\\) faces) with volume \\(V = \frac{1}{2}a^3\\).
+    * **FCC Lattice:** The 12 nearest neighbors (along \\(\langle 110 \rangle\\)) enclose a **rhombic dodecahedron** (\\(12\\) diamond-shaped faces) with volume \\(V = \frac{1}{4}a^3\\).
+  * **Connection to Quantum Theory:** In reciprocal space, this exact construction around the origin \\(\vec{k} = 0\\) produces the **First Brillouin Zone**. In real space, it provides the boundary condition \\(\left.\frac{d\psi_0}{dr}\right|_{r=r_0} = 0\\) used in the Wigner-Seitz method for calculating energy bands in metals.
+
+---
+
+### **Q4 (2–3 Marks): The 7 Crystal Systems and Their Axial/Angular Constraints**
+
+* **Exam-Ready Answer:**  
+  Based on the relative lengths of the unit cell edges (\\(a, b, c\\)) and the interaxial angles (\\(\alpha, \beta, \gamma\\)), three-dimensional crystals are categorized into **7 crystal systems**:
+  1. **Cubic:** \\(a = b = c\\), \\(\alpha = \beta = \gamma = 90^\circ\\)
+  2. **Tetragonal:** \\(a = b \neq c\\), \\(\alpha = \beta = \gamma = 90^\circ\\)
+  3. **Orthorhombic:** \\(a \neq b \neq c\\), \\(\alpha = \beta = \gamma = 90^\circ\\)
+  4. **Monoclinic:** \\(a \neq b \neq c\\), \\(\alpha = \gamma = 90^\circ \neq \beta\\)
+  5. **Triclinic:** \\(a \neq b \neq c\\), \\(\alpha \neq \beta \neq \gamma \neq 90^\circ\\)
+  6. **Trigonal (Rhombohedral):** \\(a = b = c\\), \\(\alpha = \beta = \gamma < 120^\circ \neq 90^\circ\\)
+  7. **Hexagonal:** \\(a = b \neq c\\), \\(\alpha = \beta = 90^\circ, \gamma = 120^\circ\\)
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Interaxial Angle Conventions:**
+    * \\(\alpha\\) is the angle between axes \\(b\\) and \\(c\\).
+    * \\(\beta\\) is the angle between axes \\(a\\) and \\(c\\).
+    * \\(\gamma\\) is the angle between axes \\(a\\) and \\(b\\).
+  * **Order of Symmetry:**
+    * **Cubic** has the highest symmetry (four 3-fold rotation axes along the body diagonals).
+    * **Triclinic** has the lowest symmetry: all three edges are different, and none of the angles are \\(90^\circ\\).
+    * In **Tetragonal**, you pull a cube vertically along \\(z\\), so \\(c \neq a\\), but all angles remain \\(90^\circ\\).
+    * In **Orthorhombic**, you stretch all three sides so \\(a \neq b \neq c\\), but all angles remain \\(90^\circ\\).
+
+---
+
+### **Q5 (2–3 Marks): The 14 Bravais Lattices and the Non-Existence of Base-Centered Cubic**
+
+* **Exam-Ready Answer:**  
+  When the four lattice centering types—**Primitive (\\(P\\))**, **Body-centered (\\(I\\))**, **Face-centered (\\(F\\))**, and **Base/End-centered (\\(C\\))**—are applied across the 7 crystal systems, exactly **14 Bravais lattices** emerge in 3D space:
+  * Cubic: \\(3\\) (\\(P, I, F\\))
+  * Tetragonal: \\(2\\) (\\(P, I\\))
+  * Orthorhombic: \\(4\\) (\\(P, C, I, F\\))
+  * Monoclinic: \\(2\\) (\\(P, C\\))
+  * Triclinic: \\(1\\) (\\(P\\))
+  * Trigonal: \\(1\\) (\\(R\\))
+  * Hexagonal: \\(1\\) (\\(P\\))  
+  A "Base-Centered Cubic" lattice cannot exist because placing lattice points on only two opposing faces singles out a unique axis, which destroys the essential 3-fold cubic rotational symmetry along the body diagonals.
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Centering Symbols Explained:**
+    * \\(P\\) (Primitive): Points at corners only.
+    * \\(I\\) (*Innenzentriert* / Body-centered): Points at corners plus cell center.
+    * \\(F\\) (Face-centered): Points at corners plus all 6 face centers.
+    * \\(C\\) (Base/Side-centered): Points at corners plus one pair of opposing faces.
+  * **Why Only 14 Lattices (Instead of \\(7 \times 4 = 28\\))?**  
+    Many mathematically conceivable centered cells reduce to one of the 14 lattices under a change of primitive axes:
+    * *Example:* A "Face-Centered Tetragonal" (FCT) cell can always be redrawn as a smaller Body-Centered Tetragonal (BCT) cell rotated by \\(45^\circ\\) with \\(a' = a/\sqrt{2}\\). Thus, FCT is not an independent Bravais lattice.
+    * **Orthorhombic** is the only system accommodating all 4 centering types (\\(P, C, I, F\\)) because its three unequal edge lengths (\\(a \neq b \neq c\\)) prevent such rotational re-mappings.
+
+---
+
+### **Q6 (2–3 Marks): Crystallographic Directions \\([uvw]\\) Protocol**
+
+* **Exam-Ready Answer:**  
+  A **crystallographic direction** \\([uvw]\\) is a vector line connecting the origin to a position vector \\(\vec{R} = u'\vec{a}_1 + v'\vec{a}_2 + w'\vec{a}_3\\), reduced to the smallest set of integers having the same ratio:
+  \\[u : v : w = u' : v' : w'\\]
+  Negative vector components are written with an overbar (e.g., \\([\bar{1}00]\\)). The notation \\(\langle uvw \rangle\\) designates an entire family of symmetry-equivalent directions (e.g., in cubic crystals, \\(\langle 100 \rangle\\) represents \\([100], [\bar{1}00], [010], [0\bar{1}0], [001], [00\bar{1}]\\)).
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Three-Step Derivation Rule:**
+    1. Set the tail of the vector at the origin \\((0,0,0)\\).
+    2. Determine the coordinate projections of the vector head along the axes in units of \\(a, b, c\\).
+    3. Clear common denominators to obtain the smallest coprime integers and enclose them in square brackets: \\([uvw]\\).
+  * **Numerical Example:** Find the direction of a vector extending from \\((0,0,0)\\) to \\((a, \frac{a}{2}, 2a)\\):
+    * Projections: \\((1, \frac{1}{2}, 2)\\)
+    * Multiply by 2 to clear fractions: \\((2, 1, 4)\\)
+    * Direction index: **[214]**
+  * **Crucial GATE Property:** Only in **cubic crystals** is the direction \\([hkl]\\) geometrically perpendicular to the plane \\((hkl)\\) having the exact same indices. In tetragonal, orthorhombic, or hexagonal crystals, this perpendicularity rule does not hold in general.
+
+---
+
+### **Q7 (2–3 Marks): Miller Indices \\((hkl)\\) for Crystal Planes**
+
+* **Exam-Ready Answer:**  
+  **Miller indices \\((hkl)\\)** are the set of smallest integers proportional to the **reciprocals of the fractional intercepts** that a crystal plane makes with the coordinate axes:
+  1. Determine the intercepts of the plane along crystal axes \\(\vec{a}_1, \vec{a}_2, \vec{a}_3\\) as multiples \\(p, q, s\\).
+  2. Take their reciprocals: \\(\left(\frac{1}{p}, \frac{1}{q}, \frac{1}{s}\right)\\).
+  3. Clear fractions by multiplying by the lowest common denominator (LCD) to obtain the smallest integers \\((hkl)\\).
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Why We Take Reciprocals:** If a crystal plane is parallel to an axis, it never cuts it (intercept \\(= \infty\\)). In normal geometry, using \\(\infty\\) in coordinates creates mathematical singularities. Taking the reciprocal gives \\(\frac{1}{\infty} = 0\\), completely avoiding infinities.
+  * **Worked Exam Example:** A plane intercepts the crystal axes at \\(3a\\), \\(2b\\), and is parallel to the \\(c\\)-axis.
+    1. *Find intercepts:* \\((p, q, s) = (3, 2, \infty)\\).
+    2. *Take reciprocals:* \\(\left(\frac{1}{3}, \frac{1}{2}, \frac{1}{\infty}\right) = \left(\frac{1}{3}, \frac{1}{2}, 0\right)\\).
+    3. *Clear fractions:* Multiply by the LCD (\\(6\\)):
+       \\[6 \times \frac{1}{3} = 2, \quad 6 \times \frac{1}{2} = 3, \quad 6 \times 0 = 0\\]
+    4. *Enclose in parentheses:* **\\((230)\\)**.
+  * **Notational Differences for GATE:**
+    * \\([uvw]\\): A specific direction line.
+    * \\(\langle uvw \rangle\\): A family of equivalent directions.
+    * \\((hkl)\\): A specific plane or set of parallel planes.
+    * \\(\{hkl\}\\): A family of symmetry-equivalent planes (e.g., \\(\{100\}\\) represents the 6 cube faces: \\((100), (\bar{1}00), (010), (0\bar{1}0), (001), (00\bar{1})\\)).
+
+Welcome to **Run 2**. We now complete your master study guide by tackling the remaining three topics: **Interplanar Spacing (\\(d_{hkl}\\)) derivations**, **Lattice Packing Metrics (SC, BCC, FCC, HCP)**, and the **Diamond & Zincblende Structures**.
+
+Continuing our sequence and numbering seamlessly from **Q7** in Run 1:
+
+---
+
+### **Q8 (2–3 Marks): Comprehensive Derivation of Interplanar Spacing (\\(d_{hkl}\\))**
+
+* **Exam-Ready Answer:**  
+  For an orthogonal coordinate system (where axes are mutually perpendicular), consider a crystal plane with Miller indices \\((hkl)\\) making axial intercepts at \\(OA = \frac{a}{h}\\), \\(OB = \frac{b}{k}\\), and \\(OC = \frac{c}{l}\\). Let \\(d\\) be the perpendicular distance from the origin to this plane. The direction cosines of the normal vector from the origin to the plane are:
+  \\[\cos\alpha' = \frac{d}{OA} = \frac{d \cdot h}{a}, \quad \cos\beta' = \frac{d}{OB} = \frac{d \cdot k}{b}, \quad \cos\gamma' = \frac{d}{OC} = \frac{d \cdot l}{c}\\]
+  Using the 3D geometric identity \\(\cos^2\alpha' + \cos^2\beta' + \cos^2\gamma' = 1\\):
+  \\[d^2 \left( \frac{h^2}{a^2} + \frac{k^2}{b^2} + \frac{l^2}{c^2} \right) = 1 \implies \frac{1}{d_{hkl}^2} = \frac{h^2}{a^2} + \frac{k^2}{b^2} + \frac{l^2}{c^2}\\]
+  * **Orthorhombic (\\(a \neq b \neq c\\)):** \\(\frac{1}{d_{hkl}^2} = \frac{h^2}{a^2} + \frac{k^2}{b^2} + \frac{l^2}{c^2}\\)
+  * **Tetragonal (\\(a = b \neq c\\)):** \\(\frac{1}{d_{hkl}^2} = \frac{h^2 + k^2}{a^2} + \frac{l^2}{c^2}\\)
+  * **Cubic (\\(a = b = c\\)):** \\(d_{hkl} = \frac{a}{\sqrt{h^2 + k^2 + l^2}}\\)
+
+* **Step-by-Step Explanation (From Basics):**
+  * **What Is \\(d_{hkl}\\)?** In a real crystal, atoms lie on infinite stacks of parallel planes. The perpendicular separation between any two adjacent, parallel planes with the same Miller indices \\((hkl)\\) is the **interplanar spacing \\(d_{hkl}\\)**. This is the exact spacing that appears in **Bragg's Law of X-ray diffraction**:
+    \\[2d_{hkl}\sin\theta = n\lambda\\]
+  * **Why the Direction Cosine Identity Works:**
+    1. Draw a perpendicular line from the origin \\((0,0,0)\\) to the plane \\(ABC\\). Let its length be \\(d\\) and let it hit the plane at point \\(N\\).
+    2. Because \\(ON \perp\\) the plane, the triangle \\(\triangle ONA\\) forms a right-angled triangle at vertex \\(N\\). Therefore, \\(\cos\alpha' = \frac{\text{Adjacent}}{\text{Hypotenuse}} = \frac{ON}{OA} = \frac{d}{a/h} = \frac{dh}{a}\\).
+    3. The same right-triangle projection applies along \\(y\\) (\\(\cos\beta' = \frac{dk}{b}\\)) and \\(z\\) (\\(\cos\gamma' = \frac{dl}{c}\\)).
+    4. In any 3D Cartesian frame, the sum of the squares of direction cosines of any line vector always equals \\(1\\). Summing them up and factoring out \\(d^2\\) directly proves the formula.
+  * **GATE Exam Ratio (Simple Cubic):**
+    \\[d_{100} : d_{110} : d_{111} = \frac{a}{\sqrt{1}} : \frac{a}{\sqrt{2}} : \frac{a}{\sqrt{3}} = 1 : \frac{1}{\sqrt{2}} : \frac{1}{\sqrt{3}} = \sqrt{6} : \sqrt{3} : \sqrt{2} \quad\\]
+
+---
+
+### **Q9 (2–3 Marks): Simple Cubic (SC) Structure — CN, Nearest Neighbor, and APF**
+
+* **Exam-Ready Answer:**  
+  * **Number of atoms per unit cell (\\(n\\)):** \\(8 \text{ corners} \times \frac{1}{8} = 1\\).
+  * **Coordination Number (CN):** \\(6\\) (each corner atom touches \\(6\\) equidistant nearest neighbors along the \\(\pm x, \pm y, \pm z\\) cube edges).
+  * **Touch Condition & Nearest-Neighbor Distance (\\(2r\\)):** Atoms touch along the cube edge:
+    \\[a = 2r \implies r = \frac{a}{2} \implies \text{Nearest distance } (2r) = a \quad\\]
+  * **Atomic Packing Factor (APF):**
+    \\[\text{APF} = \frac{\text{Volume of atoms}}{\text{Volume of cell}} = \frac{1 \times \frac{4}{3}\pi r^3}{a^3} = \frac{\frac{4}{3}\pi \left(\frac{a}{2}\right)^3}{a^3} = \frac{\pi}{6} \approx 0.524 \quad (52.4\%) \quad\\]
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Visualizing CN = 6:** Pick an atom at the origin. Its nearest neighbors sit at coordinates \\((\pm a, 0, 0)\\), \\((0, \pm a, 0)\\), and \\((0, 0, \pm a)\\). That gives \\(2 + 2 + 2 = 6\\) touching neighbors.
+  * **Second-Nearest Neighbors:** The next closest atoms are across the face diagonals at distance \\(\sqrt{a^2 + a^2} = \sqrt{2}a\\). There are \\(12\\) such neighbors in an SC lattice.
+  * **Why APF Matters:** APF measures how tightly nature packs spheres into a volume. An APF of \\(0.524\\) means that **\\(47.6\%\\) of the unit cell is empty vacuum**! Because it is so loosely packed and thermodynamically unstable, only one element—**\\(\alpha\\)-Polonium**—crystallizes in the simple cubic structure at room conditions.
+
+---
+
+### **Q10 (2–3 Marks): Body-Centered Cubic (BCC) Structure Metrics**
+
+* **Exam-Ready Answer:**  
+  * **Number of atoms per unit cell (\\(n\\)):** \\(8 \text{ corners} \times \frac{1}{8} + 1 \text{ body center} = 2\\).
+  * **Coordination Number (CN):** \\(8\\) (the center atom touches all \\(8\\) corner atoms).
+  * **Touch Condition & Nearest-Neighbor Distance (\\(2r\\)):** Atoms touch continuously along the cube body diagonal:
+    \\[4r = \sqrt{3}a \implies r = \frac{\sqrt{3}}{4}a \implies \text{Nearest distance } (2r) = \frac{\sqrt{3}}{2}a \approx 0.866a \quad\\]
+  * **Atomic Packing Factor (APF):**
+    \\[\text{APF} = \frac{n \times \frac{4}{3}\pi r^3}{a^3} = \frac{2 \times \frac{4}{3}\pi \left(\frac{\sqrt{3}a}{4}\right)^3}{a^3} = \frac{\frac{8\pi}{3} \cdot \frac{3\sqrt{3}a^3}{64}}{a^3} = \frac{\sqrt{3}\pi}{8} \approx 0.680 \quad (68\%) \quad\\]
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Why Corners Don't Touch Along Edges:** If you place a large sphere right in the middle of a cube, it pushes the 8 corner spheres outward so they no longer touch along the cube edge. The edge length is \\(a = \frac{4r}{\sqrt{3}} \approx 2.31r > 2r\\).
+  * **Deriving the Body Diagonal (\\(4r\\)):**
+    1. Base diagonal \\(AC = \sqrt{a^2 + a^2} = \sqrt{2}a\\).
+    2. Body diagonal \\(CF\\) connects opposite corners through the center atom:
+       \\[CF = \sqrt{AC^2 + a^2} = \sqrt{(\sqrt{2}a)^2 + a^2} = \sqrt{3}a \quad\\]
+    3. Traveling along line \\(CF\\) crosses: (radius of corner atom) + (full diameter of center atom) + (radius of opposite corner atom) \\(= r + 2r + r = 4r\\).
+    4. Equating: \\(4r = \sqrt{3}a \implies r = \frac{\sqrt{3}}{4}a\\).
+  * **Second-Nearest Neighbors:** In BCC, the second-nearest neighbors are along the cube edges at distance \\(a\\). There are \\(6\\) such second neighbors. (Examples: Na, \\(\alpha\\)-Fe, Cr, W).
+
+---
+
+### **Q11 (2–3 Marks): Face-Centered Cubic (FCC) Structure Metrics**
+
+* **Exam-Ready Answer:**  
+  * **Number of atoms per unit cell (\\(n\\)):** \\(8 \text{ corners} \times \frac{1}{8} + 6 \text{ face centers} \times \frac{1}{2} = 1 + 3 = 4\\).
+  * **Coordination Number (CN):** \\(12\\).
+  * **Touch Condition & Nearest-Neighbor Distance (\\(2r\\)):** Atoms touch along the face diagonal:
+    \\[4r = \sqrt{2}a \implies r = \frac{\sqrt{2}}{4}a = \frac{a}{2\sqrt{2}} \implies \text{Nearest distance } (2r) = \frac{a}{\sqrt{2}} \approx 0.707a \quad\\]
+  * **Atomic Packing Factor (APF):**
+    \\[\text{APF} = \frac{4 \times \frac{4}{3}\pi \left(\frac{a}{2\sqrt{2}}\right)^3}{a^3} = \frac{\frac{16\pi}{3} \cdot \frac{a^3}{16\sqrt{2}}}{a^3} = \frac{\pi}{3\sqrt{2}} = \frac{\sqrt{2}\pi}{6} \approx 0.740 \quad (74\%) \quad\\]
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Counting CN = 12:** Consider any face-centered atom (e.g., in the \\(xy\\)-plane):
+    * It touches \\(4\\) corner atoms in its own plane.
+    * It touches \\(4\\) face-centered atoms in the plane immediately above it.
+    * It touches \\(4\\) face-centered atoms in the plane immediately below it.
+    * Total touching neighbors \\(= 4 + 4 + 4 = 12\\).
+  * **Deriving the Face Diagonal (\\(4r\\)):**
+    Looking at any square face of side \\(a\\):
+    \\[\text{Face Diagonal} = \sqrt{a^2 + a^2} = \sqrt{2}a\\]
+    The face diagonal passes through the corner atom, the center face atom, and the opposite corner: \\(r + 2r + r = 4r\\).  
+    Therefore:
+    \\[4r = \sqrt{2}a \implies r = \frac{\sqrt{2}}{4}a = \frac{a}{2\sqrt{2}} \quad\\]
+  * **Significance:** \\(\text{APF} = 0.74\\) is the densest possible close-packing for identical hard spheres in three dimensions (Kepler conjecture). Elements include Cu, Al, Au, Ag, Pb.
+
+---
+
+### **Q12 (2–3 Marks): Hexagonal Close-Packed (HCP) Structure & Ideal \\(c/a\\) Ratio**
+
+* **Exam-Ready Answer:**  
+  * **Lattice & Basis:** Simple hexagonal Bravais lattice with a **two-atom basis**.
+  * **Atoms per conventional hexagonal cell (\\(n\\)):** \\(12 \text{ corners} \times \frac{1}{6} + 2 \text{ face centers} \times \frac{1}{2} + 3 \text{ interior body atoms} = 2 + 1 + 3 = 6\\).
+  * **Coordination Number (CN) & APF:** \\(\text{CN} = 12\\) and \\(\text{APF} = \frac{\sqrt{2}\pi}{6} \approx 0.740\\).
+  * **Ideal Axial Ratio (\\(c/a\\)):**
+    \\[\frac{c}{a} = \sqrt{\frac{8}{3}} \approx 1.633 \quad\\]
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Full Derivation of Ideal \\(c/a\\):**
+    1. In the hexagonal basal plane, three adjacent touching atoms of radius \\(r\\) form an equilateral triangle of side length \\(a = 2r\\).
+    2. An atom in the next layer rests in the hollow pocket directly above the centroid of this triangle at a vertical height \\(h = \frac{c}{2}\\).
+    3. The distance \\(x\\) from any vertex of an equilateral triangle of side \\(a\\) to its centroid is:
+       \\[x = \frac{a/2}{\cos 30^\circ} = \frac{a/2}{\sqrt{3}/2} = \frac{a}{\sqrt{3}}\\]
+    4. Because all spheres touch each other in close packing, the distance from a corner atom to the pocket atom is also \\(a\\). Applying the Pythagorean theorem to the right triangle formed by the centroid, corner, and pocket atom:
+       \\[x^2 + h^2 = a^2 \implies \left(\frac{a}{\sqrt{3}}\right)^2 + \left(\frac{c}{2}\right)^2 = a^2\\]
+    5. Simplify the algebra step-by-step:
+       \\[\frac{a^2}{3} + \frac{c^2}{4} = a^2 \implies \frac{c^2}{4} = a^2 - \frac{a^2}{3} = \frac{2}{3}a^2\\]
+       \\[\frac{c^2}{a^2} = 4 \times \frac{2}{3} = \frac{8}{3} \implies \frac{c}{a} = \sqrt{\frac{8}{3}} \approx 1.633\\]
+  * **FCC vs. HCP Comparison for GATE:**
+    Both have \\(\text{CN} = 12\\) and \\(\text{APF} = 0.74\\). The only difference is the close-packed layer stacking sequence:
+    * **FCC:** \\(ABCABC\dots\\) (3-layer repeat along \\(\langle 111 \rangle\\)).
+    * **HCP:** \\(ABABAB\dots\\) (2-layer repeat along the \\(c\\)-axis).
+
+---
+
+### **Q13 (2–3 Marks): The Diamond Cubic Crystal Structure**
+
+* **Exam-Ready Answer:**  
+  The diamond structure consists of a **Face-Centered Cubic (FCC) Bravais lattice** with a **two-atom basis** of identical carbon atoms located at:
+  \\[(0, 0, 0) \quad \text{and} \quad \left(\frac{1}{4}, \frac{1}{4}, \frac{1}{4}\right) \quad\\]
+  * **Atoms per unit cell (\\(n\\)):** \\(4 \text{ (from FCC lattice points)} \times 2 \text{ (basis atoms)} = 8\\) atoms.
+  * **Coordination Number (CN):** \\(4\\) (tetrahedral coordination, bond angle \\(\theta = 109.5^\circ\\)).
+  * **Atomic Radius & Nearest-Neighbor Distance:**
+    \\[2r = \frac{\sqrt{3}}{4}a \implies r = \frac{\sqrt{3}}{8}a \quad\\]
+  * **Atomic Packing Factor (APF):**
+    \\[\text{APF} = \frac{8 \times \frac{4}{3}\pi \left(\frac{\sqrt{3}}{8}a\right)^3}{a^3} = \frac{\sqrt{3}\pi}{16} \approx 0.340 \quad (34\%) \quad\\]
+
+* **Step-by-Step Explanation (From Basics):**
+  * **How to Build the Diamond Cell:**
+    Think of diamond as two interpenetrating FCC sublattices displaced along the body diagonal by one-fourth of its length (vector \\(\vec{\delta} = \frac{a}{4}\hat{x} + \frac{a}{4}\hat{y} + \frac{a}{4}\hat{z}\\)).
+    * Sublattice 1: Standard FCC points at corners (\\(8 \times \frac{1}{8} = 1\\)) and face centers (\\(6 \times \frac{1}{2} = 3\\)) \\(= 4\\) atoms.
+    * Sublattice 2: \\(4\\) atoms located entirely inside the unit cell at the centers of 4 of the 8 sub-cubes: \\(\left(\frac{1}{4}, \frac{1}{4}, \frac{1}{4}\right)\\), \\(\left(\frac{3}{4}, \frac{3}{4}, \frac{1}{4}\right)\\), \\(\left(\frac{3}{4}, \frac{1}{4}, \frac{3}{4}\right)\\), \\(\left(\frac{1}{4}, \frac{3}{4}, \frac{3}{4}\right)\\).
+    * Total atoms \\(= 4 + 4 = 8\\).
+  * **Deriving the Bond Length (\\(2r\\)):**
+    An atom at \\((0,0,0)\\) bonds to the atom at \\(\left(\frac{a}{4}, \frac{a}{4}, \frac{a}{4}\right)\\):
+    \\[\text{Bond length } (2r) = \sqrt{\left(\frac{a}{4}\right)^2 + \left(\frac{a}{4}\right)^2 + \left(\frac{a}{4}\right)^2} = \sqrt{\frac{3a^2}{16}} = \frac{\sqrt{3}}{4}a \implies r = \frac{\sqrt{3}}{8}a \quad\\]
+  * **Why It Is So "Empty" (\\(\text{APF} = 34\%\\)):** In metals (like Cu or Al), non-directional metallic bonds let atoms roll into close-packed arrays (\\(\text{APF} = 74\%\\)). In diamond, carbon uses highly directional, rigid \\(sp^3\\) covalent bonds pointing toward the four corners of a regular tetrahedron. This strict directional bonding creates large open voids within the cell. (Examples: C, Si, Ge, grey-Sn).
+
+---
+
+### **Q14 (2–3 Marks): The Zincblende (\\(\text{ZnS}\\)) Structure and Inversion Symmetry**
+
+* **Exam-Ready Answer:**  
+  The **zincblende (\\(\text{ZnS}\\)) structure** is crystallographically identical to diamond, except that the two interpenetrating FCC sublattices consist of **two chemically distinct species** (e.g., \\(\text{Zn}^{2+}\\) and \\(\text{S}^{2-}\\)):
+  * \\(\text{Zn}\\) atoms sit on one FCC sublattice: \\((0,0,0)\\), \\(\left(0, \frac{1}{2}, \frac{1}{2}\right)\\), \\(\left(\frac{1}{2}, 0, \frac{1}{2}\right)\\), \\(\left(\frac{1}{2}, \frac{1}{2}, 0\right)\\).
+  * \\(\text{S}\\) atoms sit on the second FCC sublattice: \\(\left(\frac{1}{4}, \frac{1}{4}, \frac{1}{4}\right)\\), \\(\left(\frac{3}{4}, \frac{3}{4}, \frac{1}{4}\right)\\), \\(\left(\frac{3}{4}, \frac{1}{4}, \frac{3}{4}\right)\\), \\(\left(\frac{1}{4}, \frac{3}{4}, \frac{3}{4}\right)\\).
+  * **Molecules per unit cell:** \\(4\\) formula units of \\(\text{ZnS}\\) (giving 4 Zn ions + 4 S ions = 8 total ions).
+  * **Coordination:** \\(4:4\\) tetrahedral coordination.
+  * **Symmetry Difference:** Diamond possesses an **inversion center** midway between adjacent atoms. Zincblende **lacks inversion symmetry** because reversing coordinates across the bond midpoint maps a \\(\text{Zn}\\) atom onto an \\(\text{S}\\) atom.
+
+* **Step-by-Step Explanation (From Basics):**
+  * **Why This Distinction is Crucial for Device Physics:**
+    * In diamond (or Si, Ge), both sublattices are identical. If you pick the bond midpoint and perform an inversion operation (\\(\vec{r} \to -\vec{r}\\)), a carbon atom maps onto another carbon atom.
+    * In zincblende (like \\(\text{GaAs}\\), \\(\text{InP}\\), \\(\text{ZnS}\\), \\(\text{InSb}\\)), an inversion operation swaps Zn and S. Because the atoms have different electronegativities and ionic charges, the crystal lacks a center of inversion.
+    * **Device Consequence:** This broken inversion symmetry produces a permanent internal electric dipole potential under strain (giving rise to **piezoelectricity**) and directly influences the energy band structure—making materials like \\(\text{GaAs}\\) **direct bandgap semiconductors** ideal for LEDs and laser diodes!
+
+---
+
+### **Master Formula Reference Card for Fast Problem-Solving**
+
+1. **Volume of Primitive Cell:**  
+   \\[V_c = |\vec{a}_1 \cdot (\vec{a}_2 \times \vec{a}_3)| = \frac{V_{\text{conv}}}{N_{\text{eff}}}\\]
+2. **Interplanar Spacing (Orthorhombic / Tetragonal / Cubic):**  
+   \\[\frac{1}{d_{hkl}^2} = \frac{h^2}{a^2} + \frac{k^2}{b^2} + \frac{l^2}{c^2} \quad \xrightarrow{\text{cubic}} \quad d_{hkl} = \frac{a}{\sqrt{h^2 + k^2 + l^2}} \quad\\]
+3. **Mass Density from Unit Cell:**  
+   \\[\rho_m = \frac{n \cdot M}{N_A \cdot V_{\text{cell}}} = \frac{n \cdot M}{N_A \cdot a^3} \quad\\]
+4. **Summary of Cubic & HCP Parameters:**  
+   * **SC:** \\(n = 1\\), \\(\text{CN} = 6\\), \\(a = 2r\\), \\(\text{APF} = \frac{\pi}{6} \approx 0.52\\).
+   * **BCC:** \\(n = 2\\), \\(\text{CN} = 8\\), \\(4r = \sqrt{3}a\\), \\(\text{APF} = \frac{\sqrt{3}\pi}{8} \approx 0.68\\).
+   * **FCC:** \\(n = 4\\), \\(\text{CN} = 12\\), \\(4r = \sqrt{2}a\\), \\(\text{APF} = \frac{\sqrt{2}\pi}{6} \approx 0.74\\).
+   * **HCP:** \\(n = 6\\), \\(\text{CN} = 12\\), \\(c/a = \sqrt{8/3} \approx 1.633\\), \\(\text{APF} = 0.74\\).
+   * **Diamond:** \\(n = 8\\), \\(\text{CN} = 4\\), \\(8r = \sqrt{3}a\\), \\(\text{APF} = \frac{\sqrt{3}\pi}{16} \approx 0.34\\).
